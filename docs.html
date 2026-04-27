@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Documentation — tgram-analytics</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:      #090c12;
+  --bg2:     #0f1420;
+  --bg3:     #141b28;
+  --border:  rgba(255,255,255,0.07);
+  --border2: rgba(255,255,255,0.13);
+  --tg:      #2AABEE;
+  --tg2:     #1a8fc7;
+  --tg-dim:  rgba(42,171,238,0.12);
+  --green:   #00c48c;
+  --red:     #f87171;
+  --yellow:  #fbbf24;
+  --text:    #e2e8f0;
+  --muted:   #6b7a8e;
+  --dim:     #3a4450;
+  --mono:    'JetBrains Mono', monospace;
+  --sans:    'Space Grotesk', sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--sans);font-size:15px;line-height:1.7;overflow-x:hidden}
+
+/* grid */
+body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(rgba(255,255,255,0.018) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.018) 1px,transparent 1px);background-size:52px 52px;pointer-events:none;z-index:0}
+
+/* ── NAV ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:0 48px;height:60px;border-bottom:1px solid var(--border);background:rgba(9,12,18,0.88);backdrop-filter:blur(14px)}
+.nav-logo{font-family:var(--mono);font-size:14px;font-weight:600;color:var(--text);text-decoration:none;display:flex;align-items:center;gap:10px}
+.nav-logo .tg-dot{width:8px;height:8px;border-radius:50%;background:var(--tg);display:inline-block}
+.nav-links{display:flex;align-items:center;gap:28px;list-style:none}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:14px;transition:color .2s}
+.nav-links a:hover{color:var(--text)}
+
+/* ── LAYOUT ── */
+.layout{position:relative;z-index:1;display:grid;grid-template-columns:220px 1fr;gap:48px;max-width:1200px;margin:0 auto;padding:100px 48px 80px}
+.sidebar{position:sticky;top:100px;height:fit-content}
+.sidebar-title{font-family:var(--mono);font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;margin-bottom:16px}
+.sidebar-links{list-style:none;display:flex;flex-direction:column;gap:8px}
+.sidebar-links a{color:var(--muted);text-decoration:none;font-size:14px;padding:6px 0;border-left:2px solid transparent;padding-left:12px;margin-left:-12px;transition:all .2s}
+.sidebar-links a:hover{color:var(--text)}
+.sidebar-links a.active{color:var(--tg);border-left-color:var(--tg)}
+
+.content{min-width:0}
+.content h1{font-size:32px;font-weight:700;letter-spacing:-.03em;margin-bottom:12px}
+.content .lead{color:var(--muted);font-size:17px;margin-bottom:48px;line-height:1.7}
+.content h2{font-size:22px;font-weight:600;margin-top:48px;margin-bottom:16px;padding-bottom:12px;border-bottom:1px solid var(--border)}
+.content h3{font-size:17px;font-weight:600;margin-top:32px;margin-bottom:12px;color:var(--tg)}
+.content p{margin-bottom:16px;color:var(--muted)}
+.content p strong{color:var(--text);font-weight:600}
+.content code{font-family:var(--mono);font-size:13px;background:var(--bg2);padding:2px 6px;border-radius:4px;color:var(--tg)}
+.content pre{background:var(--bg2);border:1px solid var(--border2);border-radius:10px;padding:20px 24px;overflow-x:auto;margin:20px 0}
+.content pre code{background:transparent;padding:0;font-size:13px;line-height:1.9;color:var(--text)}
+.content .c{color:var(--dim)}
+.content .k{color:#c792ea}
+.content .fn{color:#82aaff}
+.content .s{color:#c3e88d}
+.content .tgb{color:var(--tg)}
+.content ul{margin:16px 0 16px 20px;color:var(--muted)}
+.content li{margin-bottom:8px}
+.content table{width:100%;border-collapse:collapse;margin:20px 0;font-size:14px}
+.content th{text-align:left;padding:12px 16px;background:var(--bg2);border-bottom:1px solid var(--border2);font-weight:600;color:var(--text)}
+.content td{padding:12px 16px;border-bottom:1px solid var(--border);color:var(--muted)}
+.content tr:hover td{background:rgba(255,255,255,.02)}
+.content .badge{display:inline-block;font-family:var(--mono);font-size:10px;padding:2px 8px;border-radius:4px;background:var(--tg-dim);color:var(--tg);margin-left:8px}
+.content .step{display:flex;gap:16px;margin:24px 0}
+.content .step-num{width:28px;height:28px;border-radius:50%;background:var(--tg);color:#fff;font-family:var(--mono);font-size:12px;font-weight:600;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.content .step-body{flex:1}
+.content .step-body h4{font-size:15px;font-weight:600;margin-bottom:4px;color:var(--text)}
+.content .step-body p{font-size:14px;margin-bottom:0}
+
+@media(max-width:900px){
+  nav{padding:0 20px}
+  .layout{grid-template-columns:1fr;padding:100px 24px 60px}
+  .sidebar{display:none}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">
+    <span class="tg-dot"></span>
+    tgram-analytics
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="#" style="color:var(--text)">Docs</a></li>
+    <li><a href="https://github.com/tgram-analytics" target="_blank">GitHub</a></li>
+  </ul>
+</nav>
+
+<div class="layout">
+  <aside class="sidebar">
+    <div class="sidebar-title">Getting Started</div>
+    <ul class="sidebar-links">
+      <li><a href="#quickstart" class="active">Quick Start</a></li>
+      <li><a href="#sdk">SDK Setup</a></li>
+      <li><a href="#commands">Bot Commands</a></li>
+    </ul>
+    <div class="sidebar-title" style="margin-top:32px">SDKs</div>
+    <ul class="sidebar-links">
+      <li><a href="#js">JavaScript</a></li>
+      <li><a href="#flutter">Flutter</a></li>
+      <li><a href="#python">Python</a></li>
+    </ul>
+  </aside>
+
+  <main class="content">
+    <h1>Documentation</h1>
+    <p class="lead">Get your project key, drop in the SDK, and start tracking. Your data arrives in Telegram.</p>
+
+    <h2 id="quickstart">Quick Start</h2>
+    
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-body">
+        <h4>Get your project key</h4>
+        <p>Open <strong>@MyTelegramAnalyticsBot</strong> in Telegram and type <code>/add yourproject.com</code>. The bot replies instantly with your API key.</p>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-body">
+        <h4>Add the SDK</h4>
+        <p>Pick your platform below. Initialize once with your key, then track events anywhere.</p>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-body">
+        <h4>Ask the bot</h4>
+        <p>Type <code>/report signup 7d</code> or <code>/alert tell me every purchase</code>. Charts and alerts arrive in your chat.</p>
+      </div>
+    </div>
+
+    <h2 id="sdk">SDK Setup</h2>
+    <p>One project key works across all platforms. Events from your web app, mobile app, and backend all flow into the same Telegram reports.</p>
+
+    <h3 id="js">JavaScript / TypeScript</h3>
+    <p>npm install or drop in a script tag. Works in React, Vue, vanilla JS, and server-side rendering.</p>
+<pre><span class="c">// npm install tgram-analytics-js</span>
+<span class="k">import</span> { <span class="tgb">TGA</span> } <span class="k">from</span> <span class="s">'tgram-analytics-js'</span>;
+
+<span class="c">// Initialize once</span>
+<span class="tgb">TGA</span>.<span class="fn">init</span>(<span class="s">'proj_xxx'</span>);
+
+<span class="c">// Track events</span>
+<span class="tgb">TGA</span>.<span class="fn">track</span>(<span class="s">'signup'</span>, userId, { plan: <span class="s">'pro'</span> });
+<span class="tgb">TGA</span>.<span class="fn">track</span>(<span class="s">'purchase'</span>, userId, { amount: <span class="num">49</span> });
+</pre>
+
+    <h3 id="flutter">Flutter / Dart</h3>
+    <p>Add to pubspec.yaml. The SDK buffers events before init, so you can track anywhere.</p>
+<pre><span class="c">// flutter pub add tgram_analytics</span>
+<span class="k">import</span> <span class="s">'package:tgram_analytics/tgram_analytics.dart'</span>;
+
+<span class="c">// In main():</span>
+<span class="k">void</span> <span class="fn">main</span>() {
+  <span class="tgb">TGA</span>.<span class="fn">init</span>(<span class="s">'proj_xxx'</span>);
+  <span class="fn">runApp</span>(<span class="fn">MyApp</span>());
+}
+
+<span class="c">// Track from anywhere</span>
+<span class="tgb">TGA</span>.<span class="fn">track</span>(<span class="s">'purchase'</span>, userId, properties: {<span class="s">'amount'</span>: <span class="num">49.99</span>});
+</pre>
+
+    <h3 id="python">Python</h3>
+    <p>Sync and async support. Great for Django, FastAPI, or background jobs.</p>
+<pre><span class="c"># pip install tgram-analytics-py</span>
+<span class="k">from</span> tgram_analytics <span class="k">import</span> <span class="tgb">TGA</span>
+
+<span class="c"># Initialize</span>
+tga = <span class="tgb">TGA</span>(<span class="s">"proj_xxx"</span>)
+
+<span class="c"># Track events</span>
+tga.<span class="fn">track</span>(
+    <span class="s">"subscription_created"</span>,
+    session_id=user.id,
+    properties={<span class="s">"plan"</span>: <span class="s">"pro"</span>}
+)
+</pre>
+
+    <h2 id="commands">Bot Commands</h2>
+    <p>Everything happens in Telegram. No dashboard to open, no login to remember.</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Command</th>
+          <th>What it does</th>
+          <th>Example</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>/add &lt;project&gt;</code></td>
+          <td>Create a new project and get an API key</td>
+          <td><code>/add myapp.com</code></td>
+        </tr>
+        <tr>
+          <td><code>/report &lt;event&gt; &lt;time&gt;</code></td>
+          <td>Get a chart and totals for any event</td>
+          <td><code>/report signup 7d</code>, <code>/report error 24h</code></td>
+        </tr>
+        <tr>
+          <td><code>/alert &lt;message&gt;</code></td>
+          <td>Set up alerts for events or thresholds</td>
+          <td><code>/alert tell me every purchase</code>, <code>/alert every 50 signups</code></td>
+        </tr>
+        <tr>
+          <td><code>/schedule &lt;message&gt;</code></td>
+          <td>Get reports automatically on a schedule</td>
+          <td><code>/schedule weekly summary every Monday</code></td>
+        </tr>
+        <tr>
+          <td><code>/projects</code></td>
+          <td>List all your projects and keys</td>
+          <td><code>/projects</code></td>
+        </tr>
+        <tr>
+          <td><code>/help</code></td>
+          <td>Show all available commands</td>
+          <td><code>/help</code></td>
+        </tr>
+      </tbody>
+    </table>
+
+  </main>
+</div>
+
+<script>const BOT_NAME = '@MyTelegramAnalyticsBot';</script>
+</body>
+</html>

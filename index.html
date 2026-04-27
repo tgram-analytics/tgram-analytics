@@ -1,0 +1,958 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>tgram-analytics — Your project analytics, delivered in Telegram.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:      #090c12;
+  --bg2:     #0f1420;
+  --bg3:     #141b28;
+  --border:  rgba(255,255,255,0.07);
+  --border2: rgba(255,255,255,0.13);
+  --tg:      #2AABEE;
+  --tg2:     #1a8fc7;
+  --tg-dim:  rgba(42,171,238,0.12);
+  --tg-glow: rgba(42,171,238,0.22);
+  --green:   #00c48c;
+  --red:     #f87171;
+  --yellow:  #fbbf24;
+  --text:    #e2e8f0;
+  --muted:   #6b7a8e;
+  --dim:     #3a4450;
+  --mono:    'JetBrains Mono', monospace;
+  --sans:    'Space Grotesk', sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--sans);font-size:16px;line-height:1.6;overflow-x:hidden}
+
+/* grid */
+body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(rgba(255,255,255,0.018) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.018) 1px,transparent 1px);background-size:52px 52px;pointer-events:none;z-index:0}
+
+/* ── NAV ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:0 48px;height:60px;border-bottom:1px solid var(--border);background:rgba(9,12,18,0.88);backdrop-filter:blur(14px)}
+.nav-logo{font-family:var(--mono);font-size:14px;font-weight:600;color:var(--text);text-decoration:none;display:flex;align-items:center;gap:10px}
+.nav-logo .tg-dot{width:8px;height:8px;border-radius:50%;background:var(--tg);display:inline-block}
+.nav-links{display:flex;align-items:center;gap:28px;list-style:none}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:14px;transition:color .2s}
+.nav-links a:hover{color:var(--text)}
+.nav-gh{font-family:var(--mono);font-size:12px;padding:7px 16px;border:1px solid var(--border2);border-radius:6px;color:var(--text);background:rgba(255,255,255,0.04);transition:all .2s;text-decoration:none}
+.nav-gh:hover{border-color:var(--tg);color:var(--tg)!important;background:var(--tg-dim)}
+
+/* ── HERO ── */
+.hero{position:relative;z-index:1;min-height:100vh;display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:64px;padding:100px 80px 60px;max-width:1340px;margin:0 auto}
+.hero-glow{position:absolute;top:20%;left:0;width:600px;height:500px;background:radial-gradient(ellipse at left,rgba(42,171,238,0.06) 0%,transparent 65%);pointer-events:none}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:11px;padding:4px 12px;border:1px solid rgba(42,171,238,.28);border-radius:100px;color:var(--tg);background:rgba(42,171,238,.07);margin-bottom:24px}
+.hero-badge .dot{width:5px;height:5px;border-radius:50%;background:var(--tg);animation:blink 2s infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.25}}
+.hero h1{font-size:clamp(38px,4.5vw,62px);font-weight:700;letter-spacing:-.04em;line-height:1.05;margin-bottom:20px;text-wrap:balance}
+.hero h1 .accent{color:var(--tg)}
+.hero h1 .faded{color:var(--muted);font-weight:300}
+.hero-sub{font-size:17px;color:var(--muted);max-width:440px;margin-bottom:40px;line-height:1.75}
+.hero-sub strong{color:var(--text);font-weight:600}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:48px}
+.btn-primary{display:inline-flex;align-items:center;gap:8px;padding:12px 24px;background:var(--tg);color:#fff;font-family:var(--mono);font-size:13px;font-weight:600;border-radius:8px;text-decoration:none;border:1px solid transparent;transition:all .2s}
+.btn-primary:hover{background:transparent;color:var(--tg);border-color:var(--tg)}
+.btn-secondary{display:inline-flex;align-items:center;gap:8px;padding:12px 24px;background:transparent;color:var(--muted);font-family:var(--mono);font-size:13px;border-radius:8px;text-decoration:none;border:1px solid var(--border2);transition:all .2s}
+.btn-secondary:hover{color:var(--text);border-color:var(--dim)}
+.hero-meta{display:flex;gap:24px}
+.meta-item{display:flex;align-items:center;gap:8px;font-family:var(--mono);font-size:12px;color:var(--dim)}
+.meta-item span{color:var(--text)}
+
+/* ── PHONE MOCKUP ── */
+.phone-wrap{display:flex;justify-content:center;align-items:center;position:relative}
+.phone{width:300px;background:#1c1c1e;border-radius:36px;border:2px solid rgba(255,255,255,0.1);overflow:hidden;box-shadow:0 40px 100px rgba(0,0,0,.7),0 0 0 1px rgba(255,255,255,.04);position:relative}
+.phone-notch{height:28px;background:#1c1c1e;display:flex;align-items:center;justify-content:center}
+.phone-island{width:80px;height:14px;background:#000;border-radius:20px}
+.tg-header{background:#17212b;padding:10px 14px;display:flex;align-items:center;gap:10px;border-bottom:1px solid rgba(255,255,255,.05)}
+.tg-avatar{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#2AABEE,#1e7fc0);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0}
+.tg-header-info h4{font-size:13px;font-weight:600;color:#fff;line-height:1.2}
+.tg-header-info p{font-size:10px;color:#6b8fa3;margin-top:1px}
+.tg-chat{background:#0d1117;padding:12px 10px;display:flex;flex-direction:column;gap:6px;height:420px;overflow:hidden}
+.msg{max-width:82%;display:flex;flex-direction:column;gap:1px;animation:msgIn .3s ease forwards;opacity:0}
+@keyframes msgIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.msg-user{align-self:flex-end}
+.msg-bot{align-self:flex-start}
+.bubble{padding:7px 10px;border-radius:12px;font-size:11.5px;line-height:1.5;font-family:var(--mono)}
+.bubble-user{background:#2a5298;color:#fff;border-bottom-right-radius:3px}
+.bubble-bot{background:#1e2936;color:#e2e8f0;border-bottom-left-radius:3px}
+.bubble-bot .cmd{color:var(--tg)}
+.msg-time{font-size:9px;color:#4a6378;align-self:flex-end;padding:0 4px}
+.msg-user .msg-time{align-self:flex-end}
+.msg-bot .msg-time{align-self:flex-start}
+.chart-bubble{background:#1e2936;border-radius:12px;border-bottom-left-radius:3px;overflow:hidden;width:220px}
+.chart-header{padding:8px 10px 4px;font-family:var(--mono);font-size:10px;color:#7aa0b8}
+.chart-header strong{color:#fff;font-size:12px;display:block;margin-bottom:2px}
+.chart-svg{width:100%;display:block}
+.chart-footer{padding:4px 10px 8px;font-family:var(--mono);font-size:10px;color:#7aa0b8}
+.chart-footer .up{color:var(--green)}
+.tg-input{background:#17212b;padding:8px 12px;display:flex;align-items:center;gap:8px;border-top:1px solid rgba(255,255,255,.05)}
+.tg-input-field{flex:1;background:#242f3d;border-radius:20px;padding:6px 12px;font-size:11px;color:#6b8fa3;font-family:var(--mono)}
+.phone-glow{position:absolute;width:300px;height:300px;border-radius:50%;background:radial-gradient(circle,rgba(42,171,238,0.15),transparent 70%);bottom:-50px;left:50%;transform:translateX(-50%);pointer-events:none;filter:blur(20px)}
+
+/* ── STATS BAR ── */
+.stats-bar{position:relative;z-index:1;display:flex;justify-content:center;border-top:1px solid var(--border);border-bottom:1px solid var(--border);background:var(--bg2)}
+.stat{flex:1;max-width:200px;padding:28px 20px;text-align:center;border-right:1px solid var(--border)}
+.stat:last-child{border-right:none}
+.stat-num{font-family:var(--mono);font-size:28px;font-weight:700;color:var(--tg);letter-spacing:-.04em;display:block}
+.stat-label{font-size:12px;color:var(--muted);margin-top:3px}
+
+/* ── SECTION BASE ── */
+.section{position:relative;z-index:1;padding:88px 80px;max-width:1340px;margin:0 auto}
+.section-label{font-family:var(--mono);font-size:11px;color:var(--tg);letter-spacing:.12em;text-transform:uppercase;margin-bottom:10px}
+.section-title{font-size:clamp(26px,3.5vw,44px);font-weight:700;letter-spacing:-.03em;line-height:1.1;margin-bottom:14px}
+.section-sub{color:var(--muted);font-size:16px;max-width:500px;margin-bottom:56px;line-height:1.75}
+
+/* ── HOW IT WORKS ── */
+.setup-tabs{display:inline-flex;border:1px solid var(--border2);border-radius:10px;overflow:hidden;margin-bottom:22px;background:var(--bg2)}
+.setup-tab{padding:10px 18px;font-family:var(--mono);font-size:12px;color:var(--muted);background:transparent;border:none;border-right:1px solid var(--border2);cursor:pointer;transition:all .2s}
+.setup-tab:last-child{border-right:none}
+.setup-tab.active{background:var(--tg);color:#fff}
+.setup-pane{display:none}
+.setup-pane.active{display:block}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;border:1px solid var(--border);border-radius:12px;overflow:hidden;background:var(--border)}
+.flow-group{margin-bottom:28px}
+.flow-group:last-child{margin-bottom:0}
+.flow-head{display:flex;align-items:center;justify-content:space-between;gap:18px;margin-bottom:12px}
+.flow-title{font-size:15px;font-weight:700}
+.flow-note{font-size:13px;color:var(--muted);max-width:520px}
+.pill{font-family:var(--mono);font-size:10px;border:1px solid rgba(42,171,238,.3);background:var(--tg-dim);color:var(--tg);padding:3px 9px;border-radius:999px}
+.step-card{background:var(--bg);padding:32px 24px;position:relative}
+.step-card::before{content:attr(data-step);position:absolute;top:20px;right:20px;font-family:var(--mono);font-size:11px;color:var(--dim)}
+.step-icon{font-size:28px;margin-bottom:16px}
+.step-title{font-size:15px;font-weight:600;margin-bottom:8px}
+.step-desc{font-size:13px;color:var(--muted);line-height:1.65}
+.step-code{font-family:var(--mono);font-size:11px;margin-top:10px;color:var(--tg);background:var(--bg2);padding:6px 10px;border-radius:6px;display:inline-block}
+.step-arrow{position:absolute;right:-14px;top:50%;transform:translateY(-50%);z-index:2;width:28px;height:28px;background:var(--bg);border:1px solid var(--border2);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--tg)}
+
+/* ── SDKS ── */
+.sdks-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
+.sdk-pane{display:none}
+.sdk-pane.active{display:block}
+.code-window{border:1px solid var(--border2);border-radius:10px;overflow:hidden}
+.code-bar{background:var(--bg3);padding:10px 16px;display:flex;align-items:center;gap:8px;border-bottom:1px solid var(--border)}
+.code-bar-dot{width:10px;height:10px;border-radius:50%}
+.code-bar-title{font-family:var(--mono);font-size:11px;color:var(--muted);margin-left:4px}
+pre{padding:22px 24px;font-family:var(--mono);font-size:13px;line-height:1.8;overflow-x:auto;background:var(--bg2)}
+.c{color:var(--dim)}
+.k{color:#c792ea}
+.fn{color:#82aaff}
+.s{color:#c3e88d}
+.n{color:var(--text)}
+.tgb{color:var(--tg)}
+.num{color:#f78c6c}
+
+/* SDK info panel */
+.sdk-info{display:flex;flex-direction:column;gap:20px}
+.sdk-card{padding:20px;border:1px solid var(--border);border-radius:10px;background:var(--bg2);cursor:pointer;transition:border-color .2s}
+.sdk-card.active-card,.sdk-card:hover{border-color:var(--tg)}
+.sdk-card-top{display:flex;align-items:center;gap:12px;margin-bottom:6px}
+.sdk-lang-badge{font-family:var(--mono);font-size:11px;padding:3px 8px;border-radius:4px;background:var(--tg-dim);color:var(--tg)}
+.sdk-name{font-size:14px;font-weight:600}
+.sdk-desc{font-size:13px;color:var(--muted);line-height:1.55}
+.sdk-install{font-family:var(--mono);font-size:12px;color:var(--green);margin-top:8px}
+
+/* ── MCP callout ── */
+.mcp-callout{margin-top:48px;border:1px solid var(--border2);border-radius:12px;overflow:hidden;background:var(--bg2)}
+.mcp-header{padding:20px 24px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:12px}
+.mcp-header h3{font-size:15px;font-weight:600}
+.mcp-body{display:grid;grid-template-columns:1fr 1fr;gap:0}
+.mcp-desc{padding:24px;display:flex;flex-direction:column;justify-content:center;border-right:1px solid var(--border)}
+.mcp-desc p{font-size:13px;color:var(--muted);line-height:1.65;margin-bottom:12px}
+.mcp-desc p:last-child{margin-bottom:0}
+.mcp-example{padding:24px;font-family:var(--mono);font-size:12px;line-height:1.9;color:var(--text)}
+.mcp-example .mcp-role{color:var(--muted);font-size:11px;display:block;margin-top:10px}
+.mcp-example .mcp-role:first-child{margin-top:0}
+
+/* ── BOT COMMANDS ── */
+.commands-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.cmd-card{padding:20px 22px;border:1px solid var(--border);border-radius:10px;background:var(--bg2);transition:border-color .2s;display:flex;gap:14px;align-items:flex-start}
+.cmd-card:hover{border-color:var(--tg)}
+.cmd-icon{font-size:20px;margin-top:2px}
+.cmd-name{font-family:var(--mono);font-size:13px;font-weight:600;color:var(--tg);margin-bottom:4px}
+.cmd-desc{font-size:13px;color:var(--muted);line-height:1.55}
+.cmd-example{font-family:var(--mono);font-size:11px;color:#9aa8b8;margin-top:6px}
+
+/* ── COMPARISON ── */
+.cmp-table{width:100%;border-collapse:collapse;border:1px solid var(--border);border-radius:10px;overflow:hidden}
+.cmp-table thead th{padding:16px 20px;background:var(--bg2);font-family:var(--mono);font-size:12px;font-weight:600;text-align:left;border-bottom:1px solid var(--border2)}
+.cmp-table thead th:first-child{color:var(--muted)}
+.cmp-table thead th.ours{color:var(--tg)}
+.cmp-table td{padding:14px 20px;border-bottom:1px solid var(--border);font-size:14px;vertical-align:middle}
+.cmp-table tr:last-child td{border-bottom:none}
+.cmp-table tr:hover td{background:rgba(255,255,255,.02)}
+.cmp-table .feature{color:var(--muted);font-size:13px}
+.cmp-yes{color:var(--green);font-size:16px}
+.cmp-no{color:var(--dim);font-size:16px}
+.cmp-partial{color:var(--yellow);font-size:13px}
+td.ours{background:rgba(42,171,238,.04)}
+
+/* ── SIMPLE FLOW DIAGRAM ── */
+.cta-section{position:relative;z-index:1;padding:0 0 100px}
+.flow-wrap{background:var(--bg2);border:1px solid var(--border2);border-radius:16px;padding:48px 32px;max-width:700px;margin:0 auto;overflow:hidden;position:relative}
+.flow-wrap::before{content:'';position:absolute;right:-80px;top:-80px;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(42,171,238,0.07),transparent 70%);pointer-events:none}
+.flow-diagram{display:flex;flex-direction:column;align-items:center;gap:20px;position:relative;z-index:1}
+.flow-sources{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+.flow-block{background:var(--bg);border:1px solid var(--border2);border-radius:14px;padding:22px 24px;text-align:center;min-width:110px;flex-shrink:0}
+.flow-emoji{font-size:28px;margin-bottom:8px}
+.flow-title-block{font-size:14px;font-weight:600;margin-bottom:4px;color:var(--text)}
+.flow-desc{font-size:12px;color:var(--muted);white-space:nowrap}
+.flow-highlight{border-color:var(--tg);background:rgba(42,171,238,.08);min-width:160px}
+.flow-tg{border-color:rgba(0,196,140,.3);background:rgba(0,196,140,.06);min-width:160px}
+.flow-center{align-self:center}
+.flow-down-arrows{display:flex;gap:16px;justify-content:center;width:100%;max-width:380px}
+.flow-arrow-down{font-size:20px;color:var(--dim);text-align:center;flex:1}
+.flow-arrow-single{font-size:20px;color:var(--tg)}
+.infra-cta{display:flex;gap:12px;justify-content:center;margin-top:40px;position:relative;z-index:1}
+
+/* ── FOOTER ── */
+.easter-egg{position:relative;z-index:1;max-width:1340px;margin:0 auto;padding:0 80px 32px}
+.easter-egg-inner{border:1px solid var(--border);background:rgba(255,255,255,.025);border-radius:12px;padding:14px 18px;display:flex;align-items:center;justify-content:center;gap:10px;font-family:var(--mono);font-size:12px;color:#9aa8b8;text-align:center}
+.easter-egg-inner .pulse{width:7px;height:7px;border-radius:50%;background:var(--tg);box-shadow:0 0 18px var(--tg-glow);animation:blink 2s infinite;flex-shrink:0}
+.easter-egg-inner strong{color:var(--text);font-weight:600}
+footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:32px 80px;display:flex;align-items:center;justify-content:space-between}
+.footer-logo{font-family:var(--mono);font-size:13px;color:var(--text);display:flex;align-items:center;gap:8px}
+.footer-links{display:flex;gap:24px;list-style:none}
+.footer-links a{font-size:13px;color:var(--muted);text-decoration:none}
+.footer-links a:hover{color:var(--text)}
+.footer-note{font-family:var(--mono);font-size:11px;color:var(--dim)}
+
+/* ── TWEAKS ── */
+#tweaks-panel{position:fixed;bottom:24px;right:24px;z-index:999;background:var(--bg2);border:1px solid var(--border2);border-radius:12px;padding:20px;width:240px;box-shadow:0 24px 60px rgba(0,0,0,.6);display:none}
+#tweaks-panel h3{font-family:var(--mono);font-size:11px;color:var(--tg);letter-spacing:.1em;text-transform:uppercase;margin-bottom:16px}
+.tw-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+.tw-label{font-size:12px;color:var(--muted)}
+.tw-select{font-family:var(--mono);font-size:11px;background:var(--bg3);border:1px solid var(--border2);color:var(--text);padding:5px 8px;border-radius:6px;cursor:pointer;outline:none;width:120px}
+.tw-toggle{width:34px;height:18px;border-radius:10px;border:none;cursor:pointer;position:relative;transition:background .2s}
+.tw-toggle.on{background:var(--tg)}
+.tw-toggle.off{background:var(--dim)}
+.tw-toggle::after{content:'';position:absolute;width:12px;height:12px;background:#fff;border-radius:50%;top:3px;transition:left .2s}
+.tw-toggle.on::after{left:17px}
+.tw-toggle.off::after{left:3px}
+
+@media(max-width:900px){
+  nav{padding:0 20px}
+  .hero{grid-template-columns:1fr;padding:100px 24px 40px;gap:40px}
+  .phone-wrap{order:-1}
+  .phone{width:260px}
+  .section{padding:60px 24px}
+  .steps{grid-template-columns:1fr 1fr}
+  .flow-head{align-items:flex-start;flex-direction:column}
+  .sdks-grid{grid-template-columns:1fr}
+  .mcp-body{grid-template-columns:1fr}
+  .mcp-desc{border-right:none;border-bottom:1px solid var(--border)}
+  .commands-grid{grid-template-columns:1fr}
+  .cta-box{grid-template-columns:1fr;padding:32px 24px}
+  .easter-egg{padding:0 24px 28px}
+  footer{flex-direction:column;gap:16px;text-align:center;padding:24px}
+  .cta-section{padding:0 24px 60px}
+  .flow-sources{gap:12px}
+  .flow-block{padding:18px 16px;min-width:90px}
+  .flow-desc{font-size:11px}
+  .flow-highlight{min-width:140px}
+  .flow-tg{min-width:140px}
+  .flow-wrap{padding:32px 20px}
+  .flow-down-arrows{max-width:320px}
+  .flow-arrow-down{font-size:18px}
+}
+</style>
+</head>
+<body>
+
+<!-- CONSTANTS -->
+<script>const BOT_NAME = '@MyTelegramAnalyticsBot';</script>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">
+    <span class="tg-dot"></span>
+    tgram-analytics
+  </a>
+  <ul class="nav-links">
+    <li><a href="#value">Value</a></li>
+    <li><a href="#use">Use</a></li>
+    <li><a href="#install">Install</a></li>
+    <li><a href="#sdks">SDKs</a></li>
+    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="docs.html">Docs</a></li>
+    <li><a href="https://github.com/tgram-analytics" target="_blank" class="nav-gh">GitHub ↗</a></li>
+  </ul>
+</nav>
+
+<!-- ① HERO — what it is -->
+<section class="hero">
+  <div class="hero-glow"></div>
+  <div>
+    <div class="hero-badge"><span class="dot"></span> Managed hosting · First project free · Open source core</div>
+    <h1>Your project analytics,<br><span class="faded">delivered in Telegram.</span></h1>
+    <p class="hero-sub">
+      Track signups, purchases, and errors from <strong>any stack.</strong>
+      Get Telegram alerts when important events happen, then ask the bot
+      for reports whenever you need the bigger picture.
+    </p>
+    <div class="hero-actions">
+      <a href="#use" class="btn-primary">
+        <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+        See how it works
+      </a>
+      <a href="#install" class="btn-secondary">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+        Quick install
+      </a>
+    </div>
+    <div class="hero-meta">
+      <div class="meta-item"><span>30 sec</span> to hosted tracking</div>
+      <div class="meta-item"><span>Alerts</span> for key events</div>
+      <div class="meta-item"><span>Reports</span> generated in chat</div>
+    </div>
+  </div>
+
+  <!-- PHONE -->
+  <div class="phone-wrap">
+    <div class="phone-glow"></div>
+    <div class="phone">
+      <div class="phone-notch"><div class="phone-island"></div></div>
+      <div class="tg-header">
+        <div class="tg-avatar">🤖</div>
+        <div class="tg-header-info">
+          <h4>@MyTelegramAnalyticsBot</h4>
+          <p>tgram-analytics</p>
+        </div>
+      </div>
+      <div class="tg-chat" id="tgChat"></div>
+      <div class="tg-input">
+        <div class="tg-input-field" id="phoneInput">Message</div>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#2AABEE"><path d="M2 21l21-9L2 3v7l15 2-15 2v7z"/></svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS BAR -->
+<div class="stats-bar">
+  <div class="stat"><span class="stat-num">1</span><div class="stat-label">free hosted project</div></div>
+  <div class="stat"><span class="stat-num">30 sec</span><div class="stat-label">to your first API key</div></div>
+  <div class="stat"><span class="stat-num">3</span><div class="stat-label">official SDKs</div></div>
+  <div class="stat"><span class="stat-num">24/7</span><div class="stat-label">Telegram event alerts</div></div>
+  <div class="stat"><span class="stat-num">0</span><div class="stat-label">dashboard tabs to check</div></div>
+</div>
+
+<!-- ② VALUE — why this exists -->
+<section class="section" id="value">
+  <div class="section-label">// why this exists</div>
+  <h2 class="section-title">The value is simple: the data finds you.</h2>
+  <p class="section-sub">You do not open another dashboard. Important events, charts, and digests arrive where you already work.</p>
+  <div class="commands-grid">
+    <div class="cmd-card">
+      <div class="cmd-icon">📊</div>
+      <div>
+        <div class="cmd-name">Track what matters</div>
+        <div class="cmd-desc">See signups, purchases, errors, or any custom event. Query with simple /report commands.</div>
+        <div class="cmd-example">"how many upgrades this month?" · /report error 24h</div>
+      </div>
+    </div>
+    <div class="cmd-card">
+      <div class="cmd-icon">🔔</div>
+      <div>
+        <div class="cmd-name">Know first, fast</div>
+        <div class="cmd-desc">Get pinged when a sale happens, a deploy fails, or a spike hits. No more discovering issues hours later.</div>
+        <div class="cmd-example">"alert me every purchase" · "alert every 500 errors"</div>
+      </div>
+    </div>
+    <div class="cmd-card">
+      <div class="cmd-icon">📅</div>
+      <div>
+        <div class="cmd-name">Stay in the loop</div>
+        <div class="cmd-desc">Weekly digests keep your finger on the pulse without drowning in dashboards you forget to open.</div>
+        <div class="cmd-example">"weekly summary every Monday 9am"</div>
+      </div>
+    </div>
+    <div class="cmd-card">
+      <div class="cmd-icon">🔌</div>
+      <div>
+        <div class="cmd-name">One key, everywhere</div>
+        <div class="cmd-desc">Same project key across your website, mobile app, and backend. All events flow into one Telegram thread.</div>
+        <div class="cmd-example">Web → Flutter → Python → one /report</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ③ HOW IT WORKS — simple flow diagram -->
+<div class="cta-section" id="install">
+  <div class="section-label" style="padding:0 80px;max-width:1340px;margin:0 auto 10px">// how it works</div>
+  <h2 class="section-title" style="padding:0 80px;max-width:1340px;margin:0 auto 14px">From your stack to you.</h2>
+  <p class="section-sub" style="padding:0 80px;max-width:1340px;margin:0 auto 40px">Events flow in. Telegram notifications flow out.</p>
+
+  <div class="flow-wrap">
+    <div class="flow-diagram flow-vertical">
+      <!-- Sources Row -->
+      <div class="flow-sources">
+        <div class="flow-block">
+          <div class="flow-emoji">📱</div>
+          <div class="flow-title-block">App</div>
+          <div class="flow-desc">Mobile events</div>
+        </div>
+        <div class="flow-block">
+          <div class="flow-emoji">🌐</div>
+          <div class="flow-title-block">Web</div>
+          <div class="flow-desc">Pageviews, clicks</div>
+        </div>
+        <div class="flow-block">
+          <div class="flow-emoji">🖥️</div>
+          <div class="flow-title-block">Server</div>
+          <div class="flow-desc">API, jobs, errors</div>
+        </div>
+      </div>
+
+      <!-- Down Arrows -->
+      <div class="flow-down-arrows">
+        <div class="flow-arrow-down">↓</div>
+        <div class="flow-arrow-down">↓</div>
+        <div class="flow-arrow-down">↓</div>
+      </div>
+
+      <!-- tgram-analytics -->
+      <div class="flow-block flow-highlight flow-center">
+        <div class="flow-emoji">✨</div>
+        <div class="flow-title-block">tgram-analytics</div>
+        <div class="flow-desc">Managed or self-hosted</div>
+      </div>
+
+      <!-- Down Arrow -->
+      <div class="flow-arrow-single">↓</div>
+
+      <!-- You -->
+      <div class="flow-block flow-tg flow-center">
+        <div class="flow-emoji">😎</div>
+        <div class="flow-title-block">You</div>
+        <div class="flow-desc">Get alerts & reports via bot</div>
+      </div>
+    </div>
+
+    <div class="infra-cta">
+      <a href="https://github.com/tgram-analytics/server" target="_blank" class="btn-primary">Deploy server →</a>
+      <a href="https://github.com/tgram-analytics" target="_blank" class="btn-secondary">Browse repos</a>
+    </div>
+  </div>
+</div>
+
+<!-- ④ USE — how to use it (managed vs self-hosted) -->
+<section class="section" id="use" style="padding-top:0">
+  <div class="section-label">// how to use it</div>
+  <h2 class="section-title">Start hosted. Self-host when you want.</h2>
+  <p class="section-sub">Managed hosting is the fastest path. The open source server is there when you want full control.</p>
+
+  <div class="setup-tabs" role="tablist" aria-label="Setup options">
+    <button class="setup-tab active" id="setup-tab-managed" type="button" onclick="selectSetup('managed')" role="tab" aria-selected="true" aria-controls="setup-managed">Managed hosting</button>
+    <button class="setup-tab" id="setup-tab-self" type="button" onclick="selectSetup('self')" role="tab" aria-selected="false" aria-controls="setup-self">Self-hosted</button>
+  </div>
+
+  <div class="flow-group setup-pane active" id="setup-managed" role="tabpanel" aria-labelledby="setup-tab-managed">
+    <div class="flow-head">
+      <div>
+        <span class="pill">recommended</span>
+        <div class="flow-title" style="margin-top:8px">Managed hosting</div>
+      </div>
+      <div class="flow-note">Open the bot, get a key, and start tracking. No server, no deploy, no maintenance.</div>
+    </div>
+    <div class="steps">
+      <div class="step-card" data-step="01" style="position:relative">
+        <div class="step-icon">💬</div>
+        <div class="step-title">Open the bot</div>
+        <div class="step-desc">Start @MyTelegramAnalyticsBot in Telegram and create your first hosted project from chat.</div>
+        <div class="step-code">/add myapp.com</div>
+        <div class="step-arrow">→</div>
+      </div>
+      <div class="step-card" data-step="02" style="position:relative">
+        <div class="step-icon">🔑</div>
+        <div class="step-title">Get your key</div>
+        <div class="step-desc">The bot returns a project key immediately. Your first project is free.</div>
+        <div class="step-code">proj_a1b2c3d4</div>
+        <div class="step-arrow">→</div>
+      </div>
+      <div class="step-card" data-step="03">
+        <div class="step-icon">⚡</div>
+        <div class="step-title">Track events</div>
+        <div class="step-desc">Drop in the SDK and send pageviews, signups, purchases, or errors.</div>
+        <div class="step-code">track("signup")</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="flow-group setup-pane" id="setup-self" role="tabpanel" aria-labelledby="setup-tab-self">
+    <div class="flow-head">
+      <div>
+        <span class="pill" style="background:var(--bg2);color:var(--muted);border-color:var(--border2)">open source</span>
+        <div class="flow-title" style="margin-top:8px">Self-hosted</div>
+      </div>
+      <div class="flow-note">Run the FastAPI server on your VPS, Railway, or Fly.io and keep the data on your own infrastructure.</div>
+    </div>
+    <div class="steps">
+      <div class="step-card" data-step="01" style="position:relative">
+        <div class="step-icon">🚀</div>
+        <div class="step-title">Deploy the server</div>
+        <div class="step-desc">Clone the repo, set your Telegram bot token, and start the server with Docker.</div>
+        <div class="step-code">docker compose up -d</div>
+        <div class="step-arrow">→</div>
+      </div>
+      <div class="step-card" data-step="02" style="position:relative">
+        <div class="step-icon">🔑</div>
+        <div class="step-title">Add a project</div>
+        <div class="step-desc">Use the same bot command to create projects and generate API keys.</div>
+        <div class="step-code">/add myapp.com</div>
+        <div class="step-arrow">→</div>
+      </div>
+      <div class="step-card" data-step="03">
+        <div class="step-icon">📊</div>
+        <div class="step-title">Ask for reports</div>
+        <div class="step-desc">The bot handles reports, alerts, and scheduled digests exactly like the hosted version.</div>
+        <div class="step-code">/report signup 7d</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ⑤ SDKS + MCP -->
+<section class="section" id="sdks">
+  <div class="section-label">// sdks &amp; integrations</div>
+  <h2 class="section-title">Initialize once. Track anywhere.</h2>
+  <p class="section-sub">Use one project key across your web app, mobile app, and backend. Every event lands in the same Telegram reports.</p>
+  <div class="sdks-grid">
+    <div class="sdk-info">
+      <div class="sdk-card active-card" onclick="selectSdk('js',this)">
+        <div class="sdk-card-top">
+          <span class="sdk-lang-badge">JS / TS</span>
+          <span class="sdk-name">tgram-analytics-js</span>
+        </div>
+        <div class="sdk-desc">Add the script, initialize with your key, then track events with one line.</div>
+        <div class="sdk-install">npm install tgram-analytics-js</div>
+      </div>
+      <div class="sdk-card" onclick="selectSdk('flutter',this)">
+        <div class="sdk-card-top">
+          <span class="sdk-lang-badge">Dart / Flutter</span>
+          <span class="sdk-name">tgram-analytics-flutter</span>
+        </div>
+        <div class="sdk-desc">Initialize in main(), then track app events from screens, services, or purchase flows.</div>
+        <div class="sdk-install">flutter pub add tgram_analytics</div>
+      </div>
+      <div class="sdk-card" onclick="selectSdk('py',this)">
+        <div class="sdk-card-top">
+          <span class="sdk-lang-badge">Python</span>
+          <span class="sdk-name">tgram-analytics-py</span>
+        </div>
+        <div class="sdk-desc">Track backend events like subscription changes, jobs, imports, and errors.</div>
+        <div class="sdk-install">pip install tgram-analytics-py</div>
+      </div>
+    </div>
+    <div>
+      <div class="code-window">
+        <div class="code-bar">
+          <div class="code-bar-dot" style="background:#ff5f56"></div>
+          <div class="code-bar-dot" style="background:#ffbd2e"></div>
+          <div class="code-bar-dot" style="background:#27c93f"></div>
+          <span class="code-bar-title" id="codeTitle">index.html</span>
+        </div>
+        <div id="pane-js" class="sdk-pane active">
+<pre><span class="c">&lt;!-- hosted by default, self-host when needed --&gt;</span>
+<span class="k">&lt;script</span> <span class="fn">src</span>=<span class="s">"dist/tga.min.js"</span><span class="k">&gt;&lt;/script&gt;</span>
+<span class="k">&lt;script&gt;</span>
+  <span class="tgb">TGA</span>.<span class="fn">init</span>(<span class="s">"proj_xxx"</span>);
+  <span class="tgb">TGA</span>.<span class="fn">track</span>(<span class="s">"signup"</span>, sessionId, {
+    plan: <span class="s">"pro"</span>
+  });
+<span class="k">&lt;/script&gt;</span>
+</pre>
+        </div>
+        <div id="pane-flutter" class="sdk-pane">
+<pre><span class="c">// In main():</span>
+<span class="k">void</span> <span class="fn">main</span>() {
+  <span class="tgb">TGA</span>.<span class="fn">init</span>(<span class="s">'proj_xxx'</span>);
+  <span class="fn">runApp</span>(<span class="fn">MyApp</span>());
+}
+
+<span class="tgb">TGA</span>.<span class="fn">track</span>(<span class="s">'purchase'</span>, userId,
+  properties: {<span class="s">'amount'</span>: <span class="num">49.99</span>});
+</pre>
+        </div>
+        <div id="pane-py" class="sdk-pane">
+<pre><span class="k">from</span> tgram_analytics <span class="k">import</span> <span class="tgb">TGA</span>
+
+tga = <span class="tgb">TGA</span>(
+  <span class="s">"proj_xxx"</span>
+)
+
+tga.<span class="fn">track</span>(
+  <span class="s">"subscription_created"</span>,
+  session_id=user.id,
+  properties={<span class="s">"plan"</span>: <span class="s">"pro"</span>}
+)
+</pre>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MCP integration callout -->
+  <div class="mcp-callout">
+    <div class="mcp-header">
+      <span class="sdk-lang-badge">MCP</span>
+      <h3>AI agent integration</h3>
+    </div>
+    <div class="mcp-body">
+      <div class="mcp-desc">
+        <p>MCP lets AI agents set up projects, track events, and query data — all through conversation. No manual SDK wiring, no dashboard diving.</p>
+        <p>Ask your agent to wire up analytics or run reports via MCP. The agent handles setup, tracking, and queries for you.</p>
+      </div>
+      <div class="mcp-example">
+        <span class="mcp-role">You</span>
+        <span style="color:var(--text)">Wire tgram-analytics on myshop.com</span>
+        <span class="mcp-role">Agent → MCP</span>
+        <span style="color:var(--tg)">tgram.setup</span>({ project: <span style="color:#c3e88d">"myshop.com"</span> })
+        <span style="color:var(--tg)">tgram.track</span>({ event: <span style="color:#c3e88d">"purchase"</span>, amount: 49 })
+        <span style="color:var(--tg)">tgram.query</span>({ report: <span style="color:#c3e88d">"signups this week"</span> })
+        <span class="mcp-role">Telegram</span>
+        <span style="color:var(--green)">✓</span> Project ready — <span style="color:var(--tg)">342 signups</span> this week
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ⑥ COMPARISON — why not GA -->
+<section class="section" style="padding-top:0">
+  <div class="section-label">// why not google analytics</div>
+  <h2 class="section-title">Not another dashboard you forget to open.</h2>
+  <p class="section-sub">Google Analytics is powerful. tgram-analytics is for builders who want fast answers, lower setup friction, and Telegram-native alerts.</p>
+  <table class="cmp-table">
+    <thead>
+      <tr>
+        <th style="width:40%"></th>
+        <th class="ours">tgram-analytics</th>
+        <th style="color:var(--muted)">Google Analytics / Amplitude</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="feature">Fastest hosted setup</td>
+        <td class="ours"><span class="cmp-yes">✓</span> <span style="color:var(--muted);font-size:12px">Open bot, get key, track</span></td>
+        <td><span class="cmp-partial">More setup</span> <span style="color:var(--muted);font-size:12px">property, stream, tags</span></td>
+      </tr>
+      <tr>
+        <td class="feature">Daily workflow</td>
+        <td class="ours"><span class="cmp-yes">✓</span> <span style="color:var(--muted);font-size:12px">Reports arrive in Telegram</span></td>
+        <td><span class="cmp-no">✗</span> <span style="color:var(--muted);font-size:12px">You check a dashboard</span></td>
+      </tr>
+      <tr>
+        <td class="feature">Cost</td>
+        <td class="ours"><span style="color:var(--green);font-size:13px">First project free</span> <span style="color:var(--muted);font-size:12px">or self-host free</span></td>
+        <td><span class="cmp-partial">Free tier</span> <span style="color:var(--muted);font-size:12px">limits and paid upgrades vary</span></td>
+      </tr>
+      <tr>
+        <td class="feature">Proactive alerts</td>
+        <td class="ours"><span class="cmp-yes">✓</span> <span style="color:var(--muted);font-size:12px">Built-in</span></td>
+        <td><span class="cmp-partial">Possible</span> <span style="color:var(--muted);font-size:12px">usually more configuration</span></td>
+      </tr>
+      <tr>
+        <td class="feature">Self-hosting option</td>
+        <td class="ours"><span class="cmp-yes">✓</span> <span style="color:var(--muted);font-size:12px">Same product, your infra</span></td>
+        <td><span class="cmp-no">✗</span> <span style="color:var(--muted);font-size:12px">Cloud platform only</span></td>
+      </tr>
+      <tr>
+        <td class="feature">Multi-stack (JS + Flutter + Python)</td>
+        <td class="ours"><span class="cmp-yes">✓</span> <span style="color:var(--muted);font-size:12px">Same project, same report</span></td>
+        <td><span class="cmp-partial">Varies</span></td>
+      </tr>
+      <tr>
+        <td class="feature">Visitor & pageview tracking</td>
+        <td class="ours"><span class="cmp-yes">✓</span> <span style="color:var(--muted);font-size:12px">Auto-tracked via JS SDK</span></td>
+        <td><span class="cmp-yes">✓</span> <span style="color:var(--muted);font-size:12px">Core GA feature</span></td>
+      </tr>
+      <tr>
+        <td class="feature">Custom events</td>
+        <td class="ours"><span class="cmp-yes">✓</span> <span style="color:var(--muted);font-size:12px">signup, purchase, error — any event</span></td>
+        <td><span class="cmp-yes">✓</span> <span style="color:var(--muted);font-size:12px">Events + conversions</span></td>
+      </tr>
+      <tr>
+        <td class="feature">Funnels & paths</td>
+        <td class="ours"><span class="cmp-partial">Basic</span> <span style="color:var(--muted);font-size:12px">Custom queries via bot</span></td>
+        <td><span class="cmp-yes">✓</span> <span style="color:var(--muted);font-size:12px">Advanced funnels, path exploration</span></td>
+      </tr>
+      <tr>
+        <td class="feature">User properties & segmentation</td>
+        <td class="ours"><span class="cmp-yes">✓</span> <span style="color:var(--muted);font-size:12px">Track any properties per event</span></td>
+        <td><span class="cmp-yes">✓</span> <span style="color:var(--muted);font-size:12px">Audience + user explorer</span></td>
+      </tr>
+      <tr>
+        <td class="feature">Real-time data</td>
+        <td class="ours"><span class="cmp-yes">✓</span> <span style="color:var(--muted);font-size:12px">Instant Telegram alerts</span></td>
+        <td><span class="cmp-yes">✓</span> <span style="color:var(--muted);font-size:12px">Real-time reports</span></td>
+      </tr>
+      <tr>
+        <td class="feature">Retention & cohorts</td>
+        <td class="ours"><span class="cmp-no">✗</span> <span style="color:var(--muted);font-size:12px">Not yet available</span></td>
+        <td><span class="cmp-yes">✓</span> <span style="color:var(--muted);font-size:12px">Cohort analysis, retention</span></td>
+      </tr>
+      <tr>
+        <td class="feature">Attribution & UTM</td>
+        <td class="ours"><span class="cmp-partial">Manual</span> <span style="color:var(--muted);font-size:12px">Track UTM as properties</span></td>
+        <td><span class="cmp-yes">✓</span> <span style="color:var(--muted);font-size:12px">Full attribution modeling</span></td>
+      </tr>
+      <tr>
+        <td class="feature">Best fit</td>
+        <td class="ours"><span style="color:var(--green);font-size:13px">Indie projects, small teams, Telegram-first builders</span></td>
+        <td><span style="color:var(--muted);font-size:13px">Large teams, deep analytics, attribution-heavy orgs</span></td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ⑦ PRICING -->
+<section id="pricing" style="position:relative;z-index:1;padding:88px 80px;margin:0 auto;max-width:1340px">
+  <div class="section-label">// pricing</div>
+  <h2 class="section-title">Managed first. Self-hosted when you need it.</h2>
+  <p class="section-sub" style="margin-bottom:0">Start without infrastructure. Keep the open source path for teams that want full control.</p>
+</section>
+
+<div style="position:relative;z-index:1;padding:0 80px 100px;max-width:1340px;margin:0 auto">
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--border2);border-radius:16px;overflow:hidden">
+
+    <!-- LEFT: MANAGED -->
+    <div style="padding:48px;border-right:1px solid var(--border2);background:var(--bg2);position:relative;overflow:hidden">
+      <div style="position:absolute;inset:0;background:radial-gradient(ellipse at top right,rgba(42,171,238,0.06),transparent 60%);pointer-events:none"></div>
+      <div style="position:relative">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:32px">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--tg)"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+          <span style="font-family:var(--mono);font-size:12px;font-weight:600;color:var(--tg)">Managed hosting</span>
+          <span style="font-family:var(--mono);font-size:10px;background:rgba(42,171,238,.15);color:var(--tg);border:1px solid rgba(42,171,238,.3);padding:2px 10px;border-radius:20px">recommended</span>
+        </div>
+
+        <div style="margin-bottom:8px">
+          <span style="font-size:48px;font-weight:700;letter-spacing:-.05em;line-height:1">First project free</span>
+        </div>
+        <div style="font-size:14px;color:var(--muted);margin-bottom:32px;line-height:1.6">Open the bot, get a key, and start tracking.<br>No server setup required.</div>
+
+        <a href="#" class="btn-primary" style="opacity:.5;cursor:not-allowed;pointer-events:none;margin-bottom:40px;width:fit-content">Open hosted bot soon</a>
+
+        <div style="border-top:1px solid var(--border);padding-top:32px;display:flex;flex-direction:column;gap:13px">
+          <div style="font-family:var(--mono);font-size:11px;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;margin-bottom:4px">Best when you want speed</div>
+          <div style="font-size:14px;color:var(--text);display:flex;align-items:center;gap:10px"><span style="color:var(--tg);font-size:16px">✓</span> First project is free</div>
+          <div style="font-size:14px;color:var(--text);display:flex;align-items:center;gap:10px"><span style="color:var(--tg);font-size:16px">✓</span> No deploy, VPS, backups, or updates</div>
+          <div style="font-size:14px;color:var(--text);display:flex;align-items:center;gap:10px"><span style="color:var(--tg);font-size:16px">✓</span> Same Telegram reports, alerts, and digests</div>
+          <div style="font-size:14px;color:var(--text);display:flex;align-items:center;gap:10px"><span style="color:var(--tg);font-size:16px">✓</span> Add more projects when you need them</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT: OPEN SOURCE -->
+    <div style="padding:48px;background:var(--bg)">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:32px">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--muted)"><circle cx="12" cy="12" r="10"/><path d="M8.56 2.75c4.37 6.03 6.02 9.42 8.03 17.72m2.54-15.38c-3.72 4.35-8.94 5.66-16.88 5.85m19.5 1.9c-3.5-.93-6.63-.82-8.94 0-2.58.92-5.01 2.86-7.44 6.32"/></svg>
+        <span style="font-family:var(--mono);font-size:12px;font-weight:600;color:var(--text)">Self-hosted open source</span>
+      </div>
+
+      <div style="margin-bottom:8px">
+        <span style="font-size:48px;font-weight:700;letter-spacing:-.05em;line-height:1">Free</span>
+      </div>
+      <div style="font-size:14px;color:var(--muted);margin-bottom:32px;line-height:1.6">Run the server on your own infra.<br>Your data stays on machines you control.</div>
+
+      <a href="https://github.com/tgram-analytics/server" target="_blank" class="btn-secondary" style="margin-bottom:40px;width:fit-content">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+        View on GitHub
+      </a>
+
+      <div style="border-top:1px solid var(--border);padding-top:32px;display:flex;flex-direction:column;gap:13px">
+        <div style="font-family:var(--mono);font-size:11px;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;margin-bottom:4px">Best when you want control</div>
+        <div style="font-size:14px;color:var(--text);display:flex;align-items:center;gap:10px"><span style="color:var(--green);font-size:16px">✓</span> Unlimited projects and events</div>
+        <div style="font-size:14px;color:var(--text);display:flex;align-items:center;gap:10px"><span style="color:var(--green);font-size:16px">✓</span> All SDKs and bot features</div>
+        <div style="font-size:14px;color:var(--text);display:flex;align-items:center;gap:10px"><span style="color:var(--green);font-size:16px">✓</span> Full data ownership</div>
+        <div style="font-size:14px;color:var(--text);display:flex;align-items:center;gap:10px"><span style="color:var(--green);font-size:16px">✓</span> MIT license: fork it, extend it</div>
+        <div style="font-size:14px;color:var(--muted);display:flex;align-items:center;gap:10px"><span style="color:var(--dim);font-size:16px">—</span> You run uptime, backups, and updates</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- EASTER EGG -->
+<div class="easter-egg">
+  <div class="easter-egg-inner">
+    <span class="pulse"></span>
+    The analytics for this page are handled by <strong>tgram-analytics</strong>.
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <span class="footer-logo"><span style="color:var(--tg)">●</span> tgram-analytics</span>
+  <ul class="footer-links">
+    <li><a href="docs.html">Docs</a></li>
+    <li><a href="https://github.com/tgram-analytics/server" target="_blank">Server</a></li>
+    <li><a href="https://github.com/tgram-analytics/tgram-analytics-js" target="_blank">JS SDK</a></li>
+    <li><a href="https://github.com/tgram-analytics/tgram-analytics-flutter" target="_blank">Flutter SDK</a></li>
+    <li><a href="https://github.com/tgram-analytics/tgram-analytics-py" target="_blank">Python SDK</a></li>
+  </ul>
+  <span class="footer-note">Managed hosting · Open source core · MIT · Not affiliated with Telegram Messenger LLP</span>
+</footer>
+
+<!-- TWEAKS -->
+<div id="tweaks-panel">
+  <h3>Tweaks</h3>
+  <div class="tw-row">
+    <span class="tw-label">Accent</span>
+    <select class="tw-select" onchange="setAccent(this.value)">
+      <option value="#2AABEE">Telegram Blue</option>
+      <option value="#3dd6a3">Green</option>
+      <option value="#a78bfa">Purple</option>
+      <option value="#fb923c">Orange</option>
+    </select>
+  </div>
+  <div class="tw-row">
+    <span class="tw-label">Grid lines</span>
+    <button class="tw-toggle on" id="gridToggle" onclick="toggleGrid(this)"></button>
+  </div>
+  <div class="tw-row">
+    <span class="tw-label">Phone demo</span>
+    <button class="tw-toggle on" id="phoneToggle" onclick="togglePhone(this)"></button>
+  </div>
+</div>
+
+<script>
+// ── TWEAKS ──
+window.addEventListener('message', e => {
+  if (e.data?.type === '__activate_edit_mode') document.getElementById('tweaks-panel').style.display = 'block';
+  if (e.data?.type === '__deactivate_edit_mode') document.getElementById('tweaks-panel').style.display = 'none';
+});
+window.parent.postMessage({ type: '__edit_mode_available' }, '*');
+
+const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{"accent":"#2AABEE","grid":true,"phone":true}/*EDITMODE-END*/;
+
+function setAccent(c) {
+  const hex = c.replace('#','');
+  const r=parseInt(hex.substr(0,2),16),g=parseInt(hex.substr(2,2),16),b=parseInt(hex.substr(4,2),16);
+  const root = document.documentElement.style;
+  root.setProperty('--tg', c);
+  root.setProperty('--tg2', c);
+  root.setProperty('--tg-dim', `rgba(${r},${g},${b},0.12)`);
+  root.setProperty('--tg-glow', `rgba(${r},${g},${b},0.22)`);
+  window.parent.postMessage({type:'__edit_mode_set_keys',edits:{accent:c}},'*');
+}
+function toggleGrid(btn) {
+  const on = btn.classList.toggle('on'); btn.classList.toggle('off');
+  document.body.classList.toggle('no-grid', !on);
+  window.parent.postMessage({type:'__edit_mode_set_keys',edits:{grid:on}},'*');
+}
+function togglePhone(btn) {
+  const on = btn.classList.toggle('on'); btn.classList.toggle('off');
+  document.querySelector('.phone-wrap').style.opacity = on ? '1' : '0.2';
+  window.parent.postMessage({type:'__edit_mode_set_keys',edits:{phone:on}},'*');
+}
+const noGridStyle = document.createElement('style');
+noGridStyle.textContent = '.no-grid::before{opacity:0!important}';
+document.head.appendChild(noGridStyle);
+
+// ── SDK TABS ──
+function selectSdk(name, cardEl) {
+  ['js','flutter','py'].forEach(n => {
+    document.getElementById('pane-'+n)?.classList.toggle('active', n===name);
+  });
+  const titles = {js:'index.html', flutter:'main.dart', py:'backend.py'};
+  document.getElementById('codeTitle').textContent = titles[name];
+  if (cardEl) {
+    document.querySelectorAll('.sdk-card').forEach(c => c.classList.remove('active-card'));
+    cardEl.classList.add('active-card');
+  }
+}
+
+// ── SETUP TABS ──
+function selectSetup(name) {
+  const isManaged = name === 'managed';
+  document.getElementById('setup-managed')?.classList.toggle('active', isManaged);
+  document.getElementById('setup-self')?.classList.toggle('active', !isManaged);
+  document.getElementById('setup-tab-managed')?.classList.toggle('active', isManaged);
+  document.getElementById('setup-tab-self')?.classList.toggle('active', !isManaged);
+  document.getElementById('setup-tab-managed')?.setAttribute('aria-selected', String(isManaged));
+  document.getElementById('setup-tab-self')?.setAttribute('aria-selected', String(!isManaged));
+}
+
+// ── TELEGRAM CHAT ANIMATION ──
+const msgs = [
+  { type:'user', text:'/report signups this week', time:'09:12' },
+  { type:'bot', chart:true, time:'09:12' },
+  { type:'bot', text:'🔔 <b style="color:#fff">New purchase</b> — Pro plan', time:'14:32' },
+  { type:'user', text:'/alert signup every 10', time:'14:35' },
+  { type:'bot', text:'✅ Alert set. You\'ll get a message every 10 signups.', time:'14:35' },
+];
+
+function makeChartSvg() {
+  const vals = [28,35,42,38,51,47,58,52,64,61,72,78,74,83,91];
+  const W=220,H=56,pad=6;
+  const max=Math.max(...vals), min=Math.min(...vals);
+  const pts = vals.map((v,i) => {
+    const x = pad + i*(W-pad*2)/(vals.length-1);
+    const y = H - pad - (v-min)/(max-min)*(H-pad*2);
+    return `${x},${y}`;
+  });
+  const areaClose = `${W-pad},${H-pad} ${pad},${H-pad}`;
+  return `<svg class="chart-svg" viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="cg" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#2AABEE" stop-opacity="0.25"/>
+        <stop offset="100%" stop-color="#2AABEE" stop-opacity="0"/>
+      </linearGradient>
+    </defs>
+    <polygon points="${pts.join(' ')} ${areaClose}" fill="url(#cg)"/>
+    <polyline points="${pts.join(' ')}" fill="none" stroke="#2AABEE" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/>
+  </svg>`;
+}
+
+function makeMsg(m) {
+  const div = document.createElement('div');
+  div.className = `msg msg-${m.type}`;
+  if (m.chart) {
+    div.innerHTML = `
+      <div class="chart-bubble">
+        <div class="chart-header"><strong>342 signups</strong>last 7 days</div>
+        ${makeChartSvg()}
+        <div class="chart-footer"><span class="up">↑ +18%</span> vs previous 7 days</div>
+      </div>
+      <div class="msg-time">${m.time} ✓✓</div>`;
+  } else if (m.type === 'user') {
+    div.innerHTML = `<div class="bubble bubble-user">${m.text}</div><div class="msg-time">${m.time} ✓✓</div>`;
+  } else {
+    div.innerHTML = `<div class="bubble bubble-bot">${m.text}</div><div class="msg-time">${m.time}</div>`;
+  }
+  return div;
+}
+
+const chat = document.getElementById('tgChat');
+let idx = 0;
+const delays = [600, 2200, 4200, 6500, 8500];
+
+function showNext() {
+  if (idx >= msgs.length) {
+    setTimeout(restart, 4000);
+    return;
+  }
+  const el = makeMsg(msgs[idx]);
+  el.style.animationDelay = '0ms';
+  chat.appendChild(el);
+  chat.scrollTop = chat.scrollHeight;
+  idx++;
+  if (idx < msgs.length) {
+    setTimeout(showNext, delays[idx] - delays[idx-1]);
+  } else {
+    setTimeout(restart, 4000);
+  }
+}
+function restart() {
+  chat.innerHTML = '';
+  idx = 0;
+  setTimeout(showNext, 800);
+}
+setTimeout(showNext, 800);
+</script>
+</body>
+</html>
