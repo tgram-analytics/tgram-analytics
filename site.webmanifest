@@ -1,0 +1,26 @@
+{
+  "name": "tgram-analytics — Telegram analytics for SaaS",
+  "short_name": "tgram-analytics",
+  "description": "Telegram analytics for SaaS, indie projects, and side hustles. Real-time alerts, weekly digests, and instant reports — first project free.",
+  "icons": [
+    {
+      "src": "/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "theme_color": "#090c12",
+  "background_color": "#090c12",
+  "display": "standalone",
+  "scope": "/",
+  "start_url": "/",
+  "categories": ["productivity", "developer", "analytics", "saas", "telegram"],
+  "lang": "en"
+}
