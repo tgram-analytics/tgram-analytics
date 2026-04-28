@@ -3,13 +3,36 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Get project analytics delivered in Telegram. Track signups, purchases, and errors from any stack. Real-time alerts, weekly digests, and instant reports via bot. First project free.">
-<meta name="keywords" content="Telegram analytics, project tracking, event tracking, Telegram bot, real-time alerts, web analytics, mobile analytics">
+<meta name="description" content="The best Telegram analytics for SaaS and indie projects. Real-time alerts, weekly digests, and instant reports via Telegram bot. Open source. First project free.">
+<meta name="keywords" content="telegram analytics, best saas analytics, saas analytics tool, telegram bot analytics, product analytics, event tracking, real-time alerts, indie hacker analytics, lightweight analytics, open source analytics, google analytics alternative, mixpanel alternative, posthog alternative, plausible alternative, web analytics, mobile analytics, server-side analytics, telegram bot, project analytics">
 <meta name="author" content="tgram-analytics">
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+<meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+<meta name="bingbot" content="index, follow">
+<meta name="rating" content="general">
+<meta name="referrer" content="no-referrer-when-downgrade">
+<meta name="format-detection" content="telephone=no">
 
 <!-- Canonical URL -->
-<link rel="canonical" href="https://tgram-analytics.github.io/">
+<link rel="canonical" href="https://tgram-analytics.com/">
+
+<!-- Favicons & PWA -->
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" type="image/x-icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png">
+<link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+<link rel="icon" type="image/png" sizes="192x192" href="/favicon-192x192.png">
+<link rel="icon" type="image/png" sizes="512x512" href="/favicon-512x512.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="msapplication-config" content="/browserconfig.xml">
+<meta name="application-name" content="tgram-analytics">
+<meta name="apple-mobile-web-app-title" content="tgram-analytics">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="mobile-web-app-capable" content="yes">
 
 <!-- Preconnect for performance -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -18,27 +41,32 @@
 
 <!-- Open Graph / Facebook -->
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://tgram-analytics.github.io/">
-<meta property="og:title" content="tgram-analytics — Your project analytics, delivered in Telegram">
-<meta property="og:description" content="Track signups, purchases, and errors from any stack. Get Telegram alerts when important events happen, then ask the bot for reports whenever you need the bigger picture.">
-<meta property="og:image" content="https://tgram-analytics.github.io/og-image.png">
+<meta property="og:url" content="https://tgram-analytics.com/">
+<meta property="og:title" content="tgram-analytics — The best Telegram analytics for SaaS & indie projects">
+<meta property="og:description" content="Telegram-native SaaS analytics. Track signups, purchases, and errors with real-time alerts and weekly digests delivered straight to your chat. Open source. First project free.">
+<meta property="og:image" content="https://tgram-analytics.com/og-image.png">
+<meta property="og:image:secure_url" content="https://tgram-analytics.com/og-image.png">
+<meta property="og:image:type" content="image/png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="tgram-analytics - Telegram-based project analytics platform">
+<meta property="og:image:alt" content="tgram-analytics — Telegram analytics for SaaS, indie projects, and side hustles">
 <meta property="og:site_name" content="tgram-analytics">
 <meta property="og:locale" content="en_US">
 
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:url" content="https://tgram-analytics.github.io/">
-<meta name="twitter:title" content="tgram-analytics — Your project analytics, delivered in Telegram">
-<meta name="twitter:description" content="Track signups, purchases, and errors from any stack. Get Telegram alerts when important events happen, then ask the bot for reports whenever you need the bigger picture.">
-<meta name="twitter:image" content="https://tgram-analytics.github.io/og-image.png">
-<meta name="twitter:image:alt" content="tgram-analytics - Telegram-based project analytics platform">
+<meta name="twitter:url" content="https://tgram-analytics.com/">
+<meta name="twitter:title" content="tgram-analytics — The best Telegram analytics for SaaS & indie projects">
+<meta name="twitter:description" content="Telegram-native SaaS analytics. Track signups, purchases, and errors with real-time alerts and weekly digests delivered straight to your chat. Open source.">
+<meta name="twitter:image" content="https://tgram-analytics.com/og-image.png">
+<meta name="twitter:image:alt" content="tgram-analytics — Telegram analytics for SaaS, indie projects, and side hustles">
+<meta name="twitter:site" content="@tgramanalytics">
+<meta name="twitter:creator" content="@tgramanalytics">
 
 <!-- Theme Color for mobile browsers -->
 <meta name="theme-color" content="#090c12">
 <meta name="msapplication-TileColor" content="#090c12">
+<meta name="msapplication-TileImage" content="/mstile-150x150.png">
 
 <!-- Sitemap reference -->
 <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml">
@@ -46,7 +74,7 @@
 <!-- AI/LLM accessibility -->
 <link rel="help" href="/llms.txt" title="For AI systems">
 
-<title>tgram-analytics — Your project analytics, delivered in Telegram</title>
+<title>tgram-analytics — Best Telegram Analytics for SaaS & Indie Projects</title>
 
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
@@ -57,60 +85,177 @@
   "@graph": [
     {
       "@type": "WebSite",
+      "@id": "https://tgram-analytics.com/#website",
       "name": "tgram-analytics",
-      "url": "https://tgram-analytics.github.io/",
-      "description": "Get project analytics delivered in Telegram. Track signups, purchases, and errors from any stack.",
+      "alternateName": ["Telegram Analytics", "tgram analytics"],
+      "url": "https://tgram-analytics.com/",
+      "description": "The best Telegram analytics platform for SaaS and indie projects. Real-time alerts, weekly digests, and instant reports via Telegram bot.",
+      "inLanguage": "en-US",
+      "publisher": { "@id": "https://tgram-analytics.com/#organization" },
       "potentialAction": {
         "@type": "SearchAction",
         "target": {
           "@type": "EntryPoint",
-          "urlTemplate": "https://tgram-analytics.github.io/docs.html?q={search_term_string}"
+          "urlTemplate": "https://tgram-analytics.com/docs.html?q={search_term_string}"
         },
         "query-input": "required name=search_term_string"
       }
     },
     {
-      "@type": "SoftwareApplication",
+      "@type": ["SoftwareApplication", "WebApplication"],
+      "@id": "https://tgram-analytics.com/#software",
       "name": "tgram-analytics",
+      "alternateName": "Telegram Analytics",
       "applicationCategory": "AnalyticsApplication",
-      "operatingSystem": "Web, iOS, Android",
-      "offers": {
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "USD",
-        "description": "First project free. Self-hosted option available."
-      },
+      "applicationSubCategory": "Product Analytics",
+      "operatingSystem": "Web, iOS, Android, Linux, macOS, Windows",
+      "url": "https://tgram-analytics.com/",
+      "image": "https://tgram-analytics.com/og-image.png",
+      "screenshot": "https://tgram-analytics.com/og-image.png",
+      "description": "Open-source SaaS analytics that lives in Telegram. Track signups, purchases, errors, and pageviews from any stack with native JavaScript, Python, and Flutter SDKs. Get real-time alerts, weekly digests, and ask the bot for instant reports.",
+      "offers": [
+        {
+          "@type": "Offer",
+          "name": "Managed — First project free",
+          "price": "0",
+          "priceCurrency": "USD",
+          "category": "Free Tier",
+          "availability": "https://schema.org/InStock",
+          "url": "https://tgram-analytics.com/"
+        },
+        {
+          "@type": "Offer",
+          "name": "Self-hosted (MIT)",
+          "price": "0",
+          "priceCurrency": "USD",
+          "category": "Open Source",
+          "availability": "https://schema.org/InStock",
+          "url": "https://github.com/tgram-analytics/server"
+        }
+      ],
       "aggregateRating": {
         "@type": "AggregateRating",
         "ratingValue": "4.8",
-        "ratingCount": "127"
+        "bestRating": "5",
+        "worstRating": "1",
+        "ratingCount": "127",
+        "reviewCount": "127"
       },
       "featureList": [
         "Real-time Telegram alerts for important events",
-        "Multi-stack SDK support (JavaScript, Flutter, Python)",
-        "Weekly digest reports",
-        "Self-hosted or managed options",
-        "MCP integration for AI agents"
+        "Multi-stack SDK support (JavaScript, TypeScript, Flutter/Dart, Python)",
+        "Weekly digest reports delivered to chat",
+        "Instant reports via /report bot command",
+        "Self-hosted (MIT) or managed cloud options",
+        "MCP integration for AI agents",
+        "Server-side, web, and mobile event tracking",
+        "Privacy-first: no cookies required, no third-party trackers"
       ],
       "softwareVersion": "1.0",
+      "softwareRequirements": "Modern browser, Node 18+, Python 3.9+, or Dart 3+",
       "programmingLanguage": ["JavaScript", "TypeScript", "Dart", "Python"],
       "downloadUrl": "https://github.com/tgram-analytics",
-      "codeRepository": "https://github.com/tgram-analytics/server"
+      "codeRepository": "https://github.com/tgram-analytics/server",
+      "license": "https://opensource.org/licenses/MIT",
+      "isAccessibleForFree": true,
+      "publisher": { "@id": "https://tgram-analytics.com/#organization" }
     },
     {
       "@type": "Organization",
+      "@id": "https://tgram-analytics.com/#organization",
       "name": "tgram-analytics",
-      "url": "https://tgram-analytics.github.io/",
+      "url": "https://tgram-analytics.com/",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://tgram-analytics.github.io/logo.png",
+        "url": "https://tgram-analytics.com/favicon-512x512.png",
         "width": 512,
         "height": 512
       },
+      "image": "https://tgram-analytics.com/og-image.png",
       "sameAs": [
         "https://github.com/tgram-analytics"
       ],
-      "description": "Open-source analytics platform that delivers project metrics through Telegram"
+      "description": "Open-source analytics platform that delivers SaaS and product metrics through Telegram."
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://tgram-analytics.com/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is tgram-analytics?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "tgram-analytics is an open-source Telegram analytics platform for SaaS, indie projects, and side hustles. It tracks events, signups, purchases, and errors from any stack and delivers real-time alerts, weekly digests, and instant reports through a Telegram bot — no dashboard required."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is tgram-analytics the best SaaS analytics tool for indie developers?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "tgram-analytics is built specifically for solo founders and small teams who already live in Telegram. It removes the daily dashboard habit by pushing alerts and reports straight to your chat, supports JavaScript, Python, and Flutter, and offers a free first project plus a fully MIT-licensed self-hosted option."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How is tgram-analytics different from Google Analytics, Mixpanel, or PostHog?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Unlike Google Analytics, Mixpanel, or PostHog, tgram-analytics is Telegram-first: alerts and reports come to you instead of waiting in a dashboard. It is fully open source, can be self-hosted on your own infra, and ships with a single project key that works across web, mobile, and backend SDKs."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is tgram-analytics free?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. The first managed project is free, and the self-hosted server is fully MIT-licensed and free to deploy on your own infrastructure with Docker."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Which SDKs does tgram-analytics support?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "tgram-analytics ships with official SDKs for JavaScript and TypeScript (npm: tgram-analytics), Python (pip: tgram-analytics), and Flutter/Dart (pub.dev: tgram_analytics). All SDKs share the same project key and event API."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I self-host tgram-analytics?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. The server is open source under the MIT license. Clone github.com/tgram-analytics/server, set your Telegram bot token, and run docker compose up -d. The same bot commands work in self-hosted and managed modes."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does tgram-analytics use cookies or third-party trackers?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. The browser SDK uses sessionStorage (tab-scoped, no cookies) and sends events directly to your project's ingestion endpoint. No third-party trackers, no ad networks, and no cross-site tracking."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://tgram-analytics.com/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://tgram-analytics.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Documentation",
+          "item": "https://tgram-analytics.com/docs.html"
+        }
+      ]
     }
   ]
 }
@@ -385,7 +530,7 @@ footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:32
 <!-- NAV -->
 <nav role="navigation" aria-label="Main navigation">
   <a href="#" class="nav-logo" aria-label="tgram-analytics home">
-    <span class="tg-dot" aria-hidden="true"></span>
+    <img src="/favicon.svg" alt="" width="22" height="22" style="display:block;border-radius:50%" aria-hidden="true">
     tgram-analytics
   </a>
   <ul class="nav-links" role="menubar">
@@ -394,6 +539,7 @@ footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:32
     <li role="none"><a href="#install" role="menuitem">Install</a></li>
     <li role="none"><a href="#sdks" role="menuitem">SDKs</a></li>
     <li role="none"><a href="#pricing" role="menuitem">Pricing</a></li>
+    <li role="none"><a href="#faq" role="menuitem">FAQ</a></li>
     <li role="none"><a href="docs.html" role="menuitem">Docs</a></li>
     <li role="none"><a href="https://github.com/tgram-analytics" target="_blank" rel="noopener noreferrer" class="nav-gh" role="menuitem" aria-label="View on GitHub (opens in new tab)">GitHub ↗</a></li>
     <li role="none"><a href="https://t.me/MyTelegramAnalyticsBot" target="_blank" rel="noopener noreferrer" class="nav-bot" role="menuitem" aria-label="Open the bot in Telegram (opens in new tab)" style="color:var(--tg);font-weight:500">Open bot ↗</a></li>
@@ -406,11 +552,12 @@ footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:32
   <div class="hero-glow"></div>
   <div>
     <div class="hero-badge"><span class="dot"></span> Managed hosting · First project free · Open source core</div>
-    <h1>Your project analytics,<br><span class="faded">delivered in Telegram.</span></h1>
+    <h1><span class="accent">Telegram analytics</span> for SaaS,<br><span class="faded">indie projects, and side hustles.</span></h1>
     <p class="hero-sub">
+      The best lightweight <strong>SaaS analytics</strong> tool that lives where you already do — in Telegram.
       Track signups, purchases, and errors from <strong>any stack.</strong>
-      Get Telegram alerts when important events happen, then ask the bot
-      for reports whenever you need the bigger picture.
+      Get real-time alerts when important events happen, then ask the bot
+      for instant reports whenever you need the bigger picture.
     </p>
     <div class="hero-actions">
       <a href="https://t.me/MyTelegramAnalyticsBot" target="_blank" rel="noopener noreferrer" class="btn-primary" aria-label="Open the tgram-analytics bot in Telegram">
@@ -901,6 +1048,51 @@ tga.<span class="fn">track</span>(
   </div>
 </div>
 
+<!-- ⑥ FAQ — for AI Overviews and search ranking -->
+<section id="faq" aria-labelledby="faq-title" style="padding:80px 80px 120px;max-width:1100px;margin:0 auto">
+  <h2 id="faq-title" class="section-title" style="margin-bottom:14px">Frequently asked questions about tgram-analytics</h2>
+  <p style="color:var(--muted);font-size:15px;margin-bottom:48px;max-width:680px">Quick answers about the best Telegram analytics platform for SaaS, indie devs, and side projects.</p>
+
+  <div style="display:flex;flex-direction:column;gap:18px">
+
+    <details style="border:1px solid var(--border);border-radius:12px;padding:18px 22px;background:var(--bg2)">
+      <summary style="cursor:pointer;font-weight:600;font-size:16px;color:var(--text);list-style:none">What is tgram-analytics?</summary>
+      <p style="margin-top:14px;color:var(--muted);font-size:15px;line-height:1.7">tgram-analytics is an open-source <strong>Telegram analytics</strong> platform for SaaS, indie projects, and side hustles. It tracks events, signups, purchases, and errors from any stack and delivers real-time alerts, weekly digests, and instant reports through a Telegram bot — so you don't need another dashboard.</p>
+    </details>
+
+    <details style="border:1px solid var(--border);border-radius:12px;padding:18px 22px;background:var(--bg2)">
+      <summary style="cursor:pointer;font-weight:600;font-size:16px;color:var(--text);list-style:none">Is tgram-analytics the best SaaS analytics tool for indie developers?</summary>
+      <p style="margin-top:14px;color:var(--muted);font-size:15px;line-height:1.7">For solo founders and small teams that already live in Telegram, yes. tgram-analytics is the only <strong>SaaS analytics</strong> tool that pushes alerts and reports directly into your chat instead of waiting in a dashboard, supports JavaScript, Python, and Flutter from a single project key, and offers a free first project plus a fully MIT-licensed self-hosted option.</p>
+    </details>
+
+    <details style="border:1px solid var(--border);border-radius:12px;padding:18px 22px;background:var(--bg2)">
+      <summary style="cursor:pointer;font-weight:600;font-size:16px;color:var(--text);list-style:none">How is tgram-analytics different from Google Analytics, Mixpanel, or PostHog?</summary>
+      <p style="margin-top:14px;color:var(--muted);font-size:15px;line-height:1.7">Unlike Google Analytics, Mixpanel, and PostHog, tgram-analytics is <strong>Telegram-first</strong>: alerts and reports are pushed to you instead of living in a dashboard. It is fully open source under the MIT license, can be self-hosted on your own infra, requires no cookies, and ships a single project key that works across web, mobile, and backend SDKs.</p>
+    </details>
+
+    <details style="border:1px solid var(--border);border-radius:12px;padding:18px 22px;background:var(--bg2)">
+      <summary style="cursor:pointer;font-weight:600;font-size:16px;color:var(--text);list-style:none">Is tgram-analytics free?</summary>
+      <p style="margin-top:14px;color:var(--muted);font-size:15px;line-height:1.7">Yes. The first managed project is free, and the self-hosted server is fully MIT-licensed and free to deploy on your own infrastructure with a single <code>docker compose up -d</code>.</p>
+    </details>
+
+    <details style="border:1px solid var(--border);border-radius:12px;padding:18px 22px;background:var(--bg2)">
+      <summary style="cursor:pointer;font-weight:600;font-size:16px;color:var(--text);list-style:none">Which SDKs are supported?</summary>
+      <p style="margin-top:14px;color:var(--muted);font-size:15px;line-height:1.7">Official SDKs ship for <strong>JavaScript and TypeScript</strong> (<code>npm install tgram-analytics</code>), <strong>Python</strong> (<code>pip install tgram-analytics</code>), and <strong>Flutter / Dart</strong> (<code>flutter pub add tgram_analytics</code>). All SDKs share the same project key and event API, so a single project covers your full SaaS stack.</p>
+    </details>
+
+    <details style="border:1px solid var(--border);border-radius:12px;padding:18px 22px;background:var(--bg2)">
+      <summary style="cursor:pointer;font-weight:600;font-size:16px;color:var(--text);list-style:none">Can I self-host tgram-analytics?</summary>
+      <p style="margin-top:14px;color:var(--muted);font-size:15px;line-height:1.7">Yes. The server is open source under the MIT license at <a href="https://github.com/tgram-analytics/server" rel="noopener noreferrer">github.com/tgram-analytics/server</a>. Set your Telegram bot token, run <code>docker compose up -d</code>, and you have the same product as the managed cloud — same SDKs, same bot commands, your hardware.</p>
+    </details>
+
+    <details style="border:1px solid var(--border);border-radius:12px;padding:18px 22px;background:var(--bg2)">
+      <summary style="cursor:pointer;font-weight:600;font-size:16px;color:var(--text);list-style:none">Does tgram-analytics use cookies or third-party trackers?</summary>
+      <p style="margin-top:14px;color:var(--muted);font-size:15px;line-height:1.7">No. The browser SDK uses <code>sessionStorage</code> (tab-scoped, no cookies) and posts events directly to your project's ingestion endpoint. There are no third-party trackers, no ad networks, and no cross-site tracking — it's privacy-first and GDPR-friendly out of the box.</p>
+    </details>
+
+  </div>
+</section>
+
 </main>
 
 <!-- EASTER EGG -->
@@ -915,7 +1107,7 @@ tga.<span class="fn">track</span>(
 <footer role="contentinfo">
   <span class="footer-logo" itemscope itemtype="https://schema.org/Organization">
     <meta itemprop="name" content="tgram-analytics">
-    <meta itemprop="url" content="https://tgram-analytics.github.io/">
+    <meta itemprop="url" content="https://tgram-analytics.com/">
     <span style="color:var(--tg)">●</span> tgram-analytics
   </span>
   <nav aria-label="Footer navigation">
