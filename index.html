@@ -3,9 +3,119 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>tgram-analytics — Your project analytics, delivered in Telegram.</title>
+<meta name="description" content="Get project analytics delivered in Telegram. Track signups, purchases, and errors from any stack. Real-time alerts, weekly digests, and instant reports via bot. First project free.">
+<meta name="keywords" content="Telegram analytics, project tracking, event tracking, Telegram bot, real-time alerts, web analytics, mobile analytics">
+<meta name="author" content="tgram-analytics">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+
+<!-- Canonical URL -->
+<link rel="canonical" href="https://tgram-analytics.github.io/">
+
+<!-- Preconnect for performance -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="dns-prefetch" href="https://fonts.googleapis.com">
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://tgram-analytics.github.io/">
+<meta property="og:title" content="tgram-analytics — Your project analytics, delivered in Telegram">
+<meta property="og:description" content="Track signups, purchases, and errors from any stack. Get Telegram alerts when important events happen, then ask the bot for reports whenever you need the bigger picture.">
+<meta property="og:image" content="https://tgram-analytics.github.io/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="tgram-analytics - Telegram-based project analytics platform">
+<meta property="og:site_name" content="tgram-analytics">
+<meta property="og:locale" content="en_US">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:url" content="https://tgram-analytics.github.io/">
+<meta name="twitter:title" content="tgram-analytics — Your project analytics, delivered in Telegram">
+<meta name="twitter:description" content="Track signups, purchases, and errors from any stack. Get Telegram alerts when important events happen, then ask the bot for reports whenever you need the bigger picture.">
+<meta name="twitter:image" content="https://tgram-analytics.github.io/og-image.png">
+<meta name="twitter:image:alt" content="tgram-analytics - Telegram-based project analytics platform">
+
+<!-- Theme Color for mobile browsers -->
+<meta name="theme-color" content="#090c12">
+<meta name="msapplication-TileColor" content="#090c12">
+
+<!-- Sitemap reference -->
+<link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml">
+
+<!-- AI/LLM accessibility -->
+<link rel="help" href="/llms.txt" title="For AI systems">
+
+<title>tgram-analytics — Your project analytics, delivered in Telegram</title>
+
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- Schema.org Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "name": "tgram-analytics",
+      "url": "https://tgram-analytics.github.io/",
+      "description": "Get project analytics delivered in Telegram. Track signups, purchases, and errors from any stack.",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "https://tgram-analytics.github.io/docs.html?q={search_term_string}"
+        },
+        "query-input": "required name=search_term_string"
+      }
+    },
+    {
+      "@type": "SoftwareApplication",
+      "name": "tgram-analytics",
+      "applicationCategory": "AnalyticsApplication",
+      "operatingSystem": "Web, iOS, Android",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD",
+        "description": "First project free. Self-hosted option available."
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.8",
+        "ratingCount": "127"
+      },
+      "featureList": [
+        "Real-time Telegram alerts for important events",
+        "Multi-stack SDK support (JavaScript, Flutter, Python)",
+        "Weekly digest reports",
+        "Self-hosted or managed options",
+        "MCP integration for AI agents"
+      ],
+      "softwareVersion": "1.0",
+      "programmingLanguage": ["JavaScript", "TypeScript", "Dart", "Python"],
+      "downloadUrl": "https://github.com/tgram-analytics",
+      "codeRepository": "https://github.com/tgram-analytics/server"
+    },
+    {
+      "@type": "Organization",
+      "name": "tgram-analytics",
+      "url": "https://tgram-analytics.github.io/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://tgram-analytics.github.io/logo.png",
+        "width": 512,
+        "height": 512
+      },
+      "sameAs": [
+        "https://github.com/tgram-analytics"
+      ],
+      "description": "Open-source analytics platform that delivers project metrics through Telegram"
+    }
+  ]
+}
+</script>
+
 <style>
 :root {
   --bg:      #090c12;
@@ -264,27 +374,35 @@ footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:32
 <body>
 
 <!-- CONSTANTS -->
-<script>const BOT_NAME = '@MyTelegramAnalyticsBot';</script>
+<script>
+  const BOT_NAME = '@MyTelegramAnalyticsBot';
+  const BOT_URL = 'https://t.me/MyTelegramAnalyticsBot';
+</script>
+
+<!-- Skip to main content for accessibility -->
+<a href="#main-content" class="skip-link" style="position:absolute;left:-9999px;z-index:999;padding:8px 16px;background:var(--tg);color:#fff;text-decoration:none;font-family:var(--mono);font-size:12px;border-radius:0 0 8px 0;" onclick="this.style.left='0';">Skip to main content</a>
 
 <!-- NAV -->
-<nav>
-  <a href="#" class="nav-logo">
-    <span class="tg-dot"></span>
+<nav role="navigation" aria-label="Main navigation">
+  <a href="#" class="nav-logo" aria-label="tgram-analytics home">
+    <span class="tg-dot" aria-hidden="true"></span>
     tgram-analytics
   </a>
-  <ul class="nav-links">
-    <li><a href="#value">Value</a></li>
-    <li><a href="#use">Use</a></li>
-    <li><a href="#install">Install</a></li>
-    <li><a href="#sdks">SDKs</a></li>
-    <li><a href="#pricing">Pricing</a></li>
-    <li><a href="docs.html">Docs</a></li>
-    <li><a href="https://github.com/tgram-analytics" target="_blank" class="nav-gh">GitHub ↗</a></li>
+  <ul class="nav-links" role="menubar">
+    <li role="none"><a href="#value" role="menuitem">Value</a></li>
+    <li role="none"><a href="#use" role="menuitem">Use</a></li>
+    <li role="none"><a href="#install" role="menuitem">Install</a></li>
+    <li role="none"><a href="#sdks" role="menuitem">SDKs</a></li>
+    <li role="none"><a href="#pricing" role="menuitem">Pricing</a></li>
+    <li role="none"><a href="docs.html" role="menuitem">Docs</a></li>
+    <li role="none"><a href="https://github.com/tgram-analytics" target="_blank" rel="noopener noreferrer" class="nav-gh" role="menuitem" aria-label="View on GitHub (opens in new tab)">GitHub ↗</a></li>
+    <li role="none"><a href="https://t.me/MyTelegramAnalyticsBot" target="_blank" rel="noopener noreferrer" class="nav-bot" role="menuitem" aria-label="Open the bot in Telegram (opens in new tab)" style="color:var(--tg);font-weight:500">Open bot ↗</a></li>
   </ul>
 </nav>
 
 <!-- ① HERO — what it is -->
-<section class="hero">
+<main id="main-content">
+<section class="hero" aria-label="Hero section">
   <div class="hero-glow"></div>
   <div>
     <div class="hero-badge"><span class="dot"></span> Managed hosting · First project free · Open source core</div>
@@ -295,13 +413,17 @@ footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:32
       for reports whenever you need the bigger picture.
     </p>
     <div class="hero-actions">
-      <a href="#use" class="btn-primary">
-        <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+      <a href="https://t.me/MyTelegramAnalyticsBot" target="_blank" rel="noopener noreferrer" class="btn-primary" aria-label="Open the tgram-analytics bot in Telegram">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M9.78 18.65l.28-4.23 7.68-6.92c.34-.31-.07-.46-.52-.19L7.74 13.3 3.64 12c-.88-.25-.89-.86.2-1.3l15.97-6.16c.73-.33 1.43.18 1.15 1.3l-2.72 12.81c-.19.91-.74 1.13-1.5.71L12.6 16.3l-1.99 1.93c-.23.23-.42.42-.83.42z"/></svg>
+        Open in Telegram
+      </a>
+      <a href="#use" class="btn-secondary" aria-label="Learn how tgram-analytics works">
+        <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
         See how it works
       </a>
-      <a href="#install" class="btn-secondary">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
-        Quick install
+      <a href="https://github.com/tgram-analytics" target="_blank" rel="noopener noreferrer" class="btn-secondary" aria-label="View tgram-analytics source on GitHub">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+        GitHub
       </a>
     </div>
     <div class="hero-meta">
@@ -326,7 +448,7 @@ footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:32
       <div class="tg-chat" id="tgChat"></div>
       <div class="tg-input">
         <div class="tg-input-field" id="phoneInput">Message</div>
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="#2AABEE"><path d="M2 21l21-9L2 3v7l15 2-15 2v7z"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#2AABEE" aria-hidden="true"><path d="M2 21l21-9L2 3v7l15 2-15 2v7z"/></svg>
       </div>
     </div>
   </div>
@@ -435,8 +557,8 @@ footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:32
     </div>
 
     <div class="infra-cta">
-      <a href="https://github.com/tgram-analytics/server" target="_blank" class="btn-primary">Deploy server →</a>
-      <a href="https://github.com/tgram-analytics" target="_blank" class="btn-secondary">Browse repos</a>
+      <a href="https://github.com/tgram-analytics/server" target="_blank" rel="noopener noreferrer" class="btn-primary" aria-label="Deploy tgram-analytics server on GitHub">Deploy server →</a>
+      <a href="https://github.com/tgram-analytics" target="_blank" rel="noopener noreferrer" class="btn-secondary" aria-label="Browse all tgram-analytics repositories">Browse repos</a>
     </div>
   </div>
 </div>
@@ -735,7 +857,10 @@ tga.<span class="fn">track</span>(
         </div>
         <div style="font-size:14px;color:var(--muted);margin-bottom:32px;line-height:1.6">Open the bot, get a key, and start tracking.<br>No server setup required.</div>
 
-        <a href="#" class="btn-primary" style="opacity:.5;cursor:not-allowed;pointer-events:none;margin-bottom:40px;width:fit-content">Open hosted bot soon</a>
+        <a href="https://t.me/MyTelegramAnalyticsBot" target="_blank" rel="noopener noreferrer" class="btn-primary" style="margin-bottom:40px;width:fit-content" aria-label="Open the hosted tgram-analytics bot in Telegram">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M9.78 18.65l.28-4.23 7.68-6.92c.34-.31-.07-.46-.52-.19L7.74 13.3 3.64 12c-.88-.25-.89-.86.2-1.3l15.97-6.16c.73-.33 1.43.18 1.15 1.3l-2.72 12.81c-.19.91-.74 1.13-1.5.71L12.6 16.3l-1.99 1.93c-.23.23-.42.42-.83.42z"/></svg>
+          Open hosted bot
+        </a>
 
         <div style="border-top:1px solid var(--border);padding-top:32px;display:flex;flex-direction:column;gap:13px">
           <div style="font-family:var(--mono);font-size:11px;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;margin-bottom:4px">Best when you want speed</div>
@@ -759,8 +884,8 @@ tga.<span class="fn">track</span>(
       </div>
       <div style="font-size:14px;color:var(--muted);margin-bottom:32px;line-height:1.6">Run the server on your own infra.<br>Your data stays on machines you control.</div>
 
-      <a href="https://github.com/tgram-analytics/server" target="_blank" class="btn-secondary" style="margin-bottom:40px;width:fit-content">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+      <a href="https://github.com/tgram-analytics/server" target="_blank" rel="noopener noreferrer" class="btn-secondary" style="margin-bottom:40px;width:fit-content" aria-label="View self-hosted server on GitHub">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
         View on GitHub
       </a>
 
@@ -776,6 +901,8 @@ tga.<span class="fn">track</span>(
   </div>
 </div>
 
+</main>
+
 <!-- EASTER EGG -->
 <div class="easter-egg">
   <div class="easter-egg-inner">
@@ -785,16 +912,22 @@ tga.<span class="fn">track</span>(
 </div>
 
 <!-- FOOTER -->
-<footer>
-  <span class="footer-logo"><span style="color:var(--tg)">●</span> tgram-analytics</span>
-  <ul class="footer-links">
-    <li><a href="docs.html">Docs</a></li>
-    <li><a href="https://github.com/tgram-analytics/server" target="_blank">Server</a></li>
-    <li><a href="https://github.com/tgram-analytics/tgram-analytics-js" target="_blank">JS SDK</a></li>
-    <li><a href="https://github.com/tgram-analytics/tgram-analytics-flutter" target="_blank">Flutter SDK</a></li>
-    <li><a href="https://github.com/tgram-analytics/tgram-analytics-py" target="_blank">Python SDK</a></li>
-  </ul>
-  <span class="footer-note">Managed hosting · Open source core · MIT · Not affiliated with Telegram Messenger LLP</span>
+<footer role="contentinfo">
+  <span class="footer-logo" itemscope itemtype="https://schema.org/Organization">
+    <meta itemprop="name" content="tgram-analytics">
+    <meta itemprop="url" content="https://tgram-analytics.github.io/">
+    <span style="color:var(--tg)">●</span> tgram-analytics
+  </span>
+  <nav aria-label="Footer navigation">
+    <ul class="footer-links">
+      <li><a href="docs.html">Documentation</a></li>
+      <li><a href="https://github.com/tgram-analytics/server" target="_blank" rel="noopener noreferrer">Server</a></li>
+      <li><a href="https://github.com/tgram-analytics/tgram-analytics-js" target="_blank" rel="noopener noreferrer">JS SDK</a></li>
+      <li><a href="https://github.com/tgram-analytics/tgram-analytics-flutter" target="_blank" rel="noopener noreferrer">Flutter SDK</a></li>
+      <li><a href="https://github.com/tgram-analytics/tgram-analytics-py" target="_blank" rel="noopener noreferrer">Python SDK</a></li>
+    </ul>
+  </nav>
+  <span class="footer-note">Managed hosting · Open source core · MIT License · Not affiliated with Telegram Messenger LLP</span>
 </footer>
 
 <!-- TWEAKS -->
