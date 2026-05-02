@@ -883,15 +883,15 @@ footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:32
       <div class="sdk-card active-card" onclick="selectSdk('js',this)">
         <div class="sdk-card-top">
           <span class="sdk-lang-badge">JS / TS</span>
-          <span class="sdk-name">tgram-analytics-js</span>
+          <span class="sdk-name">tgram-analytics</span>
         </div>
         <div class="sdk-desc">Add the script, initialize with your key, then track events with one line.</div>
-        <div class="sdk-install">npm install tgram-analytics-js</div>
+        <div class="sdk-install">npm install tgram-analytics</div>
       </div>
       <div class="sdk-card" onclick="selectSdk('flutter',this)">
         <div class="sdk-card-top">
           <span class="sdk-lang-badge">Dart / Flutter</span>
-          <span class="sdk-name">tgram-analytics-flutter</span>
+          <span class="sdk-name">tgram_analytics</span>
         </div>
         <div class="sdk-desc">Initialize in main(), then track app events from screens, services, or purchase flows.</div>
         <div class="sdk-install">flutter pub add tgram_analytics</div>
@@ -899,10 +899,10 @@ footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:32
       <div class="sdk-card" onclick="selectSdk('py',this)">
         <div class="sdk-card-top">
           <span class="sdk-lang-badge">Python</span>
-          <span class="sdk-name">tgram-analytics-py</span>
+          <span class="sdk-name">tgram-analytics</span>
         </div>
         <div class="sdk-desc">Track backend events like subscription changes, jobs, imports, and errors.</div>
-        <div class="sdk-install">pip install tgram-analytics-py</div>
+        <div class="sdk-install">pip install tgram-analytics</div>
       </div>
     </div>
     <div>
@@ -969,7 +969,7 @@ tga.<span class="fn">track</span>(
         <span style="color:var(--text)">Wire tgram-analytics on myshop.com</span>
         <span class="mcp-role">Agent → MCP</span>
         <span style="color:var(--tg)">tgram.setup</span>({ project: <span style="color:#c3e88d">"myshop.com"</span> })
-        <span style="color:var(--tg)">tgram.track</span>({ event: <span style="color:#c3e88d">"purchase"</span>, amount: 49 })
+        <span style="color:var(--tg)">tgram.track</span>({ event_name: <span style="color:#c3e88d">"purchase"</span>, amount: 49 })
         <span style="color:var(--tg)">tgram.query</span>({ report: <span style="color:#c3e88d">"signups this week"</span> })
         <span class="mcp-role">Telegram</span>
         <span style="color:var(--green)">✓</span> Project ready — <span style="color:var(--tg)">342 signups</span> this week
