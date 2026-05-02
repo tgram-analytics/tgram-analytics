@@ -517,28 +517,26 @@ footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:32
 </style>
 
 <!-- tgram-analytics — visitor + click tracking -->
-<script src="https://unpkg.com/tgram-analytics/dist/index.global.js" defer></script>
-<script>
-  window.addEventListener('DOMContentLoaded', function () {
-    if (!window.TGA) return;
-    window.TGA.init('proj_6799321fcad7717e82da6e3e59524023bca75e44e406f6725f58379b698e7ccd', {
-      serverUrl: 'https://tg-analytics.leorigna.com',
-    });
-    document.addEventListener('click', function (e) {
-      var el = e.target.closest('a, button');
-      if (!el) return;
-      var label = (el.getAttribute('aria-label') || el.innerText || '').trim().slice(0, 80);
-      var href = el.tagName === 'A' ? el.getAttribute('href') : null;
-      var external = href && /^https?:\/\//i.test(href) && !href.includes(location.host);
-      window.TGA.track('click', {
-        tag: el.tagName.toLowerCase(),
-        label: label,
-        href: href,
-        external: !!external,
-        section: (el.closest('section,nav,footer') || {}).id || null,
-      });
-    }, { capture: true });
+<script type="module">
+  import TGA from 'https://esm.sh/tgram-analytics@0.1.0';
+  window.TGA = TGA;
+  TGA.init('proj_6799321fcad7717e82da6e3e59524023bca75e44e406f6725f58379b698e7ccd', {
+    serverUrl: 'https://tg-analytics.leorigna.com',
   });
+  document.addEventListener('click', (e) => {
+    const el = e.target.closest('a, button');
+    if (!el) return;
+    const label = (el.getAttribute('aria-label') || el.innerText || '').trim().slice(0, 80);
+    const href = el.tagName === 'A' ? el.getAttribute('href') : null;
+    const external = href && /^https?:\/\//i.test(href) && !href.includes(location.host);
+    TGA.track('click', {
+      tag: el.tagName.toLowerCase(),
+      label,
+      href,
+      external: !!external,
+      section: (el.closest('section,nav,footer') || {}).id || null,
+    });
+  }, { capture: true });
 </script>
 </head>
 <body>
