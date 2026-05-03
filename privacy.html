@@ -143,7 +143,7 @@ footer a:hover{color:var(--text)}
   <main class="content">
     <h1>Privacy Policy</h1>
     <p class="lead">What we collect, how it's processed, where it's stored, and how to delete it. Plain English, no legalese.</p>
-    <p class="meta">Last updated: 2026-05-03</p>
+    <p class="meta">Last updated: 2026-05-03 (rev. 2)</p>
 
     <h2 id="who">Who we are</h2>
     <p>tgram-analytics is an independent, open-source analytics project. The hosted service at <code>tgram-analytics.com</code> and the bot <a href="https://t.me/MyTelegramAnalyticsBot" target="_blank" rel="noopener noreferrer">@MyTelegramAnalyticsBot</a> are operated by a single person. The server source code is public at <a href="https://github.com/tgram-analytics/server" target="_blank" rel="noopener noreferrer">github.com/tgram-analytics/server</a>.</p>
@@ -163,12 +163,13 @@ footer a:hover{color:var(--text)}
 
     <h3>From bot users</h3>
     <ul>
-      <li>Your Telegram <code>user_id</code> and <code>chat_id</code> (so the bot knows who you are and where to reply)</li>
-      <li>Your Telegram username, if you have one set</li>
+      <li>Your numeric Telegram <code>user_id</code>, stored as the unique key for your account</li>
+      <li>Your Telegram <code>chat_id</code>, stored on each project you own (so the bot knows where to send alerts and reports) and on any in-progress conversation state with the bot</li>
       <li>The projects, alerts, funnels, and scheduled reports you create</li>
-      <li>API keys we generate for your projects</li>
+      <li>For each project, only the <strong>SHA-256 hash</strong> of its API key — the raw key is shown to you once at creation and never persisted, so even a database breach wouldn't leak working keys</li>
+      <li>An append-only audit log of administrative actions (create / delete / config change), keyed by your internal account ID. See <a href="#rights">Your rights</a> for how this interacts with account deletion</li>
     </ul>
-    <p>We don't ask for your email, phone number, name, or any payment details. There's no account password — Telegram authenticates you for us.</p>
+    <p>We don't store your Telegram username, display name, or profile photo. We don't ask for your email, phone number, or any payment details. There's no account password — Telegram authenticates you for us.</p>
 
     <h3>From end-visitors of sites/apps using the SDK</h3>
     <p>Each event includes:</p>
@@ -193,12 +194,12 @@ footer a:hover{color:var(--text)}
     <h2 id="retention">How long we keep it</h2>
     <p>Events have a per-project <strong>retention window</strong> (default 90 days). A nightly job deletes anything older. Operators can lower this for their project at any time.</p>
     <p>Bot account data (your Telegram IDs, projects, alerts) stays until you delete it — see below. There's no automatic expiry on accounts.</p>
-    <p>Server logs are kept for a few days for debugging and rotated automatically. They run through a redaction filter that removes API keys and any obvious PII before they're written.</p>
+    <p>Server logs pass through a redaction filter that strips API keys and obvious PII before they're written. They're retained on the host platform under its default rotation; we don't ship them to any third-party log aggregator.</p>
 
     <h2 id="where">Where it lives</h2>
-    <p>Everything runs on a single server hosted in the <strong>European Union</strong>, managed via <a href="https://coolify.io/" target="_blank" rel="noopener noreferrer">Coolify</a>. The data never leaves the EU on our end.</p>
-    <p>The stack is: a FastAPI server, a PostgreSQL database, and a Redis cache, plus a self-hosted chart renderer. All of these run on the same machine; nothing is shipped to third-party data warehouses or analytics services.</p>
-    <p>Bot messages travel through Telegram's infrastructure (see <a href="#subprocessors">Sub-processors</a>).</p>
+    <p>The bot, ingestion API, and database all run on a single server hosted in the <strong>European Union</strong>, managed via <a href="https://coolify.io/" target="_blank" rel="noopener noreferrer">Coolify</a>. Event data and bot account data don't leave the EU on our end.</p>
+    <p>The stack on that server is: a FastAPI app and a PostgreSQL database, plus a self-hosted chart renderer (<a href="https://quickchart.io/" target="_blank" rel="noopener noreferrer">QuickChart</a>) running as a separate container on the same host. Nothing is shipped to third-party data warehouses or analytics services.</p>
+    <p>Bot messages necessarily travel through Telegram's infrastructure. The marketing website at <code>tgram-analytics.com</code> is served separately by GitHub Pages and pulls fonts and the JS SDK bundle from public CDNs — see <a href="#subprocessors">Sub-processors</a> for the full picture.</p>
 
     <h2 id="rights">Your rights and how to exercise them</h2>
     <p>Under the GDPR you have rights to access, correct, delete, port, or object to processing of your personal data. Here's how to actually do that with us:</p>
@@ -206,7 +207,7 @@ footer a:hover{color:var(--text)}
     <h3>If you're a bot user (you created projects)</h3>
     <ul>
       <li><strong>Delete one project and all its events:</strong> open the bot, send <code>/projects</code>, pick the project, choose <em>Delete</em>. The deletion cascades — every event ever sent to that project is gone immediately</li>
-      <li><strong>Delete everything (account + all projects):</strong> email us (see <a href="#contact">below</a>) or DM the bot. We'll do it manually within a few business days</li>
+      <li><strong>Delete everything (account + all projects):</strong> email us (see <a href="#contact">below</a>) or DM the bot. We'll process it manually as soon as reasonably practicable. <strong>Caveat:</strong> we keep an append-only audit log of administrative actions (create / delete / config changes) for security and abuse-prevention purposes. After we delete your account, those rows survive but become orphaned — the only identifier left is an internal random UUID with no remaining link to your Telegram identity</li>
       <li><strong>Export your data:</strong> email us. We'll send a JSON dump of your projects and events</li>
     </ul>
 
@@ -218,13 +219,26 @@ footer a:hover{color:var(--text)}
     <p>If you think we've mishandled your data, please email us first so we can fix it. You also have the right to lodge a complaint with your national EU data protection authority.</p>
 
     <h2 id="subprocessors">Sub-processors</h2>
-    <p>These are the third parties that touch your data on the way through:</p>
+    <p>These are the third parties that touch your data on the way through. We've split them by which surface they apply to, because the bot/API and the marketing website have different exposures.</p>
+
+    <h3>Bot and ingestion API (where event and account data live)</h3>
     <ul>
-      <li><strong><a href="https://coolify.io/" target="_blank" rel="noopener noreferrer">Coolify</a></strong> — hosting platform for the server, database, and Redis. Located in the EU</li>
+      <li><strong><a href="https://coolify.io/" target="_blank" rel="noopener noreferrer">Coolify</a></strong> — hosting platform for the server and database. Located in the EU</li>
       <li><strong><a href="https://telegram.org/privacy" target="_blank" rel="noopener noreferrer">Telegram</a></strong> — bot transport. Every message you send to the bot, and every reply we send back, transits Telegram's servers</li>
-      <li><strong><a href="https://quickchart.io/" target="_blank" rel="noopener noreferrer">QuickChart</a></strong> — chart image renderer. Runs in the same container; no data leaves our infrastructure</li>
+      <li><strong><a href="https://quickchart.io/" target="_blank" rel="noopener noreferrer">QuickChart</a></strong> — open-source chart image renderer, self-hosted as a separate container on the same host as the bot. Chart requests don't leave our infrastructure</li>
     </ul>
-    <p>That's the whole list. We don't use Stripe, AWS, GCP, Cloudflare, Google Fonts on the bot/API side, or any analytics or marketing pixel.</p>
+
+    <h3>Marketing website (<code>tgram-analytics.com</code>)</h3>
+    <p>If you're just reading these pages, your browser also makes requests to:</p>
+    <ul>
+      <li><strong><a href="https://docs.github.com/en/pages" target="_blank" rel="noopener noreferrer">GitHub Pages</a></strong> — hosts the website itself. GitHub sees your IP when you load any page on this site</li>
+      <li><strong><a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Google Fonts</a></strong> — the website loads two fonts (JetBrains Mono, Space Grotesk) from <code>fonts.googleapis.com</code> and <code>fonts.gstatic.com</code>. Google sees your IP when fonts are fetched. We're aware this isn't ideal for an EU-positioned privacy page; self-hosting the fonts is on the to-do list</li>
+      <li><strong><a href="https://esm.sh" target="_blank" rel="noopener noreferrer">esm.sh</a></strong> — the homepage and docs page load our own JS SDK bundle from this CDN to dogfood our analytics. esm.sh sees your IP when the bundle is fetched. The privacy page itself does not load any JS</li>
+    </ul>
+    <p>If you find this list annoyingly long, fair enough — most of these are commodity website plumbing rather than analytics, but they're third parties and we'd rather over-disclose than under-disclose.</p>
+
+    <h3>What's <em>not</em> on this list</h3>
+    <p>We don't use Stripe (no payments yet), AWS, GCP, Cloudflare, Plausible, Google Analytics, Meta Pixel, Hotjar, Sentry, or any other analytics/marketing/error-tracking service.</p>
 
     <h2 id="changes">Changes to this policy</h2>
     <p>If we materially change what we collect, where it lives, or who has access to it, we'll update the date at the top of this page and try to notify active bot users via the bot. Minor wording or clarification edits don't get an announcement.</p>
