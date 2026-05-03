@@ -23,4 +23,10 @@
       <image:title>tgram-analytics documentation</image:title>
     </image:image>
   </url>
+  <url>
+    <loc>https://tgram-analytics.com/privacy.html</loc>
+    <lastmod>2026-05-03</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
 </urlset>

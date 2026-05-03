@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="tgram-analytics privacy policy — what we collect, how it's processed, where it's stored, and how to delete it. Plain English, no legalese.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://tgram-analytics.com/privacy.html">
+
+<!-- Favicons -->
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" type="image/x-icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#090c12">
+
+<!-- Open Graph -->
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://tgram-analytics.com/privacy.html">
+<meta property="og:title" content="Privacy Policy — tgram-analytics">
+<meta property="og:description" content="What we collect, how it's processed, where it's stored, and how to delete it.">
+<meta property="og:image" content="https://tgram-analytics.com/og-image.png">
+<meta property="og:site_name" content="tgram-analytics">
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Privacy Policy — tgram-analytics">
+<meta name="twitter:description" content="What we collect, how it's processed, where it's stored, and how to delete it.">
+<meta name="twitter:image" content="https://tgram-analytics.com/og-image.png">
+
+<title>Privacy Policy — tgram-analytics</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:      #090c12;
+  --bg2:     #0f1420;
+  --bg3:     #141b28;
+  --border:  rgba(255,255,255,0.07);
+  --border2: rgba(255,255,255,0.13);
+  --tg:      #2AABEE;
+  --tg2:     #1a8fc7;
+  --tg-dim:  rgba(42,171,238,0.12);
+  --green:   #00c48c;
+  --red:     #f87171;
+  --yellow:  #fbbf24;
+  --text:    #e2e8f0;
+  --muted:   #6b7a8e;
+  --dim:     #3a4450;
+  --mono:    'JetBrains Mono', monospace;
+  --sans:    'Space Grotesk', sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--sans);font-size:15px;line-height:1.7;overflow-x:hidden}
+
+body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(rgba(255,255,255,0.018) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.018) 1px,transparent 1px);background-size:52px 52px;pointer-events:none;z-index:0}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:0 48px;height:60px;border-bottom:1px solid var(--border);background:rgba(9,12,18,0.88);backdrop-filter:blur(14px)}
+.nav-logo{font-family:var(--mono);font-size:14px;font-weight:600;color:var(--text);text-decoration:none;display:flex;align-items:center;gap:10px}
+.nav-logo .tg-dot{width:8px;height:8px;border-radius:50%;background:var(--tg);display:inline-block}
+.nav-links{display:flex;align-items:center;gap:28px;list-style:none}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:14px;transition:color .2s}
+.nav-links a:hover{color:var(--text)}
+
+.layout{position:relative;z-index:1;display:grid;grid-template-columns:220px 1fr;gap:48px;max-width:1100px;margin:0 auto;padding:100px 48px 80px}
+.sidebar{position:sticky;top:100px;height:fit-content}
+.sidebar-title{font-family:var(--mono);font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;margin-bottom:16px}
+.sidebar-links{list-style:none;display:flex;flex-direction:column;gap:8px}
+.sidebar-links a{color:var(--muted);text-decoration:none;font-size:14px;padding:6px 0;border-left:2px solid transparent;padding-left:12px;margin-left:-12px;transition:all .2s}
+.sidebar-links a:hover{color:var(--text)}
+
+.content{min-width:0}
+.content h1{font-size:32px;font-weight:700;letter-spacing:-.03em;margin-bottom:12px}
+.content .lead{color:var(--muted);font-size:17px;margin-bottom:12px;line-height:1.7}
+.content .meta{font-family:var(--mono);font-size:12px;color:var(--dim);margin-bottom:48px}
+.content h2{font-size:22px;font-weight:600;margin-top:48px;margin-bottom:16px;padding-bottom:12px;border-bottom:1px solid var(--border)}
+.content h3{font-size:16px;font-weight:600;margin-top:28px;margin-bottom:10px;color:var(--tg)}
+.content p{margin-bottom:16px;color:var(--muted)}
+.content p strong{color:var(--text);font-weight:600}
+.content code{font-family:var(--mono);font-size:13px;background:var(--bg2);padding:2px 6px;border-radius:4px;color:var(--tg)}
+.content a{color:var(--tg);text-decoration:none;border-bottom:1px solid rgba(42,171,238,.3)}
+.content a:hover{border-bottom-color:var(--tg)}
+.content ul{margin:12px 0 16px 20px;color:var(--muted)}
+.content li{margin-bottom:8px}
+.content .callout{border:1px solid var(--border2);background:var(--bg2);border-radius:10px;padding:16px 20px;margin:20px 0;color:var(--muted);font-size:14px}
+.content .callout strong{color:var(--text)}
+
+footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:32px 48px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;max-width:1100px;margin:60px auto 0;color:var(--muted);font-size:13px}
+footer a{color:var(--muted);text-decoration:none}
+footer a:hover{color:var(--text)}
+.footer-links{display:flex;gap:20px;list-style:none}
+
+@media(max-width:900px){
+  nav{padding:0 16px;height:56px}
+  .nav-logo{font-size:13px}
+  .nav-links{gap:14px;overflow-x:auto;flex-wrap:nowrap;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+  .nav-links::-webkit-scrollbar{display:none}
+  .nav-links a{font-size:13px;white-space:nowrap}
+  .layout{grid-template-columns:1fr;gap:0;padding:88px 20px 60px}
+  .sidebar{display:none}
+  .content h1{font-size:26px}
+  .content .lead{font-size:15px}
+  .content h2{font-size:19px;margin-top:36px}
+  footer{padding:24px 20px;flex-direction:column;text-align:center}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">
+    <span class="tg-dot"></span>
+    tgram-analytics
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="docs.html">Docs</a></li>
+    <li><a href="https://github.com/tgram-analytics" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+    <li><a href="https://t.me/MyTelegramAnalyticsBot" target="_blank" rel="noopener noreferrer" style="color:var(--tg);font-weight:500">Open bot ↗</a></li>
+  </ul>
+</nav>
+
+<div class="layout">
+  <aside class="sidebar">
+    <div class="sidebar-title">On this page</div>
+    <ul class="sidebar-links">
+      <li><a href="#who">Who we are</a></li>
+      <li><a href="#roles">Two situations</a></li>
+      <li><a href="#what">What we collect</a></li>
+      <li><a href="#retention">How long we keep it</a></li>
+      <li><a href="#where">Where it lives</a></li>
+      <li><a href="#rights">Your rights</a></li>
+      <li><a href="#subprocessors">Sub-processors</a></li>
+      <li><a href="#changes">Changes</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </aside>
+
+  <main class="content">
+    <h1>Privacy Policy</h1>
+    <p class="lead">What we collect, how it's processed, where it's stored, and how to delete it. Plain English, no legalese.</p>
+    <p class="meta">Last updated: 2026-05-03</p>
+
+    <h2 id="who">Who we are</h2>
+    <p>tgram-analytics is an independent, open-source analytics project. The hosted service at <code>tgram-analytics.com</code> and the bot <a href="https://t.me/MyTelegramAnalyticsBot" target="_blank" rel="noopener noreferrer">@MyTelegramAnalyticsBot</a> are operated by a single person. The server source code is public at <a href="https://github.com/tgram-analytics/server" target="_blank" rel="noopener noreferrer">github.com/tgram-analytics/server</a>.</p>
+    <p>If you'd rather not trust a hosted service at all, you can self-host the same software on your own infrastructure. This policy applies only to the hosted version.</p>
+
+    <h2 id="roles">Two situations, two relationships</h2>
+    <p>Whether we hold any data about you depends on which side of the system you're on:</p>
+
+    <h3>1. You use the Telegram bot</h3>
+    <p>If you talk to <a href="https://t.me/MyTelegramAnalyticsBot" target="_blank" rel="noopener noreferrer">@MyTelegramAnalyticsBot</a> to create projects, set alerts, or run reports, we are the <strong>controller</strong> of the small amount of account data described below. You're our user.</p>
+
+    <h3>2. You visit a website or app that uses tgram-analytics</h3>
+    <p>If a site or app you visit ships our SDK, the events from your visit flow into <em>that operator's</em> project. The operator decides what to track, what their retention is, and what to do with it. Legally, they are the <strong>controller</strong>; we are the <strong>processor</strong> acting on their behalf.</p>
+    <div class="callout"><strong>Bottom line for visitors:</strong> if you want a copy of, or want to delete, events about you stored under someone else's project, contact that operator first. They can delete the entire project (which wipes every event in it) instantly from their Telegram bot. We can also help out-of-band — see <a href="#rights">Your rights</a>.</div>
+
+    <h2 id="what">What we collect</h2>
+
+    <h3>From bot users</h3>
+    <ul>
+      <li>Your Telegram <code>user_id</code> and <code>chat_id</code> (so the bot knows who you are and where to reply)</li>
+      <li>Your Telegram username, if you have one set</li>
+      <li>The projects, alerts, funnels, and scheduled reports you create</li>
+      <li>API keys we generate for your projects</li>
+    </ul>
+    <p>We don't ask for your email, phone number, name, or any payment details. There's no account password — Telegram authenticates you for us.</p>
+
+    <h3>From end-visitors of sites/apps using the SDK</h3>
+    <p>Each event includes:</p>
+    <ul>
+      <li>An <strong>event name</strong> chosen by the operator (e.g. <code>signup</code>, <code>page_view</code>)</li>
+      <li>A <strong>session ID</strong>, generated client-side and stored in <code>sessionStorage</code> — it lives until you close the tab. No cookies, no localStorage, no fingerprinting</li>
+      <li>For pageviews: the URL and referrer of the page</li>
+      <li>An optional <strong>properties</strong> bag (capped at 4 KB) with whatever the operator chose to attach. Keys named <code>email</code>, <code>phone</code>, <code>password</code>, <code>token</code>, <code>credit_card</code>, <code>ssn</code>, <code>iban</code>, etc. are <strong>automatically dropped</strong> by the server before storage</li>
+      <li>A <strong>visitor hash</strong> — a one-way SHA-256 of <code>(daily_salt + project_id + ip + user_agent)</code>, truncated to 16 hex characters. The salt rotates at midnight UTC and yesterday's salt is unrecoverable, so the same visitor on the same site gets a different hash every day. We use this to count unique visitors without storing IPs</li>
+      <li>Coarse derived fields: browser family, OS family, device type (mobile / tablet / desktop / bot)</li>
+    </ul>
+
+    <h3>What we explicitly do <em>not</em> store</h3>
+    <ul>
+      <li><strong>Raw IP addresses</strong> — used only in-memory to compute the visitor hash, then discarded</li>
+      <li><strong>Raw User-Agent strings</strong> — parsed for the coarse derived fields above, then discarded</li>
+      <li><strong>Cookies</strong> — the browser SDK uses <code>sessionStorage</code> only</li>
+      <li><strong>Cross-site identifiers</strong> — the visitor hash is bound to a single project, so the same visitor on two different sites yields different hashes</li>
+      <li><strong>Third-party trackers</strong> — no ad networks, no Google/Meta pixels, no analytics-on-analytics</li>
+    </ul>
+
+    <h2 id="retention">How long we keep it</h2>
+    <p>Events have a per-project <strong>retention window</strong> (default 90 days). A nightly job deletes anything older. Operators can lower this for their project at any time.</p>
+    <p>Bot account data (your Telegram IDs, projects, alerts) stays until you delete it — see below. There's no automatic expiry on accounts.</p>
+    <p>Server logs are kept for a few days for debugging and rotated automatically. They run through a redaction filter that removes API keys and any obvious PII before they're written.</p>
+
+    <h2 id="where">Where it lives</h2>
+    <p>Everything runs on a single server hosted in the <strong>European Union</strong>, managed via <a href="https://coolify.io/" target="_blank" rel="noopener noreferrer">Coolify</a>. The data never leaves the EU on our end.</p>
+    <p>The stack is: a FastAPI server, a PostgreSQL database, and a Redis cache, plus a self-hosted chart renderer. All of these run on the same machine; nothing is shipped to third-party data warehouses or analytics services.</p>
+    <p>Bot messages travel through Telegram's infrastructure (see <a href="#subprocessors">Sub-processors</a>).</p>
+
+    <h2 id="rights">Your rights and how to exercise them</h2>
+    <p>Under the GDPR you have rights to access, correct, delete, port, or object to processing of your personal data. Here's how to actually do that with us:</p>
+
+    <h3>If you're a bot user (you created projects)</h3>
+    <ul>
+      <li><strong>Delete one project and all its events:</strong> open the bot, send <code>/projects</code>, pick the project, choose <em>Delete</em>. The deletion cascades — every event ever sent to that project is gone immediately</li>
+      <li><strong>Delete everything (account + all projects):</strong> email us (see <a href="#contact">below</a>) or DM the bot. We'll do it manually within a few business days</li>
+      <li><strong>Export your data:</strong> email us. We'll send a JSON dump of your projects and events</li>
+    </ul>
+
+    <h3>If you're a visitor of a site that uses tgram-analytics</h3>
+    <p>The site operator is your first point of contact — they decide what gets tracked and have direct, instant deletion controls (deleting the project wipes every event in it).</p>
+    <p>If the operator is unresponsive or you want to escalate, email us. Because we don't store IPs or names, locating events that belong to one specific visitor is best-effort: in practice, the cleanest way to honor an erasure request for end-visitor data is for the operator to delete the project.</p>
+
+    <h3>Complaints</h3>
+    <p>If you think we've mishandled your data, please email us first so we can fix it. You also have the right to lodge a complaint with your national EU data protection authority.</p>
+
+    <h2 id="subprocessors">Sub-processors</h2>
+    <p>These are the third parties that touch your data on the way through:</p>
+    <ul>
+      <li><strong><a href="https://coolify.io/" target="_blank" rel="noopener noreferrer">Coolify</a></strong> — hosting platform for the server, database, and Redis. Located in the EU</li>
+      <li><strong><a href="https://telegram.org/privacy" target="_blank" rel="noopener noreferrer">Telegram</a></strong> — bot transport. Every message you send to the bot, and every reply we send back, transits Telegram's servers</li>
+      <li><strong><a href="https://quickchart.io/" target="_blank" rel="noopener noreferrer">QuickChart</a></strong> — chart image renderer. Runs in the same container; no data leaves our infrastructure</li>
+    </ul>
+    <p>That's the whole list. We don't use Stripe, AWS, GCP, Cloudflare, Google Fonts on the bot/API side, or any analytics or marketing pixel.</p>
+
+    <h2 id="changes">Changes to this policy</h2>
+    <p>If we materially change what we collect, where it lives, or who has access to it, we'll update the date at the top of this page and try to notify active bot users via the bot. Minor wording or clarification edits don't get an announcement.</p>
+
+    <h2 id="contact">Contact</h2>
+    <p>Questions, requests, complaints — all to: <a href="mailto:rignanese.leo@gmail.com">rignanese.leo@gmail.com</a>.</p>
+    <p>Or DM <a href="https://t.me/MyTelegramAnalyticsBot" target="_blank" rel="noopener noreferrer">@MyTelegramAnalyticsBot</a> directly. The bot is operated by a human (just one).</p>
+
+  </main>
+</div>
+
+<footer>
+  <span>tgram-analytics · Hosted in the EU · Open source core</span>
+  <ul class="footer-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="docs.html">Docs</a></li>
+    <li><a href="https://github.com/tgram-analytics" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+  </ul>
+</footer>
+
+</body>
+</html>
