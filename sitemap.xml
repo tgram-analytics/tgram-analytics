@@ -4,18 +4,18 @@
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://tgram-analytics.com/</loc>
-    <lastmod>2026-04-28</lastmod>
+    <lastmod>2026-06-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <image:image>
       <image:loc>https://tgram-analytics.com/og-image.png</image:loc>
-      <image:title>tgram-analytics — Telegram analytics for SaaS and indie projects</image:title>
-      <image:caption>The best Telegram analytics platform for SaaS, indie devs, and side hustles.</image:caption>
+      <image:title>tgram-analytics — your app's signups, sales, and errors as Telegram messages</image:title>
+      <image:caption>Event tracking for SaaS, indie devs, and side hustles — real-time alerts and reports delivered via Telegram bot.</image:caption>
     </image:image>
   </url>
   <url>
     <loc>https://tgram-analytics.com/docs.html</loc>
-    <lastmod>2026-04-28</lastmod>
+    <lastmod>2026-06-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <image:image>
