@@ -188,6 +188,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
       <li><a href="#quickstart" class="active">Quick Start</a></li>
       <li><a href="#sdk">SDK Setup</a></li>
       <li><a href="#commands">Bot Commands</a></li>
+      <li><a href="#mcp">AI Assistant (MCP)</a></li>
     </ul>
     <div class="sidebar-title" style="margin-top:32px">SDKs</div>
     <ul class="sidebar-links">
@@ -315,6 +316,69 @@ tga.<span class="fn">track</span>(
           <td><code>/help</code></td>
           <td>Show all available commands</td>
           <td><code>/help</code></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2 id="mcp">AI Assistant <span class="badge">MCP</span></h2>
+    <p>Connect <strong>Claude</strong> — or any <a href="https://modelcontextprotocol.io" target="_blank" rel="noopener noreferrer" style="color:var(--tg)">MCP</a> client — to your tgram-analytics account and ask about your analytics in plain language. Sign in once with Telegram; from then on the assistant can read your projects and events, pull reports, and help you wire up tracking. Access is <strong>read-only and scoped to the projects you own</strong> — no API keys to paste.</p>
+
+    <h3>Endpoint</h3>
+    <p>Point any MCP client at this URL. Authentication is handled for you over OAuth — you log in with Telegram, the same account you use with the bot.</p>
+<pre><span class="s">https://mcp.tgram-analytics.com/mcp</span></pre>
+
+    <h3>Claude Desktop &amp; claude.ai</h3>
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-body">
+        <h4>Add a custom connector</h4>
+        <p>Open <strong>Settings → Connectors → Add custom connector</strong>, paste <code>https://mcp.tgram-analytics.com/mcp</code>, and save.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-body">
+        <h4>Sign in with Telegram</h4>
+        <p>Click <strong>Connect</strong>, then <strong>Log in with Telegram</strong> and approve. The connector is now linked to your projects.</p>
+      </div>
+    </div>
+
+    <h3>Claude Code, Cursor &amp; other MCP clients</h3>
+    <p>Add the server to your client's MCP config (for example <code>.mcp.json</code>), then run its authenticate step — a browser opens for the one-time Telegram login.</p>
+<pre>{
+  <span class="tgb">"mcpServers"</span>: {
+    <span class="tgb">"tgram-analytics"</span>: {
+      <span class="tgb">"type"</span>: <span class="s">"http"</span>,
+      <span class="tgb">"url"</span>: <span class="s">"https://mcp.tgram-analytics.com/mcp"</span>
+    }
+  }
+}</pre>
+
+    <h3>What you can ask</h3>
+    <p>Once connected, just talk to your assistant. A few examples:</p>
+    <ul>
+      <li><em>"How many signups did myapp.com get this week vs last?"</em></li>
+      <li><em>"Show me the top pages for myshop.com over the last 30 days."</em></li>
+      <li><em>"What events am I tracking on myapp.com?"</em></li>
+      <li><em>"Give me the JavaScript snippet to add tgram-analytics to my site."</em></li>
+      <li><em>"Verify my integration is receiving events."</em></li>
+    </ul>
+    <p>Under the hood the assistant calls these tools:</p>
+    <table>
+      <thead>
+        <tr>
+          <th>Area</th>
+          <th>Tools</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Query analytics</td>
+          <td><code>query_events</code>, <code>compare_periods</code>, <code>top_pages</code>, <code>recent_events</code>, <code>list_event_names</code></td>
+        </tr>
+        <tr>
+          <td>Projects &amp; setup</td>
+          <td><code>list_projects</code>, <code>get_project</code>, <code>get_integration_guide</code>, <code>get_sdk_snippet</code>, <code>verify_integration</code>, <code>rotate_api_key</code></td>
         </tr>
       </tbody>
     </table>

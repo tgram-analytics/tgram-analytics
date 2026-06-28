@@ -428,6 +428,10 @@ pre{padding:22px 24px;font-family:var(--mono);font-size:13px;line-height:1.8;ove
 .mcp-example{padding:24px;font-family:var(--mono);font-size:12px;line-height:1.9;color:var(--text)}
 .mcp-example .mcp-role{color:var(--muted);font-size:11px;display:block;margin-top:10px}
 .mcp-example .mcp-role:first-child{margin-top:0}
+.mcp-connect{padding:16px 24px;border-top:1px solid var(--border);display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px;font-size:13px;color:var(--muted)}
+.mcp-connect code{font-family:var(--mono);font-size:12px;color:var(--tg);background:var(--bg);padding:2px 8px;border-radius:4px}
+.mcp-connect a{color:var(--tg);text-decoration:none;font-weight:500;white-space:nowrap}
+.mcp-connect a:hover{text-decoration:underline}
 
 /* ── BOT COMMANDS ── */
 .commands-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
@@ -961,19 +965,26 @@ tga.<span class="fn">track</span>(
     </div>
     <div class="mcp-body">
       <div class="mcp-desc">
-        <p>MCP lets AI agents set up projects, track events, and query data — all through conversation. No manual SDK wiring, no dashboard diving.</p>
-        <p>Ask your agent to wire up analytics or run reports via MCP. The agent handles setup, tracking, and queries for you.</p>
+        <p>Connect Claude to your account and ask about your analytics in plain language — signups, top pages, week-over-week trends. No dashboard diving.</p>
+        <p>One command (or a custom connector) plus a one-time Telegram login, and you're set. It can also fetch SDK snippets and verify your integration.</p>
       </div>
       <div class="mcp-example">
+        <span class="mcp-role">Install (Claude Code)</span>
+        <span style="color:var(--text)">claude mcp add --transport http tgram-analytics</span>
+        <span style="color:#c3e88d">https://mcp.tgram-analytics.com/mcp</span>
+        <span style="color:var(--muted)">↳ then sign in with Telegram</span>
         <span class="mcp-role">You</span>
-        <span style="color:var(--text)">Wire tgram-analytics on myshop.com</span>
-        <span class="mcp-role">Agent → MCP</span>
-        <span style="color:var(--tg)">tgram.setup</span>({ project: <span style="color:#c3e88d">"myshop.com"</span> })
-        <span style="color:var(--tg)">tgram.track</span>({ event_name: <span style="color:#c3e88d">"purchase"</span>, amount: 49 })
-        <span style="color:var(--tg)">tgram.query</span>({ report: <span style="color:#c3e88d">"signups this week"</span> })
-        <span class="mcp-role">Telegram</span>
-        <span style="color:var(--green)">✓</span> Project ready — <span style="color:var(--tg)">342 signups</span> this week
+        <span style="color:var(--text)">How are signups on myshop.com this week?</span>
+        <span class="mcp-role">Claude → MCP</span>
+        <span style="color:var(--tg)">query_events</span>({ event: <span style="color:#c3e88d">"signup"</span>, period: <span style="color:#c3e88d">"7d"</span> })
+        <span style="color:var(--tg)">compare_periods</span>({ event: <span style="color:#c3e88d">"signup"</span>, period: <span style="color:#c3e88d">"7d"</span> })
+        <span class="mcp-role">Claude</span>
+        <span style="color:var(--green)">342 signups</span> this week — up <span style="color:var(--tg)">18%</span> vs last
       </div>
+    </div>
+    <div class="mcp-connect">
+      <span>Connect at <code>mcp.tgram-analytics.com/mcp</code> — sign in with Telegram, no keys to paste.</span>
+      <a href="docs.html#mcp">Setup guide →</a>
     </div>
   </div>
 </section>
