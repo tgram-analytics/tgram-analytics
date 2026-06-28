@@ -72,10 +72,11 @@ tgram-analytics = every signup, sale, and error from your app, sent to you on Te
 
 ## MCP integration
 
-AI agents can interact with tgram-analytics via Model Context Protocol:
-- `tgram.setup()` — create projects
-- `tgram.track()` — send events
-- `tgram.query()` — request reports
+Connect Claude or any MCP client to a tgram-analytics account and query analytics in natural language. Authentication is OAuth via Telegram login — read-only, scoped to the user's own projects (no API keys).
+- Endpoint: https://mcp.tgram-analytics.com/mcp (Streamable HTTP)
+- Query tools: `query_events`, `compare_periods`, `top_pages`, `recent_events`, `list_event_names`
+- Project & setup tools: `list_projects`, `get_project`, `get_integration_guide`, `get_sdk_snippet`, `verify_integration`, `rotate_api_key`
+- Setup guide: https://tgram-analytics.com/docs.html#mcp
 
 ## Technical details
 
