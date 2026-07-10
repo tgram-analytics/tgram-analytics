@@ -143,7 +143,7 @@
         "Server-side, web, and mobile event tracking",
         "Privacy-first: no cookies required, no third-party trackers"
       ],
-      "softwareVersion": "1.0",
+      "softwareVersion": "0.2.0",
       "softwareRequirements": "Modern browser, Node 18+, Python 3.9+, or Dart 3+",
       "programmingLanguage": ["JavaScript", "TypeScript", "Dart", "Python"],
       "downloadUrl": "https://github.com/tgram-analytics",
@@ -589,10 +589,10 @@ footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:32
 
 <!-- tgram-analytics — visitor + click tracking -->
 <script type="module">
-  import TGA from 'https://esm.sh/tgram-analytics@0.1.0';
+  import TGA from 'https://esm.sh/tgram-analytics@0.2.0';
   window.TGA = TGA;
   TGA.init('proj_ba2a922bed0eca59c5788a3d2d9ddca29bf5a1d764dc363f6b4ba9f5eaa0d36b', {
-    serverUrl: 'https://tg-analytics.leorigna.com',
+    serverUrl: 'https://api.tgram-analytics.com',
   });
   document.addEventListener('click', (e) => {
     const el = e.target.closest('a, button');
@@ -965,8 +965,10 @@ footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:32
 <pre><span class="c">&lt;!-- hosted by default, self-host when needed --&gt;</span>
 <span class="k">&lt;script</span> <span class="fn">src</span>=<span class="s">"dist/tga.min.js"</span><span class="k">&gt;&lt;/script&gt;</span>
 <span class="k">&lt;script&gt;</span>
-  <span class="tgb">TGA</span>.<span class="fn">init</span>(<span class="s">"proj_xxx"</span>);
-  <span class="tgb">TGA</span>.<span class="fn">track</span>(<span class="s">"signup"</span>, sessionId, {
+  <span class="tgb">TGA</span>.<span class="fn">init</span>(<span class="s">"proj_xxx"</span>, {
+    serverUrl: <span class="s">"https://api.tgram-analytics.com"</span>
+  });
+  <span class="tgb">TGA</span>.<span class="fn">track</span>(<span class="s">"signup"</span>, {
     plan: <span class="s">"pro"</span>
   });
 <span class="k">&lt;/script&gt;</span>
@@ -975,7 +977,8 @@ footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:32
         <div id="pane-flutter" class="sdk-pane">
 <pre><span class="c">// In main():</span>
 <span class="k">void</span> <span class="fn">main</span>() {
-  <span class="tgb">TGA</span>.<span class="fn">init</span>(<span class="s">'proj_xxx'</span>);
+  <span class="tgb">TGA</span>.<span class="fn">init</span>(<span class="s">'proj_xxx'</span>,
+    <span class="s">'https://api.tgram-analytics.com'</span>);
   <span class="fn">runApp</span>(<span class="fn">MyApp</span>());
 }
 
@@ -987,7 +990,8 @@ footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:32
 <pre><span class="k">from</span> tgram_analytics <span class="k">import</span> <span class="tgb">TGA</span>
 
 tga = <span class="tgb">TGA</span>(
-  <span class="s">"proj_xxx"</span>
+  <span class="s">"proj_xxx"</span>,
+  <span class="s">"https://api.tgram-analytics.com"</span>
 )
 
 tga.<span class="fn">track</span>(
@@ -1375,7 +1379,7 @@ const msgs = [
   { type:'user', text:'/report signups this week', time:'09:12' },
   { type:'bot', chart:true, time:'09:12' },
   { type:'bot', text:'🔔 <b style="color:#fff">New purchase</b> — Pro plan', time:'14:32' },
-  { type:'user', text:'/alert signup every 10', time:'14:35' },
+  { type:'user', text:'/alerts', time:'14:35' },
   { type:'bot', text:'✅ Alert set. You\'ll get a message every 10 signups.', time:'14:35' },
 ];
 

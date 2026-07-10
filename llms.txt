@@ -21,9 +21,9 @@ tgram-analytics = every signup, sale, and error from your app, sent to you on Te
 
 ### Telegram integration
 - Real-time alerts for important events (errors, churn, payments)
-- Weekly scheduled digests with charts
+- Scheduled digest reports with charts via `/digest`
 - `/report` command for instant reports
-- `/alert` command to subscribe to event thresholds
+- `/alerts` command — interactive menu to configure event alerts
 - Period switching, granularity toggles, period-over-period comparison
 
 ### SDK support
@@ -40,7 +40,7 @@ tgram-analytics = every signup, sale, and error from your app, sent to you on Te
 1. Open `@MyTelegramAnalyticsBot` in Telegram
 2. Create a project: `/add myapp.com`
 3. Receive your project key
-4. Initialize the SDK: `TGA.init("proj_xxx")`
+4. Initialize the SDK: `TGA.init("proj_xxx", { serverUrl: "https://api.tgram-analytics.com" })`
 5. Track events: `TGA.track("signup")`
 
 ## Quick start (self-hosted)
