@@ -21,7 +21,7 @@ tgram-analytics = every signup, sale, and error from your app, sent to you on Te
 
 ### Telegram integration
 - Real-time alerts for important events (errors, churn, payments)
-- Scheduled digest reports with charts via `/digest`
+- On-demand 7-day digest via `/digest` — sessions and alerted-event counts with week-over-week deltas
 - `/report` command for instant reports
 - `/alerts` command — interactive menu to configure event alerts
 - Period switching, granularity toggles, period-over-period comparison

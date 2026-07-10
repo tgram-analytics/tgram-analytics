@@ -902,7 +902,7 @@ footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:32
       <div class="step-card" data-step="03">
         <div class="step-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--tg)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></div>
         <div class="step-title">Ask for reports</div>
-        <div class="step-desc">The bot handles reports, alerts, and scheduled digests exactly like the hosted version.</div>
+        <div class="step-desc">The bot handles reports, alerts, and on-demand digests exactly like the hosted version.</div>
         <div class="step-code">/report signup 7d</div>
       </div>
     </div>
@@ -1380,7 +1380,7 @@ const msgs = [
   { type:'bot', chart:true, time:'09:12' },
   { type:'bot', text:'🔔 <b style="color:#fff">New purchase</b> — Pro plan', time:'14:32' },
   { type:'user', text:'/alerts', time:'14:35' },
-  { type:'bot', text:'✅ Alert set. You\'ll get a message every 10 signups.', time:'14:35' },
+  { type:'bot', text:'⚙️ Watch which event? → <b style="color:#fff">signup</b> · every 10 ✓', time:'14:35' },
 ];
 
 function makeChartSvg() {
