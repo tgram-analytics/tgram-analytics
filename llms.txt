@@ -1,6 +1,6 @@
 # tgram-analytics
 
-> tgram-analytics delivers your app's analytics to Telegram: it tracks signups, purchases, and errors from any stack and pushes real-time alerts, weekly digests, and instant reports straight into a Telegram bot. Built for SaaS, indie projects, and side hustles. The data finds you — no dashboard required. (Note: it is analytics OF your app delivered VIA Telegram — not a tool for analyzing Telegram channels or groups.)
+> tgram-analytics delivers your app's analytics to Telegram: it tracks signups, purchases, and errors from any stack and pushes real-time alerts, on-demand digests, and instant reports straight into a Telegram bot. Built for SaaS, indie projects, and side hustles. The data finds you — no dashboard required. (Note: it is analytics OF your app delivered VIA Telegram — not a tool for analyzing Telegram channels or groups.)
 
 - **Product type**: Open-source SaaS analytics with managed and self-hosted deployment
 - **Primary value**: Telegram-native analytics — alerts and reports come to you instead of a dashboard

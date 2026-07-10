@@ -43,7 +43,7 @@
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://tgram-analytics.com/">
 <meta property="og:title" content="tgram-analytics — Every signup, sale & error, sent to Telegram">
-<meta property="og:description" content="Telegram-native SaaS analytics. Track signups, purchases, and errors with real-time alerts and weekly digests delivered straight to your chat. Open source. First project free.">
+<meta property="og:description" content="Telegram-native SaaS analytics. Track signups, purchases, and errors with real-time alerts pushed to your chat and on-demand digests whenever you ask. Open source. First project free.">
 <meta property="og:image" content="https://tgram-analytics.com/og-image.png">
 <meta property="og:image:secure_url" content="https://tgram-analytics.com/og-image.png">
 <meta property="og:image:type" content="image/png">
@@ -57,7 +57,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:url" content="https://tgram-analytics.com/">
 <meta name="twitter:title" content="tgram-analytics — Every signup, sale & error, sent to Telegram">
-<meta name="twitter:description" content="Telegram-native SaaS analytics. Track signups, purchases, and errors with real-time alerts and weekly digests delivered straight to your chat. Open source.">
+<meta name="twitter:description" content="Telegram-native SaaS analytics. Track signups, purchases, and errors with real-time alerts pushed to your chat and on-demand digests whenever you ask. Open source.">
 <meta name="twitter:image" content="https://tgram-analytics.com/og-image.png">
 <meta name="twitter:image:alt" content="tgram-analytics — your app's signups, sales, and errors as Telegram messages">
 <meta name="twitter:site" content="@tgramanalytics">
@@ -89,7 +89,7 @@
       "name": "tgram-analytics",
       "alternateName": ["Telegram Analytics", "tgram analytics"],
       "url": "https://tgram-analytics.com/",
-      "description": "Analytics delivered via Telegram: track signups, purchases, and errors from your app and get real-time alerts, weekly digests, and instant reports in a Telegram bot.",
+      "description": "Analytics delivered via Telegram: track signups, purchases, and errors from your app and get real-time alerts, on-demand digests, and instant reports in a Telegram bot.",
       "inLanguage": "en-US",
       "publisher": { "@id": "https://tgram-analytics.com/#organization" },
       "potentialAction": {
@@ -112,7 +112,7 @@
       "url": "https://tgram-analytics.com/",
       "image": "https://tgram-analytics.com/og-image.png",
       "screenshot": "https://tgram-analytics.com/og-image.png",
-      "description": "Open-source SaaS analytics that lives in Telegram. Track signups, purchases, errors, and pageviews from any stack with native JavaScript, Python, and Flutter SDKs. Get real-time alerts, weekly digests, and ask the bot for instant reports.",
+      "description": "Open-source SaaS analytics that lives in Telegram. Track signups, purchases, errors, and pageviews from any stack with native JavaScript, Python, and Flutter SDKs. Get real-time alerts, and ask the bot for 7-day digests and instant reports.",
       "offers": [
         {
           "@type": "Offer",
@@ -136,7 +136,7 @@
       "featureList": [
         "Real-time Telegram alerts for important events",
         "Multi-stack SDK support (JavaScript, TypeScript, Flutter/Dart, Python)",
-        "Weekly digest reports delivered to chat",
+        "On-demand 7-day digests via /digest bot command",
         "Instant reports via /report bot command",
         "Self-hosted (MIT) or managed cloud options",
         "MCP integration for AI agents",
@@ -178,7 +178,7 @@
           "name": "What is tgram-analytics?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "tgram-analytics is an open-source analytics platform that delivers your app's events to Telegram — built for SaaS, indie projects, and side hustles. It tracks events, signups, purchases, and errors from any stack and delivers real-time alerts, weekly digests, and instant reports through a Telegram bot — no dashboard required."
+            "text": "tgram-analytics is an open-source analytics platform that delivers your app's events to Telegram — built for SaaS, indie projects, and side hustles. It tracks events, signups, purchases, and errors from any stack and delivers real-time alerts, on-demand digests, and instant reports through a Telegram bot — no dashboard required."
           }
         },
         {
@@ -712,7 +712,7 @@ footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:32
 <section class="section" id="value">
   <div class="section-label">// why this exists</div>
   <h2 class="section-title">The numbers come to you.</h2>
-  <p class="section-sub">No tab to remember, no login habit to build. Events, charts, and weekly digests land in a chat you already read.</p>
+  <p class="section-sub">No tab to remember, no login habit to build. Events, charts, and 7-day recaps land in a chat you already read.</p>
   <div class="commands-grid">
     <div class="cmd-card">
       <div class="cmd-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--tg)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></div>
@@ -733,9 +733,9 @@ footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:32
     <div class="cmd-card">
       <div class="cmd-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--tg)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div>
       <div>
-        <div class="cmd-name">A weekly recap, unprompted</div>
-        <div class="cmd-desc">Every Monday the bot posts last week's numbers, so you stay current without opening anything.</div>
-        <div class="cmd-example">"weekly summary every Monday 9am"</div>
+        <div class="cmd-name">A week in one message</div>
+        <div class="cmd-desc">Ask /digest anytime and the bot posts the last 7 days — sessions and event counts, with week-over-week deltas.</div>
+        <div class="cmd-example">/digest · "how did last week go?"</div>
       </div>
     </div>
     <div class="cmd-card">
@@ -1215,7 +1215,7 @@ tga.<span class="fn">track</span>(
 
     <details style="border:1px solid var(--border);border-radius:12px;padding:18px 22px;background:var(--bg2)">
       <summary style="cursor:pointer;font-weight:600;font-size:16px;color:var(--text);list-style:none">What is tgram-analytics?</summary>
-      <p style="margin-top:14px;color:var(--muted);font-size:15px;line-height:1.7">tgram-analytics is an open-source <strong>Telegram analytics</strong> platform for SaaS, indie projects, and side hustles. It tracks events, signups, purchases, and errors from any stack and delivers real-time alerts, weekly digests, and instant reports through a Telegram bot — so you don't need another dashboard.</p>
+      <p style="margin-top:14px;color:var(--muted);font-size:15px;line-height:1.7">tgram-analytics is an open-source <strong>Telegram analytics</strong> platform for SaaS, indie projects, and side hustles. It tracks events, signups, purchases, and errors from any stack and delivers real-time alerts, on-demand digests, and instant reports through a Telegram bot — so you don't need another dashboard.</p>
     </details>
 
     <details style="border:1px solid var(--border);border-radius:12px;padding:18px 22px;background:var(--bg2)">
