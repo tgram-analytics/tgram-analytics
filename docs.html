@@ -145,10 +145,10 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
 
 <!-- tgram-analytics — visitor + click tracking -->
 <script type="module">
-  import TGA from 'https://esm.sh/tgram-analytics@0.1.0';
+  import TGA from 'https://esm.sh/tgram-analytics@0.2.0';
   window.TGA = TGA;
   TGA.init('proj_6799321fcad7717e82da6e3e59524023bca75e44e406f6725f58379b698e7ccd', {
-    serverUrl: 'https://tg-analytics.leorigna.com',
+    serverUrl: 'https://api.tgram-analytics.com',
   });
   document.addEventListener('click', (e) => {
     const el = e.target.closest('a, button');
@@ -224,7 +224,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
       <div class="step-num">3</div>
       <div class="step-body">
         <h4>Ask the bot</h4>
-        <p>Type <code>/report signup 7d</code> or <code>/alert tell me every purchase</code>. Charts and alerts arrive in your chat.</p>
+        <p>Type <code>/report signup 7d</code> or set up alerts with <code>/alerts</code>. Charts and alerts arrive in your chat.</p>
       </div>
     </div>
 
@@ -234,14 +234,14 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
     <h3 id="js">JavaScript / TypeScript</h3>
     <p>npm install or drop in a script tag. Works in React, Vue, vanilla JS, and server-side rendering.</p>
 <pre><span class="c">// npm install tgram-analytics</span>
-<span class="k">import</span> { <span class="tgb">TGA</span> } <span class="k">from</span> <span class="s">'tgram-analytics'</span>;
+<span class="k">import</span> <span class="tgb">TGA</span> <span class="k">from</span> <span class="s">'tgram-analytics'</span>;
 
 <span class="c">// Initialize once</span>
-<span class="tgb">TGA</span>.<span class="fn">init</span>(<span class="s">'proj_xxx'</span>);
+<span class="tgb">TGA</span>.<span class="fn">init</span>(<span class="s">'proj_xxx'</span>, { serverUrl: <span class="s">'https://api.tgram-analytics.com'</span> });
 
 <span class="c">// Track events</span>
-<span class="tgb">TGA</span>.<span class="fn">track</span>(<span class="s">'signup'</span>, userId, { plan: <span class="s">'pro'</span> });
-<span class="tgb">TGA</span>.<span class="fn">track</span>(<span class="s">'purchase'</span>, userId, { amount: <span class="num">49</span> });
+<span class="tgb">TGA</span>.<span class="fn">track</span>(<span class="s">'signup'</span>, { plan: <span class="s">'pro'</span> });
+<span class="tgb">TGA</span>.<span class="fn">track</span>(<span class="s">'purchase'</span>, { amount: <span class="num">49</span> });
 </pre>
 
     <h3 id="flutter">Flutter / Dart</h3>
@@ -251,7 +251,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
 
 <span class="c">// In main():</span>
 <span class="k">void</span> <span class="fn">main</span>() {
-  <span class="tgb">TGA</span>.<span class="fn">init</span>(<span class="s">'proj_xxx'</span>);
+  <span class="tgb">TGA</span>.<span class="fn">init</span>(<span class="s">'proj_xxx'</span>, <span class="s">'https://api.tgram-analytics.com'</span>);
   <span class="fn">runApp</span>(<span class="fn">MyApp</span>());
 }
 
@@ -265,7 +265,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
 <span class="k">from</span> tgram_analytics <span class="k">import</span> <span class="tgb">TGA</span>
 
 <span class="c"># Initialize</span>
-tga = <span class="tgb">TGA</span>(<span class="s">"proj_xxx"</span>)
+tga = <span class="tgb">TGA</span>(<span class="s">"proj_xxx"</span>, <span class="s">"https://api.tgram-analytics.com"</span>)
 
 <span class="c"># Track events</span>
 tga.<span class="fn">track</span>(
@@ -298,14 +298,14 @@ tga.<span class="fn">track</span>(
           <td><code>/report signup 7d</code>, <code>/report error 24h</code></td>
         </tr>
         <tr>
-          <td><code>/alert &lt;message&gt;</code></td>
-          <td>Set up alerts for events or thresholds</td>
-          <td><code>/alert tell me every purchase</code>, <code>/alert every 50 signups</code></td>
+          <td><code>/alerts</code></td>
+          <td>Open an interactive menu to configure event alerts</td>
+          <td><code>/alerts</code>, then pick an event and threshold</td>
         </tr>
         <tr>
-          <td><code>/schedule &lt;message&gt;</code></td>
-          <td>Get reports automatically on a schedule</td>
-          <td><code>/schedule weekly summary every Monday</code></td>
+          <td><code>/digest</code></td>
+          <td>Set up scheduled recap reports with charts</td>
+          <td><code>/digest</code></td>
         </tr>
         <tr>
           <td><code>/projects</code></td>

@@ -198,7 +198,7 @@ footer a:hover{color:var(--text)}
 
     <h2 id="where">Where it lives</h2>
     <p>The bot, ingestion API, and database all run on a single server hosted in the <strong>European Union</strong>, managed via <a href="https://coolify.io/" target="_blank" rel="noopener noreferrer">Coolify</a>. Event data and bot account data don't leave the EU on our end.</p>
-    <p>The stack on that server is: a FastAPI app and a PostgreSQL database, plus a self-hosted chart renderer (<a href="https://quickchart.io/" target="_blank" rel="noopener noreferrer">QuickChart</a>) running as a separate container on the same host. Nothing is shipped to third-party data warehouses or analytics services.</p>
+    <p>The stack on that server is: a FastAPI app and a PostgreSQL database. Chart images are rendered in-process by the app itself (using the open-source Altair Python library) — no separate chart service, no external requests. Nothing is shipped to third-party data warehouses or analytics services.</p>
     <p>Bot messages necessarily travel through Telegram's infrastructure. The marketing website at <code>tgram-analytics.com</code> is served separately by GitHub Pages and pulls fonts and the JS SDK bundle from public CDNs — see <a href="#subprocessors">Sub-processors</a> for the full picture.</p>
 
     <h2 id="rights">Your rights and how to exercise them</h2>
@@ -225,8 +225,8 @@ footer a:hover{color:var(--text)}
     <ul>
       <li><strong><a href="https://coolify.io/" target="_blank" rel="noopener noreferrer">Coolify</a></strong> — hosting platform for the server and database. Located in the EU</li>
       <li><strong><a href="https://telegram.org/privacy" target="_blank" rel="noopener noreferrer">Telegram</a></strong> — bot transport. Every message you send to the bot, and every reply we send back, transits Telegram's servers</li>
-      <li><strong><a href="https://quickchart.io/" target="_blank" rel="noopener noreferrer">QuickChart</a></strong> — open-source chart image renderer, self-hosted as a separate container on the same host as the bot. Chart requests don't leave our infrastructure</li>
     </ul>
+    <p>Chart images in bot messages are rendered inside the app process itself, using the open-source Altair Python library — there's no separate chart service and no external requests involved, so chart generation never leaves our infrastructure.</p>
 
     <h3>Marketing website (<code>tgram-analytics.com</code>)</h3>
     <p>If you're just reading these pages, your browser also makes requests to:</p>
