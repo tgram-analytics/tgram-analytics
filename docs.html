@@ -383,6 +383,34 @@ tga.<span class="fn">track</span>(
       </tbody>
     </table>
 
+    <h3>Self-hosting your own instance</h3>
+    <p>Running your own tgram-analytics server? It exposes the <strong>same MCP endpoint and tools</strong> at <code>/mcp</code> on your own domain. Instead of the hosted OAuth login, you authenticate with a token you create from the bot — no extra infrastructure to set up. One token covers every project on your account.</p>
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-body">
+        <h4>Get your setup details from the bot</h4>
+        <p>Send <code>/mcp</code> to your bot for tailored instructions, then <code>/mcp_token new &lt;label&gt;</code> to mint an access token. The <code>&lt;label&gt;</code> is any name you'll recognise later (e.g. <code>macbook</code>) — it's shown only once, so copy it. Manage or revoke tokens anytime with <code>/mcp_token</code>.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-body">
+        <h4>Claude Desktop &amp; claude.ai</h4>
+        <p>Open <strong>Settings → Connectors → Add custom connector</strong>, paste <code>https://your-host/mcp</code>, and click <strong>Connect</strong>. A browser page opens — paste the token from step 1 to authorize. Every authorization also pings you on Telegram (with the connecting app and a one-tap revoke button).</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-body">
+        <h4>Claude Code, Cursor &amp; other header-capable clients</h4>
+        <p>These send the token as a header directly:</p>
+<pre><span class="tgb">claude</span> mcp add --transport http tgram <span class="s">https://your-host/mcp</span> \
+  --header <span class="s">"Authorization: Bearer mcp_..."</span></pre>
+        <p>In Cursor and similar, add an HTTP MCP server with the same URL and an <code>Authorization: Bearer mcp_...</code> header.</p>
+      </div>
+    </div>
+    <p style="color:var(--muted);font-size:.92em">Config: set <code>MCP_PUBLIC_URL=https://your-host</code> so metadata and links use the right address (defaults to <code>WEBHOOK_BASE_URL</code>); set <code>MCP_ENABLED=false</code> to switch the endpoint off entirely. Access is the same read-only, own-projects-only scope as the hosted service.</p>
+
   </main>
 </div>
 
