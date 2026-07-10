@@ -133,14 +133,6 @@
           "url": "https://github.com/tgram-analytics/server"
         }
       ],
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": "4.8",
-        "bestRating": "5",
-        "worstRating": "1",
-        "ratingCount": "127",
-        "reviewCount": "127"
-      },
       "featureList": [
         "Real-time Telegram alerts for important events",
         "Multi-stack SDK support (JavaScript, TypeScript, Flutter/Dart, Python)",
@@ -411,20 +403,18 @@ pre{padding:22px 24px;font-family:var(--mono);font-size:13px;line-height:1.8;ove
 .sdk-info{display:flex;flex-direction:column;gap:20px}
 .sdk-card{padding:20px;border:1px solid var(--border);border-radius:10px;background:var(--bg2);cursor:pointer;transition:border-color .2s}
 .sdk-card.active-card,.sdk-card:hover{border-color:var(--tg)}
+.sdk-soon{cursor:default;border-style:dashed}
+.sdk-soon:hover{border-color:var(--border2)}
 .sdk-card-top{display:flex;align-items:center;gap:12px;margin-bottom:6px}
 .sdk-lang-badge{font-family:var(--mono);font-size:11px;padding:3px 8px;border-radius:4px;background:var(--tg-dim);color:var(--tg)}
 .sdk-name{font-size:14px;font-weight:600}
 .sdk-desc{font-size:13px;color:var(--muted);line-height:1.55}
 .sdk-install{font-family:var(--mono);font-size:12px;color:var(--green);margin-top:8px}
+.sdk-repo{margin-left:auto;display:inline-flex;align-items:center;gap:5px;color:var(--muted);font-family:var(--mono);font-size:11px;text-decoration:none;transition:color .2s;flex-shrink:0}
+.sdk-repo:hover{color:var(--tg)}
+.sdk-repo svg{width:14px;height:14px;display:block}
 
-/* ── MCP callout ── */
-.mcp-callout{margin-top:48px;border:1px solid var(--border2);border-radius:12px;overflow:hidden;background:var(--bg2)}
-.mcp-header{padding:20px 24px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:12px}
-.mcp-header h3{font-size:15px;font-weight:600}
-.mcp-body{display:grid;grid-template-columns:1fr 1fr;gap:0}
-.mcp-desc{padding:24px;display:flex;flex-direction:column;justify-content:center;border-right:1px solid var(--border)}
-.mcp-desc p{font-size:13px;color:var(--muted);line-height:1.65;margin-bottom:12px}
-.mcp-desc p:last-child{margin-bottom:0}
+/* ── MCP section ── */
 .mcp-example{padding:24px;font-family:var(--mono);font-size:12px;line-height:1.9;color:var(--text)}
 .mcp-example .mcp-role{color:var(--muted);font-size:11px;display:block;margin-top:10px}
 .mcp-example .mcp-role:first-child{margin-top:0}
@@ -432,6 +422,12 @@ pre{padding:22px 24px;font-family:var(--mono);font-size:13px;line-height:1.8;ove
 .mcp-connect code{font-family:var(--mono);font-size:12px;color:var(--tg);background:var(--bg);padding:2px 8px;border-radius:4px}
 .mcp-connect a{color:var(--tg);text-decoration:none;font-weight:500;white-space:nowrap}
 .mcp-connect a:hover{text-decoration:underline}
+.mcp-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.mcp-panel{border:1px solid var(--border2);border-radius:12px;background:var(--bg2);overflow:hidden;transition:border-color .2s}
+.mcp-panel:hover{border-color:var(--tg)}
+.mcp-panel-head{padding:14px 20px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px}
+.mcp-panel-head h3{font-size:14px;font-weight:600}
+.mcp-connect.solo{border:1px solid var(--border2);border-radius:12px;background:var(--bg2);margin-top:16px}
 
 /* ── BOT COMMANDS ── */
 .commands-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
@@ -460,18 +456,26 @@ td.ours{background:rgba(42,171,238,.04)}
 .cta-section{position:relative;z-index:1;padding:0 0 100px}
 .flow-wrap{background:var(--bg2);border:1px solid var(--border2);border-radius:16px;padding:48px 32px;max-width:700px;margin:0 auto;overflow:hidden;position:relative}
 .flow-wrap::before{content:'';position:absolute;right:-80px;top:-80px;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(42,171,238,0.07),transparent 70%);pointer-events:none}
-.flow-diagram{display:flex;flex-direction:column;align-items:center;gap:20px;position:relative;z-index:1}
+.flow-diagram{display:flex;flex-direction:column;align-items:center;gap:8px;position:relative;z-index:1}
 .flow-sources{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
-.flow-block{background:var(--bg);border:1px solid var(--border2);border-radius:14px;padding:22px 24px;text-align:center;min-width:110px;flex-shrink:0}
-.flow-emoji{font-size:28px;margin-bottom:8px}
+.flow-block{background:var(--bg);border:1px solid var(--border2);border-radius:14px;padding:22px 24px;text-align:center;min-width:110px;flex-shrink:0;transition:transform .2s ease,border-color .2s ease}
+.flow-block:hover{transform:translateY(-2px);border-color:var(--border2)}
+.flow-emoji{font-size:28px;margin-bottom:8px;display:flex;justify-content:center}
 .flow-title-block{font-size:14px;font-weight:600;margin-bottom:4px;color:var(--text)}
 .flow-desc{font-size:12px;color:var(--muted);white-space:nowrap}
-.flow-highlight{border-color:var(--tg);background:rgba(42,171,238,.08);min-width:160px}
+.flow-highlight{border-color:var(--tg);background:rgba(42,171,238,.08);min-width:160px;box-shadow:0 0 0 1px rgba(42,171,238,.14),0 14px 44px rgba(42,171,238,.10)}
+.flow-highlight:hover{border-color:var(--tg)}
 .flow-tg{border-color:rgba(0,196,140,.3);background:rgba(0,196,140,.06);min-width:160px}
+.flow-tg:hover{border-color:rgba(0,196,140,.5)}
 .flow-center{align-self:center}
-.flow-down-arrows{display:flex;gap:16px;justify-content:center;width:100%;max-width:380px}
-.flow-arrow-down{font-size:20px;color:var(--dim);text-align:center;flex:1}
-.flow-arrow-single{font-size:20px;color:var(--tg)}
+.flow-conn{width:100%;margin:0 auto;line-height:0}
+.flow-conn.conv{max-width:340px}
+.flow-conn.single{max-width:40px}
+.flow-connector{display:block;width:100%;height:auto;overflow:visible}
+.flow-rail{fill:none;stroke:var(--tg);stroke-width:1.5;stroke-linecap:round;opacity:.45}
+.flow-flow{fill:none;stroke:var(--tg);stroke-width:1.6;stroke-linecap:round;stroke-dasharray:1.5 11}
+@media(prefers-reduced-motion:no-preference){.flow-flow{animation:flowDash 1.6s linear infinite}}
+@keyframes flowDash{to{stroke-dashoffset:-50}}
 .infra-cta{display:flex;gap:12px;justify-content:center;margin-top:40px;position:relative;z-index:1}
 
 /* ── FOOTER ── */
@@ -534,9 +538,13 @@ footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:32
   .sdks-grid{grid-template-columns:minmax(0,1fr);gap:24px}
   .sdk-card,.code-window,.sdk-info{min-width:0}
   pre{padding:18px 16px;font-size:12px}
-  .mcp-body{grid-template-columns:minmax(0,1fr)}
-  .mcp-desc,.mcp-example{padding:20px;min-width:0}
-  .mcp-desc{border-right:none;border-bottom:1px solid var(--border)}
+  .mcp-grid{grid-template-columns:minmax(0,1fr);gap:12px}
+  .mcp-panel-head{padding:12px 16px}
+  .mcp-panel-head h3{font-size:13px}
+  .mcp-example{padding:16px;font-size:12px;line-height:1.65;min-width:0}
+  .mcp-example .mcp-role{margin-top:8px}
+  .mcp-connect.solo{padding:16px 18px}
+  .mcp-connect.solo code{white-space:normal;word-break:break-all}
   .commands-grid{grid-template-columns:minmax(0,1fr)}
   .cmd-card{min-width:0}
   .cmd-card{padding:18px}
@@ -554,8 +562,7 @@ footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:32
   .flow-highlight{min-width:140px}
   .flow-tg{min-width:140px}
   .flow-wrap{padding:28px 16px}
-  .flow-down-arrows{max-width:320px}
-  .flow-arrow-down{font-size:18px}
+  .flow-conn.conv{max-width:290px}
   .infra-cta{flex-wrap:wrap}
   /* comparison table — shrink to fit */
   .cmp-table{font-size:12px}
@@ -629,6 +636,7 @@ footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:32
     <li role="none"><a href="#use" role="menuitem">Use</a></li>
     <li role="none"><a href="#install" role="menuitem">Install</a></li>
     <li role="none"><a href="#sdks" role="menuitem">SDKs</a></li>
+    <li role="none"><a href="#mcp" role="menuitem">MCP</a></li>
     <li role="none"><a href="#pricing" role="menuitem">Pricing</a></li>
     <li role="none"><a href="#faq" role="menuitem">FAQ</a></li>
     <li role="none"><a href="docs.html" role="menuitem">Docs</a></li>
@@ -645,10 +653,9 @@ footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:32
     <div class="hero-badge"><span class="dot"></span> Managed hosting · First project free · Open source core</div>
     <h1><span class="accent">Every signup, sale, and error</span> —<br><span class="faded">sent to you on Telegram.</span></h1>
     <p class="hero-sub">
-      Lightweight <strong>SaaS analytics</strong> for indie projects and side hustles, living where you already do — in Telegram.
-      Track signups, purchases, and errors from <strong>any stack.</strong>
-      Get real-time alerts when important events happen, then ask the bot
-      for instant reports whenever you need the bigger picture.
+      <strong>SaaS analytics</strong> that lives in the app you already keep open all day.
+      Send a signup, a sale, or an error from <strong>any stack</strong> and it shows up as a Telegram message.
+      Want the numbers? Ask the bot and it replies with a chart.
     </p>
     <div class="hero-actions">
       <a href="https://t.me/MyTelegramAnalyticsBot" target="_blank" rel="noopener noreferrer" class="btn-primary" aria-label="Open the tgram-analytics bot in Telegram">
@@ -665,9 +672,9 @@ footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:32
       </a>
     </div>
     <div class="hero-meta">
-      <div class="meta-item"><span>30 sec</span> to hosted tracking</div>
-      <div class="meta-item"><span>Alerts</span> for key events</div>
-      <div class="meta-item"><span>Reports</span> generated in chat</div>
+      <div class="meta-item"><span>~30 sec</span> from bot to first key</div>
+      <div class="meta-item"><span>Live</span> alerts on events you pick</div>
+      <div class="meta-item"><span>Reports</span> you ask for in chat</div>
     </div>
   </div>
 
@@ -696,46 +703,46 @@ footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:32
 <div class="stats-bar">
   <div class="stat"><span class="stat-num">1</span><div class="stat-label">free hosted project</div></div>
   <div class="stat"><span class="stat-num">30 sec</span><div class="stat-label">to your first API key</div></div>
-  <div class="stat"><span class="stat-num">3</span><div class="stat-label">official SDKs</div></div>
+  <div class="stat"><span class="stat-num">3+</span><div class="stat-label">SDKs &amp; growing</div></div>
   <div class="stat"><span class="stat-num">24/7</span><div class="stat-label">Telegram event alerts</div></div>
-  <div class="stat"><span class="stat-num">0</span><div class="stat-label">dashboard tabs to check</div></div>
+  <div class="stat"><span class="stat-num">0</span><div class="stat-label">dashboards to keep open</div></div>
 </div>
 
 <!-- ② VALUE — why this exists -->
 <section class="section" id="value">
   <div class="section-label">// why this exists</div>
-  <h2 class="section-title">The value is simple: the data finds you.</h2>
-  <p class="section-sub">You do not open another dashboard. Important events, charts, and digests arrive where you already work.</p>
+  <h2 class="section-title">The numbers come to you.</h2>
+  <p class="section-sub">No tab to remember, no login habit to build. Events, charts, and weekly digests land in a chat you already read.</p>
   <div class="commands-grid">
     <div class="cmd-card">
-      <div class="cmd-icon">📊</div>
+      <div class="cmd-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--tg)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></div>
       <div>
-        <div class="cmd-name">Track what matters</div>
-        <div class="cmd-desc">See signups, purchases, errors, or any custom event. Query with simple /report commands.</div>
+        <div class="cmd-name">Track the events you care about</div>
+        <div class="cmd-desc">Signups, purchases, errors, or whatever you decide to name. Pull any of them up later with a /report.</div>
         <div class="cmd-example">"how many upgrades this month?" · /report error 24h</div>
       </div>
     </div>
     <div class="cmd-card">
-      <div class="cmd-icon">🔔</div>
+      <div class="cmd-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--tg)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg></div>
       <div>
-        <div class="cmd-name">Know first, fast</div>
-        <div class="cmd-desc">Get pinged when a sale happens, a deploy fails, or a spike hits. No more discovering issues hours later.</div>
+        <div class="cmd-name">Hear about it when it happens</div>
+        <div class="cmd-desc">A sale closes or a deploy breaks and the bot messages you right then, not the next morning.</div>
         <div class="cmd-example">"alert me every purchase" · "alert every 500 errors"</div>
       </div>
     </div>
     <div class="cmd-card">
-      <div class="cmd-icon">📅</div>
+      <div class="cmd-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--tg)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div>
       <div>
-        <div class="cmd-name">Stay in the loop</div>
-        <div class="cmd-desc">Weekly digests keep your finger on the pulse without drowning in dashboards you forget to open.</div>
+        <div class="cmd-name">A weekly recap, unprompted</div>
+        <div class="cmd-desc">Every Monday the bot posts last week's numbers, so you stay current without opening anything.</div>
         <div class="cmd-example">"weekly summary every Monday 9am"</div>
       </div>
     </div>
     <div class="cmd-card">
-      <div class="cmd-icon">🔌</div>
+      <div class="cmd-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--tg)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 2l-2 2"/><path d="M15.5 7.5L19 4"/><circle cx="7.5" cy="15.5" r="5.5"/><path d="M11.4 11.6L19 4"/></svg></div>
       <div>
-        <div class="cmd-name">One key, everywhere</div>
-        <div class="cmd-desc">Same project key across your website, mobile app, and backend. All events flow into one Telegram thread.</div>
+        <div class="cmd-name">One key for the whole stack</div>
+        <div class="cmd-desc">The same project key works in your site, your app, and your backend. Everything reports into one chat.</div>
         <div class="cmd-example">Web → Flutter → Python → one /report</div>
       </div>
     </div>
@@ -746,49 +753,74 @@ footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:32
 <div class="cta-section" id="install">
   <div class="section-label" style="padding:0 80px;max-width:1340px;margin:0 auto 10px">// how it works</div>
   <h2 class="section-title" style="padding:0 80px;max-width:1340px;margin:0 auto 14px">From your stack to you.</h2>
-  <p class="section-sub" style="padding:0 80px;max-width:1340px;margin:0 auto 40px">Events flow in. Telegram notifications flow out.</p>
+  <p class="section-sub" style="padding:0 80px;max-width:1340px;margin:0 auto 40px">Your code sends events. The bot sends you messages back.</p>
 
   <div class="flow-wrap">
     <div class="flow-diagram flow-vertical">
       <!-- Sources Row -->
       <div class="flow-sources">
         <div class="flow-block">
-          <div class="flow-emoji">📱</div>
+          <div class="flow-emoji"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--muted)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="2" width="12" height="20" rx="2.5"/><line x1="11" y1="18" x2="13" y2="18"/></svg></div>
           <div class="flow-title-block">App</div>
           <div class="flow-desc">Mobile events</div>
         </div>
         <div class="flow-block">
-          <div class="flow-emoji">🌐</div>
+          <div class="flow-emoji"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--muted)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>
           <div class="flow-title-block">Web</div>
           <div class="flow-desc">Pageviews, clicks</div>
         </div>
         <div class="flow-block">
-          <div class="flow-emoji">🖥️</div>
+          <div class="flow-emoji"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--muted)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="3" width="20" height="8" rx="2"/><rect x="2" y="13" width="20" height="8" rx="2"/><line x1="6" y1="7" x2="6.01" y2="7"/><line x1="6" y1="17" x2="6.01" y2="17"/></svg></div>
           <div class="flow-title-block">Server</div>
           <div class="flow-desc">API, jobs, errors</div>
         </div>
       </div>
 
-      <!-- Down Arrows -->
-      <div class="flow-down-arrows">
-        <div class="flow-arrow-down">↓</div>
-        <div class="flow-arrow-down">↓</div>
-        <div class="flow-arrow-down">↓</div>
+      <!-- Converging connector: 3 sources → hub -->
+      <div class="flow-conn conv">
+      <svg class="flow-connector" viewBox="0 0 360 56" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+        <defs>
+          <marker id="arrowTg" viewBox="0 0 10 10" refX="7.5" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse">
+            <path d="M0 0 L10 5 L0 10 z" fill="var(--tg)"/>
+          </marker>
+        </defs>
+        <path class="flow-rail" d="M60 3 C60 34 180 22 180 42"/>
+        <path class="flow-rail" d="M180 3 L180 42"/>
+        <path class="flow-rail" d="M300 3 C300 34 180 22 180 42"/>
+        <path class="flow-rail" d="M180 40 L180 52" marker-end="url(#arrowTg)"/>
+        <path class="flow-flow" d="M60 3 C60 34 180 22 180 42"/>
+        <path class="flow-flow" d="M180 3 L180 42"/>
+        <path class="flow-flow" d="M300 3 C300 34 180 22 180 42"/>
+      </svg>
       </div>
 
       <!-- tgram-analytics -->
       <div class="flow-block flow-highlight flow-center">
-        <div class="flow-emoji">✨</div>
+        <div class="flow-emoji"><svg width="26" height="26" viewBox="0 0 24 24" fill="var(--tg)" aria-hidden="true"><path d="M9.78 18.65l.28-4.23 7.68-6.92c.34-.31-.07-.46-.52-.19L7.74 13.3 3.64 12c-.88-.25-.89-.86.2-1.3l15.97-6.16c.73-.33 1.43.18 1.15 1.3l-2.72 12.81c-.19.91-.74 1.13-1.5.71L12.6 16.3l-1.99 1.93c-.23.23-.42.42-.83.42z"/></svg></div>
         <div class="flow-title-block">tgram-analytics</div>
         <div class="flow-desc">Managed or self-hosted</div>
       </div>
 
-      <!-- Down Arrow -->
-      <div class="flow-arrow-single">↓</div>
+      <!-- Connector: hub → you -->
+      <div class="flow-conn single">
+      <svg class="flow-connector" viewBox="0 0 40 44" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+        <defs>
+          <linearGradient id="hubYou" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="var(--tg)"/>
+            <stop offset="1" stop-color="var(--green)"/>
+          </linearGradient>
+          <marker id="arrowGreen" viewBox="0 0 10 10" refX="7.5" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse">
+            <path d="M0 0 L10 5 L0 10 z" fill="var(--green)"/>
+          </marker>
+        </defs>
+        <path d="M20 3 L20 30" fill="none" stroke="url(#hubYou)" stroke-width="1.8" stroke-linecap="round" opacity=".55" marker-end="url(#arrowGreen)"/>
+        <path class="flow-flow" d="M20 3 L20 32" stroke="var(--green)"/>
+      </svg>
+      </div>
 
       <!-- You -->
       <div class="flow-block flow-tg flow-center">
-        <div class="flow-emoji">😎</div>
+        <div class="flow-emoji"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
         <div class="flow-title-block">You</div>
         <div class="flow-desc">Get alerts & reports via bot</div>
       </div>
@@ -822,21 +854,21 @@ footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:32
     </div>
     <div class="steps">
       <div class="step-card" data-step="01" style="position:relative">
-        <div class="step-icon">💬</div>
+        <div class="step-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--tg)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
         <div class="step-title">Open the bot</div>
         <div class="step-desc">Start @MyTelegramAnalyticsBot in Telegram and create your first hosted project from chat.</div>
         <div class="step-code">/add myapp.com</div>
         <div class="step-arrow">→</div>
       </div>
       <div class="step-card" data-step="02" style="position:relative">
-        <div class="step-icon">🔑</div>
+        <div class="step-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--tg)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 2l-2 2"/><path d="M15.5 7.5L19 4"/><circle cx="7.5" cy="15.5" r="5.5"/><path d="M11.4 11.6L19 4"/></svg></div>
         <div class="step-title">Get your key</div>
         <div class="step-desc">The bot returns a project key immediately. Your first project is free.</div>
         <div class="step-code">proj_a1b2c3d4</div>
         <div class="step-arrow">→</div>
       </div>
       <div class="step-card" data-step="03">
-        <div class="step-icon">⚡</div>
+        <div class="step-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--tg)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
         <div class="step-title">Track events</div>
         <div class="step-desc">Drop in the SDK and send pageviews, signups, purchases, or errors.</div>
         <div class="step-code">track("signup")</div>
@@ -854,21 +886,21 @@ footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:32
     </div>
     <div class="steps">
       <div class="step-card" data-step="01" style="position:relative">
-        <div class="step-icon">🚀</div>
+        <div class="step-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--tg)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg></div>
         <div class="step-title">Deploy the server</div>
         <div class="step-desc">Clone the repo, set your Telegram bot token, and start the server with Docker.</div>
         <div class="step-code">docker compose up -d</div>
         <div class="step-arrow">→</div>
       </div>
       <div class="step-card" data-step="02" style="position:relative">
-        <div class="step-icon">🔑</div>
+        <div class="step-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--tg)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 2l-2 2"/><path d="M15.5 7.5L19 4"/><circle cx="7.5" cy="15.5" r="5.5"/><path d="M11.4 11.6L19 4"/></svg></div>
         <div class="step-title">Add a project</div>
         <div class="step-desc">Use the same bot command to create projects and generate API keys.</div>
         <div class="step-code">/add myapp.com</div>
         <div class="step-arrow">→</div>
       </div>
       <div class="step-card" data-step="03">
-        <div class="step-icon">📊</div>
+        <div class="step-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--tg)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></div>
         <div class="step-title">Ask for reports</div>
         <div class="step-desc">The bot handles reports, alerts, and scheduled digests exactly like the hosted version.</div>
         <div class="step-code">/report signup 7d</div>
@@ -880,14 +912,15 @@ footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:32
 <!-- ⑤ SDKS + MCP -->
 <section class="section" id="sdks">
   <div class="section-label">// sdks &amp; integrations</div>
-  <h2 class="section-title">Initialize once. Track anywhere.</h2>
-  <p class="section-sub">Use one project key across your web app, mobile app, and backend. Every event lands in the same Telegram reports.</p>
+  <h2 class="section-title">SDKs for your whole stack.</h2>
+  <p class="section-sub">Official SDKs for JavaScript, Flutter, and Python today, with more on the way. One project key works across all of them, plus plain HTTP for anything not yet covered.</p>
   <div class="sdks-grid">
     <div class="sdk-info">
       <div class="sdk-card active-card" onclick="selectSdk('js',this)">
         <div class="sdk-card-top">
           <span class="sdk-lang-badge">JS / TS</span>
           <span class="sdk-name">tgram-analytics</span>
+          <a href="https://github.com/tgram-analytics/tgram-analytics-js" target="_blank" rel="noopener noreferrer" class="sdk-repo" onclick="event.stopPropagation()" aria-label="JavaScript SDK on GitHub (opens in new tab)"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>Repo ↗</a>
         </div>
         <div class="sdk-desc">Add the script, initialize with your key, then track events with one line.</div>
         <div class="sdk-install">npm install tgram-analytics</div>
@@ -896,6 +929,7 @@ footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:32
         <div class="sdk-card-top">
           <span class="sdk-lang-badge">Dart / Flutter</span>
           <span class="sdk-name">tgram_analytics</span>
+          <a href="https://github.com/tgram-analytics/tgram-analytics-flutter" target="_blank" rel="noopener noreferrer" class="sdk-repo" onclick="event.stopPropagation()" aria-label="Flutter SDK on GitHub (opens in new tab)"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>Repo ↗</a>
         </div>
         <div class="sdk-desc">Initialize in main(), then track app events from screens, services, or purchase flows.</div>
         <div class="sdk-install">flutter pub add tgram_analytics</div>
@@ -904,9 +938,19 @@ footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:32
         <div class="sdk-card-top">
           <span class="sdk-lang-badge">Python</span>
           <span class="sdk-name">tgram-analytics</span>
+          <a href="https://github.com/tgram-analytics/tgram-analytics-py" target="_blank" rel="noopener noreferrer" class="sdk-repo" onclick="event.stopPropagation()" aria-label="Python SDK on GitHub (opens in new tab)"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>Repo ↗</a>
         </div>
         <div class="sdk-desc">Track backend events like subscription changes, jobs, imports, and errors.</div>
         <div class="sdk-install">pip install tgram-analytics</div>
+      </div>
+      <div class="sdk-card sdk-soon">
+        <div class="sdk-card-top">
+          <span class="sdk-lang-badge" style="background:var(--bg3);color:var(--muted)">Soon</span>
+          <span class="sdk-name">More languages on the way</span>
+          <a href="https://github.com/tgram-analytics" target="_blank" rel="noopener noreferrer" class="sdk-repo" aria-label="All tgram-analytics repositories on GitHub (opens in new tab)"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>Repos ↗</a>
+        </div>
+        <div class="sdk-desc">Same project key, same event API. Need one that isn't here yet? Any language can post events straight to the HTTP endpoint.</div>
+        <div class="sdk-install" style="color:var(--muted)">POST events over plain HTTP</div>
       </div>
     </div>
     <div>
@@ -957,42 +1001,54 @@ tga.<span class="fn">track</span>(
     </div>
   </div>
 
-  <!-- MCP integration callout -->
-  <div class="mcp-callout">
-    <div class="mcp-header">
-      <span class="sdk-lang-badge">MCP</span>
-      <h3>AI agent integration</h3>
-    </div>
-    <div class="mcp-body">
-      <div class="mcp-desc">
-        <p>Connect Claude to your account and ask about your analytics in plain language — signups, top pages, week-over-week trends. No dashboard diving.</p>
-        <p>One command (or a custom connector) plus a one-time Telegram login, and you're set. It can also fetch SDK snippets and verify your integration.</p>
-      </div>
+</section>
+
+<!-- ⑤·5 MCP — AI agent access -->
+<section class="section" id="mcp" style="padding-top:0">
+  <div class="section-label">// mcp for ai agents</div>
+  <h2 class="section-title">Point your AI agent at your own data.</h2>
+  <p class="section-sub">Connect the MCP server once with a one-time Telegram login. From there your agent can set tracking up in a project, answer questions about your events, or run on a schedule against Search Console — all in plain language.</p>
+
+  <div class="mcp-grid">
+    <div class="mcp-panel">
+      <div class="mcp-panel-head"><span class="sdk-lang-badge">Set up</span><h3>Add tracking by asking</h3></div>
       <div class="mcp-example">
-        <span class="mcp-role">Install (Claude Code)</span>
-        <span style="color:var(--text)">claude mcp add --transport http tgram-analytics</span>
-        <span style="color:#c3e88d">https://mcp.tgram-analytics.com/mcp</span>
-        <span style="color:var(--muted)">↳ then sign in with Telegram</span>
+        <span class="mcp-role">You</span>
+        <span style="color:var(--text)">Use the tgram MCP to track the analytics of this project.</span>
+        <span class="mcp-role">Claude</span>
+        <span style="color:var(--green)">Done</span> — pulled the SDK snippet, wired up signup &amp; purchase events, and verified they're landing.
+      </div>
+    </div>
+    <div class="mcp-panel">
+      <div class="mcp-panel-head"><span class="sdk-lang-badge">Ask</span><h3>Ask about your numbers</h3></div>
+      <div class="mcp-example">
         <span class="mcp-role">You</span>
         <span style="color:var(--text)">How are signups on myshop.com this week?</span>
-        <span class="mcp-role">Claude → MCP</span>
-        <span style="color:var(--tg)">query_events</span>({ event: <span style="color:#c3e88d">"signup"</span>, period: <span style="color:#c3e88d">"7d"</span> })
-        <span style="color:var(--tg)">compare_periods</span>({ event: <span style="color:#c3e88d">"signup"</span>, period: <span style="color:#c3e88d">"7d"</span> })
         <span class="mcp-role">Claude</span>
         <span style="color:var(--green)">342 signups</span> this week — up <span style="color:var(--tg)">18%</span> vs last
       </div>
     </div>
-    <div class="mcp-connect">
-      <span>Connect at <code>mcp.tgram-analytics.com/mcp</code> — sign in with Telegram, no keys to paste.</span>
-      <a href="docs.html#mcp">Setup guide →</a>
+    <div class="mcp-panel">
+      <div class="mcp-panel-head"><span class="sdk-lang-badge">Automate</span><h3>Schedule it against Search Console</h3></div>
+      <div class="mcp-example">
+        <span class="mcp-role">Daily 9:00 — scheduled agent</span>
+        <span style="color:var(--text)">"Match yesterday's signups to Search Console clicks. Flag pages with traffic but no signups."</span>
+        <span class="mcp-role">Agent → you on Telegram</span>
+        <span style="color:var(--green)">/pricing</span> — 240 clicks, 2 signups. Worth a look.
+      </div>
     </div>
+  </div>
+
+  <div class="mcp-connect solo">
+    <span>Point your MCP client at <code>https://mcp.tgram-analytics.com/mcp</code> and sign in with Telegram — OAuth, no keys to paste.</span>
+    <a href="docs.html#mcp">Setup guide →</a>
   </div>
 </section>
 
 <!-- ⑥ COMPARISON — why not GA -->
 <section class="section" style="padding-top:0">
   <div class="section-label">// why not google analytics</div>
-  <h2 class="section-title">Not another dashboard you forget to open.</h2>
+  <h2 class="section-title">How it stacks up against Google Analytics.</h2>
   <p class="section-sub">Google Analytics is powerful. tgram-analytics is for builders who want fast answers, lower setup friction, and Telegram-native alerts.</p>
   <table class="cmp-table">
     <thead>
