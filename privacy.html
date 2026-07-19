@@ -86,6 +86,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
 .content a:hover{border-bottom-color:var(--tg)}
 .content ul{margin:12px 0 16px 20px;color:var(--muted)}
 .content li{margin-bottom:8px}
+.content li strong{color:var(--text)}
 .content .callout{border:1px solid var(--border2);background:var(--bg2);border-radius:10px;padding:16px 20px;margin:20px 0;color:var(--muted);font-size:14px}
 .content .callout strong{color:var(--text)}
 
@@ -200,7 +201,7 @@ footer a:hover{color:var(--text)}
     <p>The one exception is the append-only <strong>audit log</strong> of administrative actions. We keep that under <strong>legitimate interest</strong> (Art. 6(1)(f) GDPR) — specifically, our interest in security and abuse prevention: being able to reconstruct what happened if an account is compromised or the service is misused. It's minimal (action + internal account ID, no message contents), and after account deletion the remaining rows can no longer be linked to your Telegram identity.</p>
 
     <h3>End-visitor event data</h3>
-    <p>Events flowing into an operator's project are processed <strong>on that operator's behalf and documented instructions</strong> — they're the controller, we're the processor, and the terms are set out in our <a href="dpa.html">Data Processing Agreement</a>. The legal basis for that processing is the operator's to determine and document, not ours.</p>
+    <p>Events flowing into an operator's project are processed <strong>on that operator's behalf and under their documented instructions</strong> — they're the controller, we're the processor, and the terms are set out in our <a href="dpa.html">Data Processing Agreement</a>. The legal basis for that processing is the operator's to determine and document, not ours.</p>
     <p>For what it's worth: the basis operators typically rely on for cookieless, non-identifying audience measurement like this is <strong>legitimate interest</strong> (Art. 6(1)(f) GDPR) — understanding how their own site or app is used, with data minimized by design (no cookies, no raw IPs, daily-rotating hashes). But that's their call and their responsibility to assess for their own context; if you're an operator, don't take this paragraph as legal advice.</p>
 
     <h2 id="retention">How long we keep it</h2>
@@ -235,7 +236,7 @@ footer a:hover{color:var(--text)}
 
     <h3>Bot and ingestion API (where event and account data live)</h3>
     <ul>
-      <li><strong><a href="https://coolify.io/" target="_blank" rel="noopener noreferrer">Coolify</a></strong> — hosting platform for the server and database. Located in the EU</li>
+      <li><strong>EU hosting provider</strong> for the server and database, managed via <a href="https://coolify.io/" target="_blank" rel="noopener noreferrer">Coolify</a>. Located in the EU</li>
       <li><strong><a href="https://telegram.org/privacy" target="_blank" rel="noopener noreferrer">Telegram</a></strong> — bot transport. Every message you send to the bot, and every reply we send back, transits Telegram's servers</li>
     </ul>
     <p>Chart images in bot messages are rendered inside the app process itself, using the open-source Altair Python library — there's no separate chart service and no external requests involved, so chart generation never leaves our infrastructure.</p>
