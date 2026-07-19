@@ -114,6 +114,11 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
 .content .tgb{color:var(--tg)}
 .content ul{margin:16px 0 16px 20px;color:var(--muted)}
 .content li{margin-bottom:8px}
+.content .callout{border:1px solid var(--border2);background:var(--bg2);border-radius:10px;padding:16px 20px;margin:20px 0;color:var(--muted);font-size:14px}
+.content .callout strong{color:var(--text)}
+.content .callout.warn{border-color:rgba(251,191,36,.35)}
+.content .callout a{color:var(--tg);text-decoration:none;border-bottom:1px solid rgba(42,171,238,.3)}
+.content .callout a:hover{border-bottom-color:var(--tg)}
 .content table{width:100%;border-collapse:collapse;margin:20px 0;font-size:14px}
 .content th{text-align:left;padding:12px 16px;background:var(--bg2);border-bottom:1px solid var(--border2);font-weight:600;color:var(--text)}
 .content td{padding:12px 16px;border-bottom:1px solid var(--border);color:var(--muted)}
@@ -274,6 +279,8 @@ tga.<span class="fn">track</span>(
     properties={<span class="s">"plan"</span>: <span class="s">"pro"</span>}
 )
 </pre>
+
+    <div class="callout warn"><strong>Keep personal data out of properties.</strong> Don't put emails, names, phone numbers, tokens, or anything else identifying into event <code>properties</code>. The server drops properties with common PII key names (<code>email</code>, <code>phone</code>, <code>password</code>, <code>token</code>, <code>credit_card</code>, …) before storage — but that tripwire is a safety net, not a guarantee: property <em>values</em> are never inspected, so PII under an innocent key name would be stored as-is. Under the GDPR, you (the operator) are the controller for whatever you choose to send — see the <a href="privacy.html">privacy policy</a> and the <a href="dpa.html">Data Processing Agreement</a>.</div>
 
     <h2 id="commands">Bot Commands</h2>
     <p>Everything happens in Telegram. No dashboard to open, no login to remember.</p>
