@@ -154,7 +154,7 @@ footer a:hover{color:var(--text)}
     <p>This Data Processing Agreement ("DPA") is between:</p>
     <ul>
       <li><strong>The operator</strong> — the person or entity that creates a project on the hosted tgram-analytics service and integrates the SDK (or ingestion API) into their website or app. For the event data collected from their end-visitors, the operator is the <strong>controller</strong> within the meaning of Art. 4(7) GDPR.</li>
-      <li><strong>tgram-analytics</strong> — the operator of the hosted service at <code>tgram-analytics.com</code> (see <a href="privacy.html#who">Who we are</a>). For that same event data, tgram-analytics is the <strong>processor</strong> within the meaning of Art. 4(8) GDPR.</li>
+      <li><strong>tgram-analytics</strong> — the provider of the hosted service at <code>tgram-analytics.com</code> (see <a href="privacy.html#who">Who we are</a>). For that same event data, tgram-analytics is the <strong>processor</strong> within the meaning of Art. 4(8) GDPR.</li>
     </ul>
     <p>This DPA covers only the hosted service. If you self-host the open-source server, tgram-analytics processes nothing for you and this DPA does not apply. It also does not cover your own account data as a bot user — for that data tgram-analytics is a controller, as described in the <a href="privacy.html#roles">privacy policy</a>.</p>
 
@@ -181,7 +181,7 @@ footer a:hover{color:var(--text)}
     <ul>
       <li><strong>Processes only on documented instructions</strong> (Art. 28(3)(a)). The operator's instructions are: each event sent (process it as described in section 2), the project configuration set via the bot (retention window, alerts, funnels), and deletion or export requests. The processor will not process event data beyond these instructions unless required to by EU or member-state law, in which case it will inform the operator before processing unless that law forbids it.</li>
       <li><strong>Confidentiality</strong> (Art. 28(3)(b)). Access to production data is limited to the single individual who operates the service (see <a href="privacy.html#who">Who we are</a>), who is committed to confidentiality.</li>
-      <li><strong>Security</strong> (Art. 32 via Art. 28(3)(c)). The technical and organisational measures in place are the ones described factually in the <a href="privacy.html">privacy policy</a>, in summary:
+      <li><strong>Security</strong> (Art. 32 via Art. 28(3)(c)). The technical and organizational measures in place are the ones described factually in the <a href="privacy.html">privacy policy</a>, in summary:
         <ul>
           <li>All event data is hosted on a server in the <strong>European Union</strong></li>
           <li><strong>Raw IP addresses and User-Agent strings are never persisted</strong> — used in-memory at ingestion, then discarded</li>
@@ -196,15 +196,15 @@ footer a:hover{color:var(--text)}
     </ul>
 
     <h2 id="subprocessors">5. Sub-processors</h2>
-    <p>The operator grants <strong>general written authorisation</strong> (Art. 28(2)) for the sub-processors currently engaged:</p>
+    <p>The operator grants <strong>general written authorization</strong> (Art. 28(2)) for the sub-processors currently engaged:</p>
     <ul>
       <li><strong>EU hosting provider</strong> for the server and database, managed via <a href="https://coolify.io/" target="_blank" rel="noopener noreferrer">Coolify</a> — this is where event data lives. Located in the EU.</li>
       <li><strong><a href="https://telegram.org/privacy" target="_blank" rel="noopener noreferrer">Telegram</a></strong> — message transport for delivering reports, charts, and alerts to the operator's chat. Telegram carries the aggregate outputs sent to the operator, not the raw event stream.</li>
     </ul>
-    <p>The authoritative, current list is the <a href="privacy.html#subprocessors">Sub-processors section of the privacy policy</a>. The processor gives notice of intended additions or replacements by updating that page (and its revision date) before the change takes effect, per its <a href="privacy.html#changes">Changes</a> section. An operator who objects to a change may terminate at any time by deleting their project(s), which erases all associated data immediately (section 7).</p>
+    <p>The authoritative, current list is the <a href="privacy.html#subprocessors">Sub-processors section of the privacy policy</a> — specifically its "Bot and ingestion API" subsection, which covers the surface where event data lives. The processor gives notice of intended additions or replacements by updating that page (and its revision date) before the change takes effect, per its <a href="privacy.html#changes">Changes</a> section. An operator who objects to a change may terminate at any time by deleting their project(s), which erases all associated data immediately (section 7).</p>
 
     <h2 id="assistance">6. Assistance to the controller</h2>
-    <p><strong>Data-subject rights</strong> (Art. 28(3)(e)). Because the service is data-minimised by design — no stored IPs, no names, daily-rotating hashes — the processor generally cannot single out an individual end-visitor inside a project. Assistance is therefore structural: the operator can <strong>delete a project at any time</strong> from the bot, which immediately cascades to every event in it; the operator can <strong>lower the retention window</strong>; and the operator can <strong>request an export</strong> of their project data via the bot or email (see <a href="privacy.html#rights">Your rights</a>). Taking the nature of the processing into account, the processor will provide reasonable further assistance on request.</p>
+    <p><strong>Data-subject rights</strong> (Art. 28(3)(e)). Because the service is data-minimized by design — no stored IPs, no names, daily-rotating hashes — the processor generally cannot single out an individual end-visitor inside a project. Assistance is therefore structural: the operator can <strong>delete a project at any time</strong> from the bot, which immediately cascades to every event in it; the operator can <strong>lower the retention window</strong>; and the operator can <strong>request an export</strong> of their project data via email (see <a href="privacy.html#rights">Your rights</a>). Taking the nature of the processing into account, the processor will provide reasonable further assistance on request.</p>
     <p><strong>Breach notification</strong> (Art. 28(3)(f)). The processor will notify affected operators <strong>without undue delay</strong> after becoming aware of a personal-data breach affecting their event data — via the bot and/or the contact channels in the privacy policy — including the information reasonably available so the operator can meet their own Art. 33/34 duties.</p>
 
     <h2 id="deletion">7. Deletion and return of data</h2>
