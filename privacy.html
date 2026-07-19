@@ -131,6 +131,7 @@ footer a:hover{color:var(--text)}
       <li><a href="#who">Who we are</a></li>
       <li><a href="#roles">Two situations</a></li>
       <li><a href="#what">What we collect</a></li>
+      <li><a href="#legal-basis">Legal bases</a></li>
       <li><a href="#retention">How long we keep it</a></li>
       <li><a href="#where">Where it lives</a></li>
       <li><a href="#rights">Your rights</a></li>
@@ -143,7 +144,7 @@ footer a:hover{color:var(--text)}
   <main class="content">
     <h1>Privacy Policy</h1>
     <p class="lead">What we collect, how it's processed, where it's stored, and how to delete it. Plain English, no legalese.</p>
-    <p class="meta">Last updated: 2026-05-03 (rev. 2)</p>
+    <p class="meta">Last updated: 2026-07-19 (rev. 3)</p>
 
     <h2 id="who">Who we are</h2>
     <p>tgram-analytics is an independent, open-source analytics project. The hosted service at <code>tgram-analytics.com</code> and the bot <a href="https://t.me/MyTelegramAnalyticsBot" target="_blank" rel="noopener noreferrer">@MyTelegramAnalyticsBot</a> are operated by a single person. The server source code is public at <a href="https://github.com/tgram-analytics/server" target="_blank" rel="noopener noreferrer">github.com/tgram-analytics/server</a>.</p>
@@ -156,7 +157,7 @@ footer a:hover{color:var(--text)}
     <p>If you talk to <a href="https://t.me/MyTelegramAnalyticsBot" target="_blank" rel="noopener noreferrer">@MyTelegramAnalyticsBot</a> to create projects, set alerts, or run reports, we are the <strong>controller</strong> of the small amount of account data described below. You're our user.</p>
 
     <h3>2. You visit a website or app that uses tgram-analytics</h3>
-    <p>If a site or app you visit ships our SDK, the events from your visit flow into <em>that operator's</em> project. The operator decides what to track, what their retention is, and what to do with it. Legally, they are the <strong>controller</strong>; we are the <strong>processor</strong> acting on their behalf.</p>
+    <p>If a site or app you visit ships our SDK, the events from your visit flow into <em>that operator's</em> project. The operator decides what to track, what their retention is, and what to do with it. Legally, they are the <strong>controller</strong>; we are the <strong>processor</strong> acting on their behalf. If you're an operator, the terms we process under are in our <a href="dpa.html">Data Processing Agreement</a>.</p>
     <div class="callout"><strong>Bottom line for visitors:</strong> if you want a copy of, or want to delete, events about you stored under someone else's project, contact that operator first. They can delete the entire project (which wipes every event in it) instantly from their Telegram bot. We can also help out-of-band — see <a href="#rights">Your rights</a>.</div>
 
     <h2 id="what">What we collect</h2>
@@ -191,6 +192,17 @@ footer a:hover{color:var(--text)}
       <li><strong>Third-party trackers</strong> — no ad networks, no Google/Meta pixels, no analytics-on-analytics</li>
     </ul>
 
+    <h2 id="legal-basis">Legal bases</h2>
+    <p>GDPR says every bit of processing needs a legal basis. Here's ours, mapped to the two situations above:</p>
+
+    <h3>Bot users' account data</h3>
+    <p>Your Telegram IDs, projects, alerts, and funnels are processed because that <em>is</em> the service you signed up for — we can't send reports to your chat without knowing your chat. The legal basis is <strong>performance of a contract</strong> (Art. 6(1)(b) GDPR).</p>
+    <p>The one exception is the append-only <strong>audit log</strong> of administrative actions. We keep that under <strong>legitimate interest</strong> (Art. 6(1)(f) GDPR) — specifically, our interest in security and abuse prevention: being able to reconstruct what happened if an account is compromised or the service is misused. It's minimal (action + internal account ID, no message contents), and after account deletion the remaining rows can no longer be linked to your Telegram identity.</p>
+
+    <h3>End-visitor event data</h3>
+    <p>Events flowing into an operator's project are processed <strong>on that operator's behalf and documented instructions</strong> — they're the controller, we're the processor, and the terms are set out in our <a href="dpa.html">Data Processing Agreement</a>. The legal basis for that processing is the operator's to determine and document, not ours.</p>
+    <p>For what it's worth: the basis operators typically rely on for cookieless, non-identifying audience measurement like this is <strong>legitimate interest</strong> (Art. 6(1)(f) GDPR) — understanding how their own site or app is used, with data minimized by design (no cookies, no raw IPs, daily-rotating hashes). But that's their call and their responsibility to assess for their own context; if you're an operator, don't take this paragraph as legal advice.</p>
+
     <h2 id="retention">How long we keep it</h2>
     <p>Events have a per-project <strong>retention window</strong> (default 90 days). A nightly job deletes anything older. Operators can lower this for their project at any time.</p>
     <p>Bot account data (your Telegram IDs, projects, alerts) stays until you delete it — see below. There's no automatic expiry on accounts.</p>
@@ -219,7 +231,7 @@ footer a:hover{color:var(--text)}
     <p>If you think we've mishandled your data, please email us first so we can fix it. You also have the right to lodge a complaint with your national EU data protection authority.</p>
 
     <h2 id="subprocessors">Sub-processors</h2>
-    <p>These are the third parties that touch your data on the way through. We've split them by which surface they apply to, because the bot/API and the marketing website have different exposures.</p>
+    <p>These are the third parties that touch your data on the way through. We've split them by which surface they apply to, because the bot/API and the marketing website have different exposures. Operators: this list doubles as the sub-processor list under our <a href="dpa.html">Data Processing Agreement</a> — changes are announced here (see <a href="#changes">Changes</a>).</p>
 
     <h3>Bot and ingestion API (where event and account data live)</h3>
     <ul>
@@ -255,6 +267,7 @@ footer a:hover{color:var(--text)}
   <ul class="footer-links">
     <li><a href="index.html">Home</a></li>
     <li><a href="docs.html">Docs</a></li>
+    <li><a href="dpa.html">DPA</a></li>
     <li><a href="https://github.com/tgram-analytics" target="_blank" rel="noopener noreferrer">GitHub</a></li>
   </ul>
 </footer>

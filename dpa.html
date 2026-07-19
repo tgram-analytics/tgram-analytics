@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="tgram-analytics Data Processing Agreement (Art. 28 GDPR) — the terms under which the hosted service processes end-visitor event data on behalf of site operators.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://tgram-analytics.com/dpa.html">
+
+<!-- Favicons -->
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" type="image/x-icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#090c12">
+
+<!-- Open Graph -->
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://tgram-analytics.com/dpa.html">
+<meta property="og:title" content="Data Processing Agreement — tgram-analytics">
+<meta property="og:description" content="The Art. 28 GDPR terms under which the hosted service processes event data on behalf of site operators.">
+<meta property="og:image" content="https://tgram-analytics.com/og-image.png">
+<meta property="og:site_name" content="tgram-analytics">
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Data Processing Agreement — tgram-analytics">
+<meta name="twitter:description" content="The Art. 28 GDPR terms under which the hosted service processes event data on behalf of site operators.">
+<meta name="twitter:image" content="https://tgram-analytics.com/og-image.png">
+
+<title>Data Processing Agreement — tgram-analytics</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:      #090c12;
+  --bg2:     #0f1420;
+  --bg3:     #141b28;
+  --border:  rgba(255,255,255,0.07);
+  --border2: rgba(255,255,255,0.13);
+  --tg:      #2AABEE;
+  --tg2:     #1a8fc7;
+  --tg-dim:  rgba(42,171,238,0.12);
+  --green:   #00c48c;
+  --red:     #f87171;
+  --yellow:  #fbbf24;
+  --text:    #e2e8f0;
+  --muted:   #6b7a8e;
+  --dim:     #3a4450;
+  --mono:    'JetBrains Mono', monospace;
+  --sans:    'Space Grotesk', sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--sans);font-size:15px;line-height:1.7;overflow-x:hidden}
+
+body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(rgba(255,255,255,0.018) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.018) 1px,transparent 1px);background-size:52px 52px;pointer-events:none;z-index:0}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:0 48px;height:60px;border-bottom:1px solid var(--border);background:rgba(9,12,18,0.88);backdrop-filter:blur(14px)}
+.nav-logo{font-family:var(--mono);font-size:14px;font-weight:600;color:var(--text);text-decoration:none;display:flex;align-items:center;gap:10px}
+.nav-logo .tg-dot{width:8px;height:8px;border-radius:50%;background:var(--tg);display:inline-block}
+.nav-links{display:flex;align-items:center;gap:28px;list-style:none}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:14px;transition:color .2s}
+.nav-links a:hover{color:var(--text)}
+
+.layout{position:relative;z-index:1;display:grid;grid-template-columns:220px 1fr;gap:48px;max-width:1100px;margin:0 auto;padding:100px 48px 80px}
+.sidebar{position:sticky;top:100px;height:fit-content}
+.sidebar-title{font-family:var(--mono);font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;margin-bottom:16px}
+.sidebar-links{list-style:none;display:flex;flex-direction:column;gap:8px}
+.sidebar-links a{color:var(--muted);text-decoration:none;font-size:14px;padding:6px 0;border-left:2px solid transparent;padding-left:12px;margin-left:-12px;transition:all .2s}
+.sidebar-links a:hover{color:var(--text)}
+
+.content{min-width:0}
+.content h1{font-size:32px;font-weight:700;letter-spacing:-.03em;margin-bottom:12px}
+.content .lead{color:var(--muted);font-size:17px;margin-bottom:12px;line-height:1.7}
+.content .meta{font-family:var(--mono);font-size:12px;color:var(--dim);margin-bottom:48px}
+.content h2{font-size:22px;font-weight:600;margin-top:48px;margin-bottom:16px;padding-bottom:12px;border-bottom:1px solid var(--border)}
+.content h3{font-size:16px;font-weight:600;margin-top:28px;margin-bottom:10px;color:var(--tg)}
+.content p{margin-bottom:16px;color:var(--muted)}
+.content p strong{color:var(--text);font-weight:600}
+.content code{font-family:var(--mono);font-size:13px;background:var(--bg2);padding:2px 6px;border-radius:4px;color:var(--tg)}
+.content a{color:var(--tg);text-decoration:none;border-bottom:1px solid rgba(42,171,238,.3)}
+.content a:hover{border-bottom-color:var(--tg)}
+.content ul{margin:12px 0 16px 20px;color:var(--muted)}
+.content li{margin-bottom:8px}
+.content li strong{color:var(--text)}
+.content ul ul{margin:8px 0 8px 20px}
+.content .callout{border:1px solid var(--border2);background:var(--bg2);border-radius:10px;padding:16px 20px;margin:20px 0;color:var(--muted);font-size:14px}
+.content .callout strong{color:var(--text)}
+
+footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:32px 48px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;max-width:1100px;margin:60px auto 0;color:var(--muted);font-size:13px}
+footer a{color:var(--muted);text-decoration:none}
+footer a:hover{color:var(--text)}
+.footer-links{display:flex;gap:20px;list-style:none}
+
+@media(max-width:900px){
+  nav{padding:0 16px;height:56px}
+  .nav-logo{font-size:13px}
+  .nav-links{gap:14px;overflow-x:auto;flex-wrap:nowrap;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+  .nav-links::-webkit-scrollbar{display:none}
+  .nav-links a{font-size:13px;white-space:nowrap}
+  .layout{grid-template-columns:1fr;gap:0;padding:88px 20px 60px}
+  .sidebar{display:none}
+  .content h1{font-size:26px}
+  .content .lead{font-size:15px}
+  .content h2{font-size:19px;margin-top:36px}
+  footer{padding:24px 20px;flex-direction:column;text-align:center}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">
+    <span class="tg-dot"></span>
+    tgram-analytics
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="docs.html">Docs</a></li>
+    <li><a href="https://github.com/tgram-analytics" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+    <li><a href="https://t.me/MyTelegramAnalyticsBot" target="_blank" rel="noopener noreferrer" style="color:var(--tg);font-weight:500">Open bot ↗</a></li>
+  </ul>
+</nav>
+
+<div class="layout">
+  <aside class="sidebar">
+    <div class="sidebar-title">On this page</div>
+    <ul class="sidebar-links">
+      <li><a href="#parties">Parties &amp; roles</a></li>
+      <li><a href="#subject-matter">Subject matter</a></li>
+      <li><a href="#data">Data &amp; data subjects</a></li>
+      <li><a href="#obligations">Processor obligations</a></li>
+      <li><a href="#subprocessors">Sub-processors</a></li>
+      <li><a href="#assistance">Assistance</a></li>
+      <li><a href="#deletion">Deletion &amp; return</a></li>
+      <li><a href="#audit">Audit</a></li>
+      <li><a href="#transfers">International transfers</a></li>
+      <li><a href="#liability">Liability &amp; law</a></li>
+    </ul>
+  </aside>
+
+  <main class="content">
+    <h1>Data Processing Agreement</h1>
+    <p class="lead">The Article 28 GDPR terms under which the hosted service processes end-visitor event data on behalf of site and app operators.</p>
+    <p class="meta">Effective: 2026-07-19 (rev. 1)</p>
+
+    <div class="callout"><strong>How this DPA applies:</strong> by creating a project via <a href="https://t.me/MyTelegramAnalyticsBot" target="_blank" rel="noopener noreferrer">@MyTelegramAnalyticsBot</a> and sending events to the hosted service, the operator (controller) and tgram-analytics (processor) agree to these terms. No signature or separate paperwork is required; this page is the agreement. It should be read together with the <a href="privacy.html">privacy policy</a>, which it incorporates by reference for factual descriptions of the processing.</div>
+
+    <h2 id="parties">1. Parties and roles</h2>
+    <p>This Data Processing Agreement ("DPA") is between:</p>
+    <ul>
+      <li><strong>The operator</strong> — the person or entity that creates a project on the hosted tgram-analytics service and integrates the SDK (or ingestion API) into their website or app. For the event data collected from their end-visitors, the operator is the <strong>controller</strong> within the meaning of Art. 4(7) GDPR.</li>
+      <li><strong>tgram-analytics</strong> — the operator of the hosted service at <code>tgram-analytics.com</code> (see <a href="privacy.html#who">Who we are</a>). For that same event data, tgram-analytics is the <strong>processor</strong> within the meaning of Art. 4(8) GDPR.</li>
+    </ul>
+    <p>This DPA covers only the hosted service. If you self-host the open-source server, tgram-analytics processes nothing for you and this DPA does not apply. It also does not cover your own account data as a bot user — for that data tgram-analytics is a controller, as described in the <a href="privacy.html#roles">privacy policy</a>.</p>
+
+    <h2 id="subject-matter">2. Subject matter, duration, nature and purpose</h2>
+    <p><strong>Subject matter.</strong> The processing of analytics event data submitted to the operator's project(s) through the tgram-analytics SDKs or ingestion API.</p>
+    <p><strong>Duration.</strong> This DPA applies for the life of the operator's project(s) on the hosted service — from the first event received until all associated event data has been deleted in accordance with section 7.</p>
+    <p><strong>Nature and purpose.</strong> The processing consists of: receiving events at the ingestion API; deriving coarse, non-identifying fields at ingestion (visitor hash, browser family, OS family, device type); storing events; aggregating them into counts, reports, charts, funnels, and alerts; and delivering those aggregates to the operator via Telegram and, where enabled, the read-only MCP interface. The sole purpose is providing audience-measurement and event-analytics functionality to the operator. The processor does not use event data for its own purposes — no advertising, no profiling, no resale.</p>
+
+    <h2 id="data">3. Categories of data and data subjects</h2>
+    <p><strong>Data subjects:</strong> end-visitors and users of the operator's websites and apps.</p>
+    <p><strong>Categories of personal data</strong> (described in full in <a href="privacy.html#what">What we collect</a>):</p>
+    <ul>
+      <li>Event names chosen by the operator</li>
+      <li>Session IDs (generated client-side, tab-scoped)</li>
+      <li>Daily-rotating, truncated one-way visitor hashes (derived in-memory from IP and User-Agent, which are themselves never stored)</li>
+      <li>Page URLs and referrers, for pageview events</li>
+      <li>Coarse derived fields: browser family, OS family, device type</li>
+      <li>Operator-supplied event properties (capped at 4 KB per event)</li>
+    </ul>
+    <p><strong>No special categories.</strong> The service is not designed for special-category data (Art. 9 GDPR) and the operator agrees not to submit it. The operator is responsible for what they place in event properties — see section 4 and the <a href="docs.html#sdk">docs</a> on keeping personal data out of properties.</p>
+
+    <h2 id="obligations">4. Processor obligations</h2>
+    <p>tgram-analytics, as processor:</p>
+    <ul>
+      <li><strong>Processes only on documented instructions</strong> (Art. 28(3)(a)). The operator's instructions are: each event sent (process it as described in section 2), the project configuration set via the bot (retention window, alerts, funnels), and deletion or export requests. The processor will not process event data beyond these instructions unless required to by EU or member-state law, in which case it will inform the operator before processing unless that law forbids it.</li>
+      <li><strong>Confidentiality</strong> (Art. 28(3)(b)). Access to production data is limited to the single individual who operates the service (see <a href="privacy.html#who">Who we are</a>), who is committed to confidentiality.</li>
+      <li><strong>Security</strong> (Art. 32 via Art. 28(3)(c)). The technical and organisational measures in place are the ones described factually in the <a href="privacy.html">privacy policy</a>, in summary:
+        <ul>
+          <li>All event data is hosted on a server in the <strong>European Union</strong></li>
+          <li><strong>Raw IP addresses and User-Agent strings are never persisted</strong> — used in-memory at ingestion, then discarded</li>
+          <li>Unique visitors are counted via <strong>daily-rotating salted one-way hashes</strong>; yesterday's salt is unrecoverable</li>
+          <li>Visitor hashes are <strong>bound to a single project</strong>, preventing cross-project or cross-site correlation</li>
+          <li>A <strong>PII-key tripwire</strong> drops event properties whose keys carry common PII names (<code>email</code>, <code>phone</code>, <code>password</code>, <code>token</code>, <code>credit_card</code>, etc.) before storage</li>
+          <li>Server logs pass through a <strong>redaction filter</strong> that strips API keys and obvious PII before they are written</li>
+          <li>Project API keys are stored only as <strong>SHA-256 hashes</strong>; raw keys are never persisted</li>
+        </ul>
+      No third-party certification (ISO 27001, SOC 2 or similar) is claimed. The server code implementing these measures is public and inspectable.</li>
+      <li><strong>No onward disclosure.</strong> Event data is not sold, shared with, or made accessible to anyone except the sub-processors listed in section 5.</li>
+    </ul>
+
+    <h2 id="subprocessors">5. Sub-processors</h2>
+    <p>The operator grants <strong>general written authorisation</strong> (Art. 28(2)) for the sub-processors currently engaged:</p>
+    <ul>
+      <li><strong>EU hosting provider</strong> for the server and database, managed via <a href="https://coolify.io/" target="_blank" rel="noopener noreferrer">Coolify</a> — this is where event data lives. Located in the EU.</li>
+      <li><strong><a href="https://telegram.org/privacy" target="_blank" rel="noopener noreferrer">Telegram</a></strong> — message transport for delivering reports, charts, and alerts to the operator's chat. Telegram carries the aggregate outputs sent to the operator, not the raw event stream.</li>
+    </ul>
+    <p>The authoritative, current list is the <a href="privacy.html#subprocessors">Sub-processors section of the privacy policy</a>. The processor gives notice of intended additions or replacements by updating that page (and its revision date) before the change takes effect, per its <a href="privacy.html#changes">Changes</a> section. An operator who objects to a change may terminate at any time by deleting their project(s), which erases all associated data immediately (section 7).</p>
+
+    <h2 id="assistance">6. Assistance to the controller</h2>
+    <p><strong>Data-subject rights</strong> (Art. 28(3)(e)). Because the service is data-minimised by design — no stored IPs, no names, daily-rotating hashes — the processor generally cannot single out an individual end-visitor inside a project. Assistance is therefore structural: the operator can <strong>delete a project at any time</strong> from the bot, which immediately cascades to every event in it; the operator can <strong>lower the retention window</strong>; and the operator can <strong>request an export</strong> of their project data via the bot or email (see <a href="privacy.html#rights">Your rights</a>). Taking the nature of the processing into account, the processor will provide reasonable further assistance on request.</p>
+    <p><strong>Breach notification</strong> (Art. 28(3)(f)). The processor will notify affected operators <strong>without undue delay</strong> after becoming aware of a personal-data breach affecting their event data — via the bot and/or the contact channels in the privacy policy — including the information reasonably available so the operator can meet their own Art. 33/34 duties.</p>
+
+    <h2 id="deletion">7. Deletion and return of data</h2>
+    <ul>
+      <li>Events are deleted automatically under the per-project <strong>retention window</strong> (default 90 days; the operator can lower it at any time). A nightly job removes anything older.</li>
+      <li>The operator can <strong>delete any project at any time</strong> via the bot; deletion cascades immediately to every event in the project.</li>
+      <li>On termination of the relationship (deletion of the operator's projects or account), all associated event data is deleted. Operators who want a copy first can request a <strong>JSON export</strong> beforehand, per <a href="privacy.html#rights">Your rights</a>.</li>
+    </ul>
+
+    <h2 id="audit">8. Audit and information</h2>
+    <p>In place of on-site audit rights — disproportionate for a free, single-operator service — transparency works like this: the <strong>server source code is public</strong> at <a href="https://github.com/tgram-analytics/server" target="_blank" rel="noopener noreferrer">github.com/tgram-analytics/server</a>, so the ingestion pipeline, visitor hashing, PII tripwire, retention job, and deletion cascade can be inspected directly rather than taken on faith. In addition, the processor will make available on written request the further information reasonably necessary to demonstrate compliance with Art. 28 (Art. 28(3)(h)). Operators whose compliance framework requires contractual on-site audits or bespoke terms should self-host instead (section 10).</p>
+
+    <h2 id="transfers">9. International transfers</h2>
+    <p>The processor performs <strong>no transfers of event data outside the EU</strong>: ingestion, storage, aggregation, and chart rendering all happen on the EU-hosted server (see <a href="privacy.html#where">Where it lives</a>). Delivery of aggregate reports and alerts to the operator's chat necessarily transits <strong>Telegram's infrastructure</strong>, as disclosed in the privacy policy — that delivery channel is inherent to the service the operator chose.</p>
+
+    <h2 id="liability">10. Liability, governing law, and alternatives</h2>
+    <p><strong>Liability.</strong> Each party is liable in accordance with Art. 82 GDPR and its role in the processing; nothing in this DPA excludes liability that cannot lawfully be excluded. Beyond that, the hosted service is provided free of charge and, to the maximum extent permitted by applicable law, without further contractual liability of the processor.</p>
+    <p><strong>Governing law.</strong> This DPA is governed by the law of an EU member state. Where anything in this DPA conflicts with mandatory provisions of the GDPR, the GDPR prevails.</p>
+    <p><strong>Special requirements.</strong> Operators who need a signed DPA, specific jurisdiction clauses, audit rights, or other bespoke terms have a clean alternative: <strong>self-host</strong> the open-source server on infrastructure of their choice, in which case no processing by tgram-analytics takes place at all. Questions about this DPA: <a href="mailto:rignanese.leo@gmail.com">rignanese.leo@gmail.com</a>.</p>
+
+  </main>
+</div>
+
+<footer>
+  <span>tgram-analytics · Hosted in the EU · Open source core</span>
+  <ul class="footer-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="docs.html">Docs</a></li>
+    <li><a href="privacy.html">Privacy</a></li>
+    <li><a href="https://github.com/tgram-analytics" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+  </ul>
+</footer>
+
+</body>
+</html>
