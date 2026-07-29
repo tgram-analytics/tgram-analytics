@@ -72,11 +72,12 @@ tgram-analytics = every signup, sale, and error from your app, sent to you on Te
 
 ## MCP integration
 
-Connect Claude or any MCP client to a tgram-analytics account and query analytics in natural language. Read-only, scoped to the user's own projects (no API keys). One connection covers all of the user's projects.
+Connect Claude or any MCP client to a tgram-analytics account and query analytics in natural language. Scoped to the user's own projects (no API keys). Reads are unrestricted; the write tools (create a project, rotate a project key) are gated on the user's explicit approval — project creation is confirmed in the Telegram bot. One connection covers all of the user's projects.
 - Hosted endpoint: https://mcp.tgram-analytics.com/mcp (Streamable HTTP). Authentication is OAuth via Telegram login.
 - Self-hosted: the same /mcp endpoint runs on your own domain. Authenticate with a token minted from the bot (`/mcp_token new <label>`) instead of hosted OAuth. Header-capable clients (Claude Code, Cursor) send `Authorization: Bearer mcp_...`; Claude Desktop uses Add custom connector and pastes the token in the browser page that opens (OAuth paste-token flow). Send `/mcp` to the bot for tailored setup. Config: `MCP_PUBLIC_URL`, `MCP_ENABLED`.
 - Query tools: `query_events`, `compare_periods`, `top_pages`, `recent_events`, `list_event_names`
-- Project & setup tools: `list_projects`, `get_project`, `get_integration_guide`, `get_sdk_snippet`, `verify_integration`, `rotate_api_key`
+- Project & setup tools (read-only): `list_projects`, `get_project`, `get_integration_guide`, `get_sdk_snippet`, `verify_integration`
+- Write tools (approval-gated): `create_project` (approved in the bot), `get_project_request_status`, `rotate_api_key` (destructive — invalidates the previous key)
 - Setup guide: https://tgram-analytics.com/docs.html#mcp
 
 ## Technical details
