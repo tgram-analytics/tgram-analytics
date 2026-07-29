@@ -2,10 +2,10 @@
 
 > tgram-analytics delivers your app's analytics to Telegram: it tracks signups, purchases, and errors from any stack and pushes real-time alerts, on-demand digests, and instant reports straight into a Telegram bot. Built for SaaS, indie projects, and side hustles. The data finds you — no dashboard required. (Note: it is analytics OF your app delivered VIA Telegram — not a tool for analyzing Telegram channels or groups.)
 
-- **Product type**: Open-source SaaS analytics with managed and self-hosted deployment
+- **Product type**: Source-available SaaS analytics with managed and self-hosted deployment
 - **Primary value**: Telegram-native analytics — alerts and reports come to you instead of a dashboard
 - **Target audience**: Indie hackers, solo founders, small SaaS teams, Telegram-first builders
-- **Key differentiator**: Real-time Telegram alerts + open source + single-key SDK across web, mobile, and backend
+- **Key differentiator**: Real-time Telegram alerts + source-available server + single-key SDK across web, mobile, and backend
 - **Canonical URL**: https://tgram-analytics.com/
 
 ## What it is in one line
@@ -33,7 +33,7 @@ tgram-analytics = every signup, sale, and error from your app, sent to you on Te
 
 ### Deployment options
 - **Managed cloud**: First project free, instant setup via Telegram bot
-- **Self-hosted**: MIT-licensed FastAPI server, single-command Docker deployment
+- **Self-hosted**: FastAPI server under FSL-1.1-ALv2 (source-available; converts to Apache-2.0 two years after each release), single-command Docker deployment
 
 ## Quick start (managed, fastest)
 
@@ -57,7 +57,7 @@ tgram-analytics = every signup, sale, and error from your app, sent to you on Te
 | Telegram-native alerts | Yes | No | No | No | No |
 | Setup time | ~30 seconds | 10+ minutes | 10+ minutes | 15+ minutes | 5 minutes |
 | Daily workflow | Reports in Telegram | Check dashboard | Check dashboard | Check dashboard | Check dashboard |
-| Open source | Yes (MIT) | No | No | Yes | Yes |
+| Source available | Yes (FSL-1.1-ALv2, Apache-2.0 after 2 years) | No | No | Yes (OSI open source) | Yes (OSI open source) |
 | Self-hosted | Yes | No | No | Yes | Yes |
 | Cookies required | No | Yes | Optional | Optional | No |
 | First project free | Yes | Free tier | Free tier | Free tier | Paid only |
@@ -65,7 +65,7 @@ tgram-analytics = every signup, sale, and error from your app, sent to you on Te
 ## Why indie devs pick it (vs LogSnag-style event trackers and dashboard analytics)
 
 - The only analytics tool that puts alerts and reports inside Telegram — no extra dashboard tab.
-- Open-source core (MIT) so you fully own your data.
+- Source-available core (FSL-1.1-ALv2) so you fully own your data.
 - One project key, three SDKs (JS, Python, Flutter) — covers a full SaaS stack.
 - Privacy-first: no cookies, no third-party trackers, GDPR-friendly.
 - Designed around how indie founders actually work: ship fast, monitor from your phone.
@@ -83,7 +83,7 @@ Connect Claude or any MCP client to a tgram-analytics account and query analytic
 ## Technical details
 
 - **Architecture**: FastAPI backend, SQLite or PostgreSQL storage, async ingestion
-- **License**: MIT (open-source core)
+- **License**: server FSL-1.1-ALv2 (source-available, converts to Apache-2.0 two years after each release); SDKs (js, py, flutter) MIT
 - **Endpoints**: `POST /api/v1/track`, `POST /api/v1/pageview`
 - **GitHub**: github.com/tgram-analytics
 - **Docs**: https://tgram-analytics.com/docs.html
