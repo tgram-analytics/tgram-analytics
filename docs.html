@@ -328,7 +328,7 @@ tga.<span class="fn">track</span>(
     </table>
 
     <h2 id="mcp">AI Assistant <span class="badge">MCP</span></h2>
-    <p>Connect <strong>Claude</strong> — or any <a href="https://modelcontextprotocol.io" target="_blank" rel="noopener noreferrer" style="color:var(--tg)">MCP</a> client — to your tgram-analytics account and ask about your analytics in plain language. Sign in once with Telegram; from then on the assistant can read your projects and events, pull reports, and help you wire up tracking. Access is <strong>read-only and scoped to the projects you own</strong> — no API keys to paste.</p>
+    <p>Connect <strong>Claude</strong> — or any <a href="https://modelcontextprotocol.io" target="_blank" rel="noopener noreferrer" style="color:var(--tg)">MCP</a> client — to your tgram-analytics account and ask about your analytics in plain language. Sign in once with Telegram; from then on the assistant can read your projects and events, pull reports, and help you wire up tracking. Access is <strong>scoped to the projects you own</strong> — no API keys to paste. Reading is unrestricted; the few write actions (creating a project, rotating a project key) are <strong>gated on your explicit approval</strong> — project creation is confirmed from the Telegram bot.</p>
 
     <h3>Endpoint</h3>
     <p>Point any MCP client at this URL. Authentication is handled for you over OAuth — you log in with Telegram, the same account you use with the bot.</p>
@@ -385,7 +385,11 @@ tga.<span class="fn">track</span>(
         </tr>
         <tr>
           <td>Projects &amp; setup</td>
-          <td><code>list_projects</code>, <code>get_project</code>, <code>get_integration_guide</code>, <code>get_sdk_snippet</code>, <code>verify_integration</code>, <code>rotate_api_key</code></td>
+          <td><code>list_projects</code>, <code>get_project</code>, <code>get_integration_guide</code>, <code>get_sdk_snippet</code>, <code>verify_integration</code></td>
+        </tr>
+        <tr>
+          <td>Write (approval-gated)</td>
+          <td><code>create_project</code>, <code>get_project_request_status</code>, <code>rotate_api_key</code></td>
         </tr>
       </tbody>
     </table>
@@ -416,7 +420,7 @@ tga.<span class="fn">track</span>(
         <p>In Cursor and similar, add an HTTP MCP server with the same URL and an <code>Authorization: Bearer mcp_...</code> header.</p>
       </div>
     </div>
-    <p style="color:var(--muted);font-size:.92em">Config: set <code>MCP_PUBLIC_URL=https://your-host</code> so metadata and links use the right address (defaults to <code>WEBHOOK_BASE_URL</code>); set <code>MCP_ENABLED=false</code> to switch the endpoint off entirely. Access is the same read-only, own-projects-only scope as the hosted service.</p>
+    <p style="color:var(--muted);font-size:.92em">Config: set <code>MCP_PUBLIC_URL=https://your-host</code> so metadata and links use the right address (defaults to <code>WEBHOOK_BASE_URL</code>); set <code>MCP_ENABLED=false</code> to switch the endpoint off entirely. Access is the same scope as the hosted service — your own projects only, with the same approval-gated write actions.</p>
 
   </main>
 </div>
