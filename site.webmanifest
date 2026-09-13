@@ -1,7 +1,7 @@
 {
-  "name": "tgram-analytics — Telegram analytics for SaaS",
+  "name": "tgram-analytics — Product analytics via Telegram bot",
   "short_name": "tgram-analytics",
-  "description": "Telegram analytics for SaaS, indie projects, and side hustles. Real-time alerts, on-demand digests, and instant reports — first project free.",
+  "description": "Product analytics for your website or app. Get signup, purchase and error alerts in Telegram, and chart reports when you ask. Free first project or self-host.",
   "icons": [
     {
       "src": "/android-chrome-192x192.png",
