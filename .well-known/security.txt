@@ -1,0 +1,5 @@
+Contact: mailto:tgram@leorigna.com
+Expires: 2027-09-23T00:00:00.000Z
+Policy: https://github.com/tgram-analytics/server/security/policy
+Canonical: https://tgram-analytics.com/.well-known/security.txt
+Preferred-Languages: en, it
