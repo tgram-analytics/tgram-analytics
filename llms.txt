@@ -20,6 +20,7 @@ tgram-analytics = product analytics that messages you on Telegram — install th
 - Track any custom event: signups, purchases, errors, pageviews, feature usage
 - Single project key works across web, mobile, and backend
 - Rich event properties for detailed segmentation
+- Test events (`"test": true` in the request body, or sent from localhost) are stored but excluded from analytics, so dev traffic stays out of reports and alerts
 
 ### Telegram integration
 - Real-time alerts for important events (errors, churn, payments)

@@ -200,6 +200,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
       <li><a href="#js">JavaScript</a></li>
       <li><a href="#flutter">Flutter</a></li>
       <li><a href="#python">Python</a></li>
+      <li><a href="#test-events">Test events</a></li>
     </ul>
   </aside>
 
@@ -232,6 +233,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
         <p>Type <code>/report signup 7d</code> or set up alerts with <code>/alerts</code>. Charts and alerts arrive in your chat.</p>
       </div>
     </div>
+
+    <div class="callout"><strong>Testing locally?</strong> Events from localhost stay out of your stats automatically. See <a href="#test-events">Test events</a>.</div>
 
     <h2 id="sdk">SDK Setup</h2>
     <p>One project key works across all platforms. Events from your web app, mobile app, and backend all flow into the same Telegram reports.</p>
@@ -281,6 +284,23 @@ tga.<span class="fn">track</span>(
 </pre>
 
     <div class="callout warn"><strong>Keep personal data out of properties.</strong> Don't put emails, names, phone numbers, tokens, or anything else identifying into event <code>properties</code>. The server drops properties with common PII key names (<code>email</code>, <code>phone</code>, <code>password</code>, <code>token</code>, <code>credit_card</code>, …) before storage — but that tripwire is a safety net, not a guarantee: property <em>values</em> are never inspected, so PII under an innocent key name would be stored as-is. Under the GDPR, you (the operator) are the controller for whatever you choose to send — see the <a href="privacy.html">privacy policy</a> and the <a href="dpa.html">Data Processing Agreement</a>.</div>
+
+    <h3 id="test-events">Test events</h3>
+    <p>Keep your dev traffic out of your stats. Test events are saved, so you can see that tracking works, while reports, digests, funnels, exports, alerts, and the AI assistant's analytics count only real users.</p>
+    <ul>
+      <li><strong>From localhost, automatically.</strong> Events from a page on <code>localhost</code>, <code>*.localhost</code>, <code>127.0.0.0/8</code>, <code>::1</code>, or <code>0.0.0.0</code> are marked as test. No code change needed.</li>
+      <li><strong>From anywhere, with one flag.</strong> Add <code style="white-space:nowrap">"test": true</code> to the body of <code>/api/v1/track</code>, <code>/api/v1/pageview</code>, or <code>/api/v1/taps</code>.</li>
+    </ul>
+<pre><span class="c">// POST /api/v1/track</span>
+{
+  <span class="tgb">"api_key"</span>: <span class="s">"proj_xxx"</span>,
+  <span class="tgb">"event_name"</span>: <span class="s">"signup"</span>,
+  <span class="tgb">"session_id"</span>: <span class="s">"dev-session"</span>,
+  <span class="tgb">"test"</span>: <span class="k">true</span>
+}</pre>
+    <p>Using an SDK? Each one has a <code>test</code> option. See “Test mode” in the <a href="https://github.com/tgram-analytics/tgram-analytics-js#test-mode" target="_blank" rel="noopener noreferrer" style="color:var(--tg)">JavaScript</a>, <a href="https://github.com/tgram-analytics/tgram-analytics-flutter#test-mode" target="_blank" rel="noopener noreferrer" style="color:var(--tg)">Flutter</a>, and <a href="https://github.com/tgram-analytics/tgram-analytics-py#test-mode" target="_blank" rel="noopener noreferrer" style="color:var(--tg)">Python</a> READMEs.</p>
+    <p>To check your setup, open the bot's recent activity or run <code>/doctor</code>. Test events show there marked 🧪, and in the assistant's <code>recent_events</code> and <code>verify_integration</code> tools too. Test taps are skipped, so your heatmaps stay clean.</p>
+    <p>If your project accepts events only from listed domains, add <code>localhost</code> to that list to send test events from your machine.</p>
 
     <h2 id="commands">Bot Commands</h2>
     <p>Everything happens in Telegram. No dashboard to open, no login to remember.</p>
